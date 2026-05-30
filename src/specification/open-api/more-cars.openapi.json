@@ -400,17 +400,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "brand-id",
-            "description": "ID of the `Brand`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-brand‹ relationship between `Company` and `Brand` was successful."
@@ -528,17 +529,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Company` and `Image` was successful."
@@ -656,17 +658,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Company` and `Image` was successful."
@@ -741,17 +744,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Company` and `Video` was successful."
@@ -920,17 +924,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Company` and `Video` was successful."
@@ -1260,17 +1265,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "company-id",
-            "description": "ID of the `Company`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-company‹ relationship between `Brand` and `Company` was successful."
@@ -1388,17 +1394,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-id",
-            "description": "ID of the `Car Model`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-car-model‹ relationship between `Brand` and `Car Model` was successful."
@@ -1516,17 +1523,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Brand` and `Image` was successful."
@@ -1644,17 +1652,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Brand` and `Image` was successful."
@@ -1772,17 +1781,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Brand` and `Video` was successful."
@@ -1900,17 +1910,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Brand` and `Video` was successful."
@@ -2240,17 +2251,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "brand-id",
-            "description": "ID of the `Brand`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-brand‹ relationship between `Car Model` and `Brand` was successful."
@@ -2384,17 +2396,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-successor‹ relationship between `Car Model` and `Partner` was successful."
@@ -2522,17 +2535,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-successor-of‹ relationship between `Car Model` and `Partner` was successful."
@@ -2650,17 +2664,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-variant‹ relationship between `Car Model` and `Car Model Variant` was successful."
@@ -2778,17 +2793,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covered-by-magazine-issue‹ relationship between `Car Model` and `Magazine Issue` was successful."
@@ -2906,17 +2922,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "programme-episode-id",
-            "description": "ID of the `Programme Episode`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covered-by-programme-episode‹ relationship between `Car Model` and `Programme Episode` was successful."
@@ -3034,17 +3051,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Car Model` and `Image` was successful."
@@ -3162,17 +3180,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Car Model` and `Image` was successful."
@@ -3247,17 +3266,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Car Model` and `Video` was successful."
@@ -3426,17 +3446,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Car Model` and `Video` was successful."
@@ -3766,17 +3787,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-id",
-            "description": "ID of the `Car Model`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-variant-of‹ relationship between `Car Model Variant` and `Car Model` was successful."
@@ -3894,17 +3916,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "session-result-id",
-            "description": "ID of the `Session Result`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›achieved-session-result‹ relationship between `Car Model Variant` and `Session Result` was successful."
@@ -4022,17 +4045,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "lap-time-id",
-            "description": "ID of the `Lap Time`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›achieved-lap-time‹ relationship between `Car Model Variant` and `Lap Time` was successful."
@@ -4150,17 +4174,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-presented-in-magazine-issue‹ relationship between `Car Model Variant` and `Magazine Issue` was successful."
@@ -4278,17 +4303,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "rating-id",
-            "description": "ID of the `Rating`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›reviewed-by-magazine-issue-with-rating‹ relationship between `Car Model Variant` and `Rating` was successful."
@@ -4406,17 +4432,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "programme-episode-id",
-            "description": "ID of the `Programme Episode`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›featured-in-programme-episode‹ relationship between `Car Model Variant` and `Programme Episode` was successful."
@@ -4534,17 +4561,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-game-id",
-            "description": "ID of the `Racing Game`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-featured-in-racing-game‹ relationship between `Car Model Variant` and `Racing Game` was successful."
@@ -4662,17 +4690,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "model-car-id",
-            "description": "ID of the `Model Car`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-scale-model‹ relationship between `Car Model Variant` and `Model Car` was successful."
@@ -4790,17 +4819,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "motor-show-id",
-            "description": "ID of the `Motor Show`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›presented-at-motor-show‹ relationship between `Car Model Variant` and `Motor Show` was successful."
@@ -4918,17 +4948,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "price-id",
-            "description": "ID of the `Price`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-price‹ relationship between `Car Model Variant` and `Price` was successful."
@@ -5046,17 +5077,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "book-id",
-            "description": "ID of the `Book`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-covered-by-book‹ relationship between `Car Model Variant` and `Book` was successful."
@@ -5174,17 +5206,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Car Model Variant` and `Image` was successful."
@@ -5302,17 +5335,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Car Model Variant` and `Image` was successful."
@@ -5387,17 +5421,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Car Model Variant` and `Video` was successful."
@@ -5566,17 +5601,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Car Model Variant` and `Video` was successful."
@@ -5906,17 +5942,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›for-car-model-variant‹ relationship between `Price` and `Car Model Variant` was successful."
@@ -5991,17 +6028,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Price` and `Image` was successful."
@@ -6170,17 +6208,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Price` and `Image` was successful."
@@ -6510,17 +6549,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "track-layout-id",
-            "description": "ID of the `Track Layout`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-layout‹ relationship between `Race Track` and `Track Layout` was successful."
@@ -6638,17 +6678,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-event-id",
-            "description": "ID of the `Racing Event`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›hosted-racing-event‹ relationship between `Race Track` and `Racing Event` was successful."
@@ -6766,17 +6807,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Race Track` and `Image` was successful."
@@ -6851,17 +6893,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Race Track` and `Image` was successful."
@@ -6987,17 +7030,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Race Track` and `Video` was successful."
@@ -7123,17 +7167,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Race Track` and `Video` was successful."
@@ -7514,17 +7559,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "race-track-id",
-            "description": "ID of the `Race Track`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-race-track‹ relationship between `Track Layout` and `Race Track` was successful."
@@ -7642,17 +7688,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-event-id",
-            "description": "ID of the `Racing Event`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›was-used-by-racing-event‹ relationship between `Track Layout` and `Racing Event` was successful."
@@ -7770,17 +7817,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "lap-time-id",
-            "description": "ID of the `Lap Time`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-lap-time‹ relationship between `Track Layout` and `Lap Time` was successful."
@@ -7898,17 +7946,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-game-id",
-            "description": "ID of the `Racing Game`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-featured-in-racing-game‹ relationship between `Track Layout` and `Racing Game` was successful."
@@ -8026,17 +8075,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Track Layout` and `Image` was successful."
@@ -8154,17 +8204,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Track Layout` and `Image` was successful."
@@ -8239,17 +8290,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Track Layout` and `Video` was successful."
@@ -8375,17 +8427,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Track Layout` and `Video` was successful."
@@ -8766,17 +8819,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-event-id",
-            "description": "ID of the `Racing Event`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-racing-event‹ relationship between `Racing Series` and `Racing Event` was successful."
@@ -8894,17 +8948,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Racing Series` and `Image` was successful."
@@ -9022,17 +9077,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Racing Series` and `Image` was successful."
@@ -9107,17 +9163,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Racing Series` and `Video` was successful."
@@ -9286,17 +9343,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Racing Series` and `Video` was successful."
@@ -9626,17 +9684,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-series-id",
-            "description": "ID of the `Racing Series`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-racing-series‹ relationship between `Racing Event` and `Racing Series` was successful."
@@ -9764,17 +9823,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-followed-by-event‹ relationship between `Racing Event` and `Partner` was successful."
@@ -9902,17 +9962,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›follows-event‹ relationship between `Racing Event` and `Partner` was successful."
@@ -10030,17 +10091,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "race-track-id",
-            "description": "ID of the `Race Track`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›took-place-at-race-track‹ relationship between `Racing Event` and `Race Track` was successful."
@@ -10158,17 +10220,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "track-layout-id",
-            "description": "ID of the `Track Layout`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›used-the-track-layout‹ relationship between `Racing Event` and `Track Layout` was successful."
@@ -10286,17 +10349,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-session-id",
-            "description": "ID of the `Racing Session`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-racing-session‹ relationship between `Racing Event` and `Racing Session` was successful."
@@ -10414,17 +10478,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covered-by-magazine-issue‹ relationship between `Racing Event` and `Magazine Issue` was successful."
@@ -10542,17 +10607,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Racing Event` and `Image` was successful."
@@ -10670,17 +10736,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Racing Event` and `Image` was successful."
@@ -10755,17 +10822,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Racing Event` and `Video` was successful."
@@ -10934,17 +11002,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Racing Event` and `Video` was successful."
@@ -11274,17 +11343,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-event-id",
-            "description": "ID of the `Racing Event`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-racing-event‹ relationship between `Racing Session` and `Racing Event` was successful."
@@ -11402,17 +11472,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "session-result-id",
-            "description": "ID of the `Session Result`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-session-result‹ relationship between `Racing Session` and `Session Result` was successful."
@@ -11530,17 +11601,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Racing Session` and `Image` was successful."
@@ -11658,17 +11730,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Racing Session` and `Image` was successful."
@@ -11743,17 +11816,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Racing Session` and `Video` was successful."
@@ -11922,17 +11996,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Racing Session` and `Video` was successful."
@@ -12262,17 +12337,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-session-id",
-            "description": "ID of the `Racing Session`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-racing-session‹ relationship between `Session Result` and `Racing Session` was successful."
@@ -12390,17 +12466,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "lap-time-id",
-            "description": "ID of the `Lap Time`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-lap-time‹ relationship between `Session Result` and `Lap Time` was successful."
@@ -12518,17 +12595,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›achieved-with-car-model-variant‹ relationship between `Session Result` and `Car Model Variant` was successful."
@@ -12646,17 +12724,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Session Result` and `Image` was successful."
@@ -12774,17 +12853,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Session Result` and `Image` was successful."
@@ -13114,17 +13194,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "session-result-id",
-            "description": "ID of the `Session Result`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-session-result‹ relationship between `Lap Time` and `Session Result` was successful."
@@ -13242,17 +13323,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "track-layout-id",
-            "description": "ID of the `Track Layout`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›achieved-on-track-layout‹ relationship between `Lap Time` and `Track Layout` was successful."
@@ -13370,17 +13452,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›achieved-with-car-model-variant‹ relationship between `Lap Time` and `Car Model Variant` was successful."
@@ -13498,17 +13581,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›documented-in-magazine-issue‹ relationship between `Lap Time` and `Magazine Issue` was successful."
@@ -13626,17 +13710,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Lap Time` and `Image` was successful."
@@ -13754,17 +13839,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Lap Time` and `Image` was successful."
@@ -13839,17 +13925,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Lap Time` and `Video` was successful."
@@ -14018,17 +14105,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Lap Time` and `Video` was successful."
@@ -14358,17 +14446,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›features-car-model-variant‹ relationship between `Racing Game` and `Car Model Variant` was successful."
@@ -14486,17 +14575,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "track-layout-id",
-            "description": "ID of the `Track Layout`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›features-track-layout‹ relationship between `Racing Game` and `Track Layout` was successful."
@@ -14614,17 +14704,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "gaming-platform-id",
-            "description": "ID of the `Gaming Platform`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›released-on-gaming-platform‹ relationship between `Racing Game` and `Gaming Platform` was successful."
@@ -14742,17 +14833,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Racing Game` and `Image` was successful."
@@ -14870,17 +14962,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Racing Game` and `Image` was successful."
@@ -14955,17 +15048,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Racing Game` and `Video` was successful."
@@ -15134,17 +15228,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Racing Game` and `Video` was successful."
@@ -15474,17 +15569,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-game-id",
-            "description": "ID of the `Racing Game`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›features-racing-game‹ relationship between `Gaming Platform` and `Racing Game` was successful."
@@ -15602,17 +15698,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Gaming Platform` and `Image` was successful."
@@ -15730,17 +15827,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Gaming Platform` and `Image` was successful."
@@ -15815,17 +15913,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Gaming Platform` and `Video` was successful."
@@ -15994,17 +16093,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Gaming Platform` and `Video` was successful."
@@ -16334,17 +16434,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-scale-model-of-car-model-variant‹ relationship between `Model Car` and `Car Model Variant` was successful."
@@ -16462,17 +16563,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "model-car-brand-id",
-            "description": "ID of the `Model Car Brand`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›made-by-model-car-brand‹ relationship between `Model Car` and `Model Car Brand` was successful."
@@ -16590,17 +16692,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Model Car` and `Image` was successful."
@@ -16718,17 +16821,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Model Car` and `Image` was successful."
@@ -16803,17 +16907,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Model Car` and `Video` was successful."
@@ -16982,17 +17087,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Model Car` and `Video` was successful."
@@ -17322,17 +17428,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "model-car-id",
-            "description": "ID of the `Model Car`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›created-model-car‹ relationship between `Model Car Brand` and `Model Car` was successful."
@@ -17450,17 +17557,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Model Car Brand` and `Image` was successful."
@@ -17578,17 +17686,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Model Car Brand` and `Image` was successful."
@@ -17663,17 +17772,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Model Car Brand` and `Video` was successful."
@@ -17842,17 +17952,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Model Car Brand` and `Video` was successful."
@@ -18182,17 +18293,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-issue‹ relationship between `Magazine` and `Magazine Issue` was successful."
@@ -18310,17 +18422,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Magazine` and `Image` was successful."
@@ -18438,17 +18551,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Magazine` and `Image` was successful."
@@ -18523,17 +18637,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Magazine` and `Video` was successful."
@@ -18702,17 +18817,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Magazine` and `Video` was successful."
@@ -19042,17 +19158,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-id",
-            "description": "ID of the `Magazine`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-magazine‹ relationship between `Magazine Issue` and `Magazine` was successful."
@@ -19180,17 +19297,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›follows-issue‹ relationship between `Magazine Issue` and `Partner` was successful."
@@ -19318,17 +19436,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›followed-by-issue‹ relationship between `Magazine Issue` and `Partner` was successful."
@@ -19446,17 +19565,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-id",
-            "description": "ID of the `Car Model`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covers-car-model‹ relationship between `Magazine Issue` and `Car Model` was successful."
@@ -19574,17 +19694,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›presents-car-model-variant‹ relationship between `Magazine Issue` and `Car Model Variant` was successful."
@@ -19702,17 +19823,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "rating-id",
-            "description": "ID of the `Rating`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›reviewed-car-model-variant-with-rating‹ relationship between `Magazine Issue` and `Rating` was successful."
@@ -19830,17 +19952,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "racing-event-id",
-            "description": "ID of the `Racing Event`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covers-racing-event‹ relationship between `Magazine Issue` and `Racing Event` was successful."
@@ -19958,17 +20081,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "lap-time-id",
-            "description": "ID of the `Lap Time`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›documents-lap-time‹ relationship between `Magazine Issue` and `Lap Time` was successful."
@@ -20086,17 +20210,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Magazine Issue` and `Image` was successful."
@@ -20214,17 +20339,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Magazine Issue` and `Image` was successful."
@@ -20299,17 +20425,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Magazine Issue` and `Video` was successful."
@@ -20435,17 +20562,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Magazine Issue` and `Video` was successful."
@@ -20826,17 +20954,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›by-magazine-issue‹ relationship between `Rating` and `Magazine Issue` was successful."
@@ -20954,17 +21083,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›for-car-model-variant‹ relationship between `Rating` and `Car Model Variant` was successful."
@@ -21082,17 +21212,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Rating` and `Image` was successful."
@@ -21210,17 +21341,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Rating` and `Image` was successful."
@@ -21550,17 +21682,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "programme-episode-id",
-            "description": "ID of the `Programme Episode`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-episode‹ relationship between `Programme` and `Programme Episode` was successful."
@@ -21678,17 +21811,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Programme` and `Image` was successful."
@@ -21806,17 +21940,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Programme` and `Image` was successful."
@@ -21891,17 +22026,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Programme` and `Video` was successful."
@@ -22070,17 +22206,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Programme` and `Video` was successful."
@@ -22410,17 +22547,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "programme-id",
-            "description": "ID of the `Programme`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-programme‹ relationship between `Programme Episode` and `Programme` was successful."
@@ -22548,17 +22686,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›follows-episode‹ relationship between `Programme Episode` and `Partner` was successful."
@@ -22686,17 +22825,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the `Partner`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-followed-by-episode‹ relationship between `Programme Episode` and `Partner` was successful."
@@ -22814,17 +22954,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-id",
-            "description": "ID of the `Car Model`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covers-car-model‹ relationship between `Programme Episode` and `Car Model` was successful."
@@ -22942,17 +23083,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›features-car-model-variant‹ relationship between `Programme Episode` and `Car Model Variant` was successful."
@@ -23070,17 +23212,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Programme Episode` and `Image` was successful."
@@ -23198,17 +23341,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Programme Episode` and `Image` was successful."
@@ -23326,17 +23470,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Programme Episode` and `Video` was successful."
@@ -23454,17 +23599,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Programme Episode` and `Video` was successful."
@@ -23794,17 +23940,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›presents-car-model-variant‹ relationship between `Motor Show` and `Car Model Variant` was successful."
@@ -23922,17 +24069,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Motor Show` and `Image` was successful."
@@ -24050,17 +24198,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Motor Show` and `Image` was successful."
@@ -24135,17 +24284,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Motor Show` and `Video` was successful."
@@ -24271,17 +24421,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Motor Show` and `Video` was successful."
@@ -24662,17 +24813,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›covers-car-model-variant‹ relationship between `Book` and `Car Model Variant` was successful."
@@ -24747,17 +24899,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-image‹ relationship between `Book` and `Image` was successful."
@@ -24883,17 +25036,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-prime-image‹ relationship between `Book` and `Image` was successful."
@@ -25019,17 +25173,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-video‹ relationship between `Book` and `Video` was successful."
@@ -25155,17 +25310,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›has-main-video‹ relationship between `Book` and `Video` was successful."
@@ -25681,17 +25837,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "node-id",
-            "description": "ID of the `Node`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-prime-image-of-node‹ relationship between `Image` and `Node` was successful."
@@ -25992,17 +26149,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "node-id",
-            "description": "ID of the `Node`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-node‹ relationship between `Video` and `Node` was successful."
@@ -26120,17 +26278,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "node-id",
-            "description": "ID of the `Node`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›is-main-video-of-node‹ relationship between `Video` and `Node` was successful."

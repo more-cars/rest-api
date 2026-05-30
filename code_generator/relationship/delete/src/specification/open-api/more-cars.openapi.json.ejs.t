@@ -18,17 +18,18 @@ skip_if: "Deletes the ›<%= h.changeCase.kebab(relationshipName) %>‹ relation
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "<%= h.changeCase.kebab(startNodeType === endNodeType ? 'partner' : endNodeType) %>-id",
-            "description": "ID of the `<%= h.changeCase.title(startNodeType === endNodeType ? 'partner' : endNodeType) %>`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(startNodeType === endNodeType ? 'partner' : endNodeType) %>` was successful."
