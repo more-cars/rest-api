@@ -42,7 +42,7 @@ export default function (data: { carModelId: number, imageId: number }) {
 
     check(response, {
         'returns with status code 201': (r) => r.status === 201,
-        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
+        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/vnd.api+json'),
         // @ts-expect-error TS2531
         'response contains an ID': (r) => typeof r.json().data.id === "number",
     })

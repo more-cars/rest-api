@@ -14,7 +14,7 @@ skip_if: Create `<%= h.changeCase.title(nodeType) %>`
           "201": {
             "description": "`<%= h.changeCase.title(nodeType) %>` successfully created.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
                 }
@@ -24,7 +24,7 @@ skip_if: Create `<%= h.changeCase.title(nodeType) %>`
           "400": {
             "description": "`<%= h.changeCase.title(nodeType) %>` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response400"
                 }

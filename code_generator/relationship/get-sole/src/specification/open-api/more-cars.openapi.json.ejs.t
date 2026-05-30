@@ -26,7 +26,7 @@ skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
           "200": {
             "description": "The ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship was successfully loaded.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response"
                 }
@@ -36,7 +36,7 @@ skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
           "404": {
             "description": "Request failed. The `<%= h.changeCase.title(startNodeType) %>` could not be found in the database.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
                 }

@@ -36,7 +36,7 @@ skip_if: "Deletes the ›<%= h.changeCase.kebab(relationshipName) %>‹ relation
           "404": {
             "description": "Request failed. Either the nodes don't exist or there exists no ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between them.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
                 }

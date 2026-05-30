@@ -44,7 +44,7 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
           "200": {
             "description": "`<%= h.changeCase.title(nodeType) %>` collection successfully loaded.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>CollectionResponse"
                 }
@@ -54,7 +54,7 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response400"
                 }

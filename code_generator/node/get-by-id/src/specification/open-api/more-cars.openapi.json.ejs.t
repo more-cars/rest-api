@@ -26,7 +26,7 @@ skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
           "200": {
             "description": "`<%= h.changeCase.title(nodeType) %>` successfully loaded.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
                 }
@@ -36,7 +36,7 @@ skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
           "404": {
             "description": "Request failed. A `<%= h.changeCase.title(nodeType) %>` with the provided ID could not be found.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
                 }

@@ -34,7 +34,7 @@ skip_if: Creates a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationshi
           "201": {
             "description": "Relationship ›<%= h.changeCase.kebab(relationshipName) %>‹ between `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(startNodeType === endNodeType ? 'partner' : endNodeType) %>` successfully created.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response"
                 }
@@ -47,7 +47,7 @@ skip_if: Creates a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationshi
           "404": {
             "description": "Request failed. `<%= h.changeCase.title(startNodeType) %>` and/or `<%= h.changeCase.title(startNodeType === endNodeType ? 'partner' : endNodeType) %>` could not be found in the database.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
                 }

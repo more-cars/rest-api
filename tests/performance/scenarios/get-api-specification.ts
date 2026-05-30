@@ -29,7 +29,7 @@ export default function () {
 
     check(response, {
         'returns with status code 200': (r) => r.status === 200,
-        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
+        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/vnd.api+json'),
     })
 
     trendDuration.add(response.timings.duration)

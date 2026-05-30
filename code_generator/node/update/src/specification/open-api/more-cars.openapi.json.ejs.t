@@ -24,7 +24,7 @@ skip_if: 'Update `<%= h.changeCase.title(nodeType) %>`'
           "200": {
             "description": "`<%= h.changeCase.title(nodeType) %>` successfully updated.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
                 }
@@ -34,7 +34,7 @@ skip_if: 'Update `<%= h.changeCase.title(nodeType) %>`'
           "400": {
             "description": "`<%= h.changeCase.title(nodeType) %>` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response400"
                 }
@@ -44,7 +44,7 @@ skip_if: 'Update `<%= h.changeCase.title(nodeType) %>`'
           "404": {
             "description": "Update request failed. A `<%= h.changeCase.title(nodeType) %>` with the provided ID could not be found.",
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
                 }

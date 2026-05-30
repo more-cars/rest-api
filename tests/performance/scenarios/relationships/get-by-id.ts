@@ -41,7 +41,7 @@ export default function (data: { id: number }) {
 
     check(response, {
         'returns with status code 200': (r) => r.status === 200,
-        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
+        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/vnd.api+json'),
         // @ts-expect-error TS2531
         'correct ID is returned': (r) => r.json().data.id === data.id,
     })
