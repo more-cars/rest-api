@@ -6472,491 +6472,6 @@
         }
       }
     },
-    "/images": {
-      "get": {
-        "operationId": "getImages",
-        "tags": [
-          "Images"
-        ],
-        "summary": "Returns a list of all `Image`s",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Page"
-          },
-          {
-            "in": "query",
-            "name": "sort_by_property",
-            "description": "Returns the `Image` collection, ordered by the specified property.",
-            "schema": {
-              "$ref": "#/components/schemas/ImageProperties"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/SortDirection"
-          },
-          {
-            "in": "query",
-            "name": "filter_by_property",
-            "description": "Specifies by which node property the `Image` collection should be filtered.",
-            "schema": {
-              "$ref": "#/components/schemas/ImageProperties"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/FilterValue"
-          },
-          {
-            "$ref": "#/components/parameters/FilterOperator"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "`Image` collection successfully loaded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageCollectionResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response400"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "Create `Image`",
-        "responses": {
-          "201": {
-            "description": "`Image` successfully created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "`Image` could not be created. The provided data was invalid or malformed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response400"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "`Image` already exists.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response409"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "The node could not be created. External image not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response422"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/images/{image-id}": {
-      "get": {
-        "operationId": "getImageById",
-        "tags": [
-          "Images"
-        ],
-        "summary": "Get `Image` by ID",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "`Image` successfully loaded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Request failed. An `Image` with the provided ID could not be found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "Delete `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "`Image` successfully deleted."
-          },
-          "404": {
-            "description": "Deletion request failed. An `Image` with the provided ID could not be found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/images/{image-id}/belongs-to-node": {
-      "get": {
-        "operationId": "getImageBelongsToNodeRel",
-        "tags": [
-          "Images"
-        ],
-        "summary": "Get all ›belongs-to-node‹ relationships for the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The collection of ›belongs-to-node‹ relationships was successfully loaded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageBelongsToNodeCollectionResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Request failed. The `Image` could not be found in the database.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Request could not be processed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response422"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/images/{image-id}/belongs-to-node/{partner-node-id}": {
-      "post": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "Creates a ›belongs-to-node‹ relationship between the `Image` and the partner node",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "partner-node-id",
-            "description": "ID of the partner node",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Relationship ›belongs-to-node‹ between `Image` and partner node successfully created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageBelongsToNodeResponse"
-                }
-              }
-            }
-          },
-          "304": {
-            "description": "The relationship ›belongs-to-node‹ between `Image` and partner node already exists."
-          },
-          "404": {
-            "description": "Request failed. `Image` and/or partner node could not be found in the database.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Request failed. Partner node not compatible with the `Image`.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response422"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "Deletes the ›belongs-to-node‹ relationship between the `Image` and the partner node",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "partner-node-id",
-            "description": "ID of the partner node",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleting ›belongs-to-node‹ relationship between `Image` and partner node was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-node‹ relationship between them.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/images/{image-id}/is-prime-image-of-node": {
-      "get": {
-        "operationId": "getImageIsPrimeImageOfNodeRel",
-        "tags": [
-          "Images"
-        ],
-        "summary": "Get all ›is-prime-image-of-node‹ relationships for the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The collection of ›is-prime-image-of-node‹ relationships was successfully loaded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageIsPrimeImageOfNodeCollectionResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Request failed. The `Image` could not be found in the database.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/images/{image-id}/is-prime-image-of-node/{node-id}": {
-      "post": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "Creates a ›is-prime-image-of-node‹ relationship between the `Image` and the `Node`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "node-id",
-            "description": "ID of the `Node`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Relationship ›is-prime-image-of-node‹ between `Image` and `Node` successfully created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageIsPrimeImageOfNodeResponse"
-                }
-              }
-            }
-          },
-          "304": {
-            "description": "The relationship ›is-prime-image-of-node‹ between `Image` and `Node` already exists."
-          },
-          "404": {
-            "description": "Request failed. `Image` and/or `Node` could not be found in the database.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Request failed. Partner node not compatible with the `Image`.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response422"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "Deletes the ›is-prime-image-of-node‹ relationship between the `Image` and the `Node`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "node-id",
-            "description": "ID of the `Node`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleting ›is-prime-image-of-node‹ relationship between `Image` and `Node` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›is-prime-image-of-node‹ relationship between them.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/race-tracks": {
       "get": {
         "operationId": "getRaceTracks",
@@ -26745,6 +26260,491 @@
         }
       }
     },
+    "/images": {
+      "get": {
+        "operationId": "getImages",
+        "tags": [
+          "Images"
+        ],
+        "summary": "Returns a list of all `Image`s",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Image` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/ImageProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Image` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/ImageProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Image` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Create `Image`",
+        "responses": {
+          "201": {
+            "description": "`Image` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Image` could not be created. The provided data was invalid or malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "`Image` already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The node could not be created. External image not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{image-id}": {
+      "get": {
+        "operationId": "getImageById",
+        "tags": [
+          "Images"
+        ],
+        "summary": "Get `Image` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Image` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. An `Image` with the provided ID could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Delete `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Image` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. An `Image` with the provided ID could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{image-id}/belongs-to-node": {
+      "get": {
+        "operationId": "getImageBelongsToNodeRel",
+        "tags": [
+          "Images"
+        ],
+        "summary": "Get all ›belongs-to-node‹ relationships for the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›belongs-to-node‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageBelongsToNodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Image` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request could not be processed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{image-id}/belongs-to-node/{partner-node-id}": {
+      "post": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Creates a ›belongs-to-node‹ relationship between the `Image` and the partner node",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-node-id",
+            "description": "ID of the partner node",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›belongs-to-node‹ between `Image` and partner node successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageBelongsToNodeResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›belongs-to-node‹ between `Image` and partner node already exists."
+          },
+          "404": {
+            "description": "Request failed. `Image` and/or partner node could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request failed. Partner node not compatible with the `Image`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Deletes the ›belongs-to-node‹ relationship between the `Image` and the partner node",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-node-id",
+            "description": "ID of the partner node",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›belongs-to-node‹ relationship between `Image` and partner node was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-node‹ relationship between them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{image-id}/is-prime-image-of-node": {
+      "get": {
+        "operationId": "getImageIsPrimeImageOfNodeRel",
+        "tags": [
+          "Images"
+        ],
+        "summary": "Get all ›is-prime-image-of-node‹ relationships for the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›is-prime-image-of-node‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageIsPrimeImageOfNodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Image` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{image-id}/is-prime-image-of-node/{node-id}": {
+      "post": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Creates a ›is-prime-image-of-node‹ relationship between the `Image` and the `Node`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "node-id",
+            "description": "ID of the `Node`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›is-prime-image-of-node‹ between `Image` and `Node` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageIsPrimeImageOfNodeResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›is-prime-image-of-node‹ between `Image` and `Node` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Image` and/or `Node` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request failed. Partner node not compatible with the `Image`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Deletes the ›is-prime-image-of-node‹ relationship between the `Image` and the `Node`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "node-id",
+            "description": "ID of the `Node`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›is-prime-image-of-node‹ relationship between `Image` and `Node` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›is-prime-image-of-node‹ relationship between them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/videos": {
       "get": {
         "operationId": "getVideos",
@@ -28134,6 +28134,26 @@
           }
         }
       },
+      "CarModelCoveredByProgrammeEpisodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-models/12345678/covered-by-programme-episode"
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeEpisode"
+            }
+          }
+        }
+      },
       "CarModelHasImageResponse": {
         "type": "object",
         "properties": {
@@ -28193,17 +28213,6 @@
           },
           "data": {
             "$ref": "#/components/schemas/Image"
-          }
-        }
-      },
-      "CarModelCoveredByProgrammeEpisodeCollectionResponse": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CarModelCoveredByProgrammeEpisodeResponse"
-            }
           }
         }
       },
@@ -28981,6 +28990,26 @@
           }
         }
       },
+      "CarModelVariantHasScaleModelCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-model-variants/12345678/has-scale-model"
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelCar"
+            }
+          }
+        }
+      },
       "CarModelVariantPresentedAtMotorShowResponse": {
         "type": "object",
         "properties": {
@@ -29043,6 +29072,26 @@
           }
         }
       },
+      "CarModelVariantHasPriceCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-model-variants/12345678/has-price"
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Price"
+            }
+          }
+        }
+      },
       "CarModelVariantIsCoveredByBookResponse": {
         "type": "object",
         "properties": {
@@ -29061,6 +29110,26 @@
           },
           "data": {
             "$ref": "#/components/schemas/Book"
+          }
+        }
+      },
+      "CarModelVariantIsCoveredByBookCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-model-variants/12345678/is-covered-by-book"
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Book"
+            }
           }
         }
       },
@@ -29126,37 +29195,6 @@
           }
         }
       },
-      "CarModelVariantHasPrimeImageCollectionResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/has-prime-image"
-              }
-            }
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Image"
-            }
-          }
-        }
-      },
-      "CarModelVariantHasScaleModelCollectionResponse": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CarModelVariantHasScaleModelResponse"
-            }
-          }
-        }
-      },
       "CarModelVariantHasVideoResponse": {
         "type": "object",
         "properties": {
@@ -29216,26 +29254,6 @@
           },
           "data": {
             "$ref": "#/components/schemas/Video"
-          }
-        }
-      },
-      "CarModelVariantHasMainVideoCollectionResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/has-main-video"
-              }
-            }
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Video"
-            }
           }
         }
       },
