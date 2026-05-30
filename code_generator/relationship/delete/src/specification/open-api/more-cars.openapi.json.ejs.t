@@ -25,7 +25,7 @@ skip_if: "Deletes the ›<%= h.changeCase.kebab(relationshipName) %>‹ relation
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
               }
             }
           }

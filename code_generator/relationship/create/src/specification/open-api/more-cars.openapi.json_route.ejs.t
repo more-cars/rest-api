@@ -26,7 +26,7 @@ skip_if: Creates a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationshi
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUpdateRelationshipRequest"
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
               }
             }
           }
