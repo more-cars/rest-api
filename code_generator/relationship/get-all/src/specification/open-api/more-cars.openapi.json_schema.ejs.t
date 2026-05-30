@@ -7,10 +7,19 @@ skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(rela
       "<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>CollectionResponse": {
         "type": "object",
         "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/12345678/<%= h.changeCase.kebab(relationshipName) %>"
+              }
+            }
+          },
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response"
+              "$ref": "#/components/schemas/<%= h.changeCase.pascal(endNodeType) %>"
             }
           }
         }
