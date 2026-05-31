@@ -5,11 +5,11 @@ describe('Validating engine configuration', () => {
     test.each([
         [undefined],
         [null],
-        ['Inline'],
-        ['V'],
-        ['Flat'],
-        ['Rotary'],
-        ['W'],
+        ['inline'],
+        ['v'],
+        ['flat'],
+        ['rotary'],
+        ['w'],
         ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidEngineConfiguration(input))

@@ -8,16 +8,19 @@ export type ValidationRule =
     'bodyStyle' |
     'capacityUnit' |
     'consumptionUnit' |
+    'consumptionNorm' |
     'displacementUnit' |
     'drivetrain' |
     'energySource' |
     'engineConfiguration' |
     'engineType' |
     'powerUnit' |
+    'powerNorm' |
     'speedUnit' |
     'torqueUnit' |
     'transmission' |
     'weightUnit' |
+    'weightNorm' |
     'countryCode' |
     'currencyCode' |
     'issn' |

@@ -11,7 +11,10 @@ export function isValidWeightUnit(value: unknown) {
         return false
     }
 
-    if (!["kg", "kg_EG", "kg_dry", "kg_DIN", "lbs"].includes(value)) {
+    if (![
+        "kg",
+        "lbs",
+    ].includes(value)) {
         return false
     }
 

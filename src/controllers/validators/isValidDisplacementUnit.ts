@@ -11,7 +11,10 @@ export function isValidDisplacementUnit(value: unknown) {
         return false
     }
 
-    if (!["ccm", "cu"].includes(value)) {
+    if (![
+        "ccm",
+        "cu"
+    ].includes(value)) {
         return false
     }
 

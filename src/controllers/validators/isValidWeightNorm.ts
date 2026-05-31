@@ -1,4 +1,4 @@
-export function isValidEngineType(value: unknown) {
+export function isValidWeightNorm(value: unknown) {
     if (value === null) {
         return true
     }
@@ -12,14 +12,9 @@ export function isValidEngineType(value: unknown) {
     }
 
     if (![
-        "otto",
-        "diesel",
-        "electric",
-        "hybrid",
-        "fuel-cell",
-        "wankel",
-        "turbine",
-        "other",
+        "dry",
+        "EG",
+        "DIN",
     ].includes(value)) {
         return false
     }

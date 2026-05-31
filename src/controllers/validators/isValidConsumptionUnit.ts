@@ -11,7 +11,12 @@ export function isValidConsumptionUnit(value: unknown) {
         return false
     }
 
-    if (!["l / 100 km", "mpg", "kWh / 100 km", "l / 100 km (NEDC)", "l / 100 km (WLTP)"].includes(value)) {
+    if (![
+        "L/100 km",
+        "kWh/100 km",
+        "km/L",
+        "mpg",
+    ].includes(value)) {
         return false
     }
 

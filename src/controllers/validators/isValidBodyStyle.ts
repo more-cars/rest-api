@@ -11,7 +11,25 @@ export function isValidBodyStyle(value: unknown) {
         return false
     }
 
-    if (!["coupe", "convertible", "formula race car", "hatchback", "kei car", "minivan", "offroad", "pickup truck", "roadster", "sedan", "station wagon", "suv", "t-top", "targa", "truck", "van", "other"].includes(value)) {
+    if (![
+        "coupe",
+        "convertible",
+        "roadster",
+        "hatchback",
+        "sedan",
+        "station-wagon",
+        "minivan",
+        "van",
+        "suv",
+        "off-roader",
+        "pickup-truck",
+        "truck",
+        "targa",
+        "t-top",
+        "kei-car",
+        "formula-race-car",
+        "other",
+    ].includes(value)) {
         return false
     }
 

@@ -8,8 +8,10 @@ export type CarModelVariantInput = {
     doors: number | null | undefined
     weight: number | null | undefined
     weight_unit: string | null | undefined
+    weight_norm: string | null | undefined
     max_power: number | null | undefined
     max_power_unit: string | null | undefined
+    max_power_norm: string | null | undefined
     max_torque: number | null | undefined
     max_torque_unit: string | null | undefined
     cylinders: number | null | undefined
@@ -22,8 +24,10 @@ export type CarModelVariantInput = {
     energy_source_2: string | null | undefined
     consumption: number | null | undefined
     consumption_unit: string | null | undefined
+    consumption_norm: string | null | undefined
     consumption_2: number | null | undefined
     consumption_2_unit: string | null | undefined
+    consumption_2_norm: string | null | undefined
     energy_capacity: number | null | undefined
     energy_capacity_unit: string | null | undefined
     energy_capacity_2: number | null | undefined

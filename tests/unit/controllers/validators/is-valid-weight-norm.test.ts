@@ -1,15 +1,15 @@
 import {describe, expect, test} from "vitest"
-import {isValidPowerUnit} from "../../../../src/controllers/validators/isValidPowerUnit"
+import {isValidWeightNorm} from "../../../../src/controllers/validators/isValidWeightNorm"
 
-describe('Validating power unit', () => {
+describe('Validating weight norm', () => {
     test.each([
         [undefined],
         [null],
-        ['PS'],
-        ['bhp'],
-        ['kW'],
+        ['dry'],
+        ['EG'],
+        ['DIN'],
     ])('valid value: $0', async (input) => {
-        expect(isValidPowerUnit(input))
+        expect(isValidWeightNorm(input))
             .toBeTruthy()
     })
 
@@ -25,7 +25,7 @@ describe('Validating power unit', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidPowerUnit(input))
+        expect(isValidWeightNorm(input))
             .toBeFalsy()
     })
 })

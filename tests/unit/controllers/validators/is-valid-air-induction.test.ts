@@ -5,10 +5,10 @@ describe('Validating air induction', () => {
     test.each([
         [undefined],
         [null],
-        ['none'],
-        ['turbo'],
-        ['super'],
-        ['turbo_and_supercharged'],
+        ['naturally-aspirated'],
+        ['turbocharged'],
+        ['supercharged'],
+        ['turbocharged,supercharged'],
         ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidAirInduction(input))

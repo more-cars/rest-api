@@ -11,7 +11,12 @@ export function isValidCapacityUnit(value: unknown) {
         return false
     }
 
-    if (!["l", "kWh", "gal", "kg"].includes(value)) {
+    if (![
+        "l",
+        "kWh",
+        "gal",
+        "kg"
+    ].includes(value)) {
         return false
     }
 
