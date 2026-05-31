@@ -1,4 +1,4 @@
-export function isValidEngineType(value: unknown) {
+export function isValidConsumptionNorm(value: unknown) {
     if (value === null) {
         return true
     }
@@ -12,14 +12,8 @@ export function isValidEngineType(value: unknown) {
     }
 
     if (![
-        "otto",
-        "diesel",
-        "electric",
-        "hybrid",
-        "fuel-cell",
-        "wankel",
-        "turbine",
-        "other",
+        "NEDC",
+        "WLTP",
     ].includes(value)) {
         return false
     }

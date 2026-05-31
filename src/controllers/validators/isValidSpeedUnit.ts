@@ -11,7 +11,11 @@ export function isValidSpeedUnit(value: unknown) {
         return false
     }
 
-    if (!["km/h", "mph", "m/s"].includes(value)) {
+    if (![
+        "km/h",
+        "mph",
+        "m/s"
+    ].includes(value)) {
         return false
     }
 

@@ -16,8 +16,10 @@ export type CarModelVariantNode = {
         doors: number | null
         weight: number | null
         weight_unit: string | null
+        weight_norm: string | null
         max_power: number | null
         max_power_unit: string | null
+        max_power_norm: string | null
         max_torque: number | null
         max_torque_unit: string | null
         cylinders: number | null
@@ -30,8 +32,10 @@ export type CarModelVariantNode = {
         energy_source_2: string | null
         consumption: number | null
         consumption_unit: string | null
+        consumption_norm: string | null
         consumption_2: number | null
         consumption_2_unit: string | null
+        consumption_2_norm: string | null
         energy_capacity: number | null
         energy_capacity_unit: string | null
         energy_capacity_2: number | null

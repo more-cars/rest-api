@@ -11,7 +11,13 @@ export function isValidAirInduction(value: unknown) {
         return false
     }
 
-    if (!["none", "turbo", "super", "turbo_and_supercharged", "other"].includes(value)) {
+    if (![
+        "naturally-aspirated",
+        "turbocharged",
+        "supercharged",
+        "turbocharged,supercharged",
+        "other",
+    ].includes(value)) {
         return false
     }
 

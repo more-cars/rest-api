@@ -11,11 +11,14 @@ import {isValidCountryCode} from "../validators/isValidCountryCode"
 import {isValidCurrencyCode} from "../validators/isValidCurrencyCode"
 import {isValidIssn} from "../validators/isValidIssn"
 import {isValidWeightUnit} from "../validators/isValidWeightUnit"
+import {isValidWeightNorm} from "../validators/isValidWeightNorm"
 import {isValidPowerUnit} from "../validators/isValidPowerUnit"
+import {isValidPowerNorm} from "../validators/isValidPowerNorm"
 import {isValidAirInduction} from "../validators/isValidAirInduction"
 import {isValidBodyStyle} from "../validators/isValidBodyStyle"
 import {isValidCapacityUnit} from "../validators/isValidCapacityUnit"
 import {isValidConsumptionUnit} from "../validators/isValidConsumptionUnit"
+import {isValidConsumptionNorm} from "../validators/isValidConsumptionNorm"
 import {isValidDisplacementUnit} from "../validators/isValidDisplacementUnit"
 import {isValidDrivetrain} from "../validators/isValidDrivetrain"
 import {isValidEnergySource} from "../validators/isValidEnergySource"
@@ -84,16 +87,19 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['bodyStyle', isValidBodyStyle],
         ['capacityUnit', isValidCapacityUnit],
         ['consumptionUnit', isValidConsumptionUnit],
+        ['consumptionNorm', isValidConsumptionNorm],
         ['displacementUnit', isValidDisplacementUnit],
         ['drivetrain', isValidDrivetrain],
         ['energySource', isValidEnergySource],
         ['engineConfiguration', isValidEngineConfiguration],
         ['engineType', isValidEngineType],
         ['powerUnit', isValidPowerUnit],
+        ['powerNorm', isValidPowerNorm],
         ['speedUnit', isValidSpeedUnit],
         ['torqueUnit', isValidTorqueUnit],
         ['transmission', isValidTransmission],
         ['weightUnit', isValidWeightUnit],
+        ['weightNorm', isValidWeightNorm],
         ['countryCode', isValidCountryCode],
         ['currencyCode', isValidCurrencyCode],
         ['issn', isValidIssn],

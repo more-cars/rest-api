@@ -11,7 +11,11 @@ export function isValidPowerUnit(value: unknown) {
         return false
     }
 
-    if (!["PS", "bhp", "kW", "PS_SAE"].includes(value)) {
+    if (![
+        "PS",
+        "bhp",
+        "kW",
+    ].includes(value)) {
         return false
     }
 

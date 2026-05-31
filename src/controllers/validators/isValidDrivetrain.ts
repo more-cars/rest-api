@@ -11,7 +11,12 @@ export function isValidDrivetrain(value: unknown) {
         return false
     }
 
-    if (!["RWD", "AWD", "FWD", "other"].includes(value)) {
+    if (![
+        "RWD",
+        "AWD",
+        "FWD",
+        "other"
+    ].includes(value)) {
         return false
     }
 

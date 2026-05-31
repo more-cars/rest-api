@@ -6,9 +6,6 @@ describe('Validating weight unit', () => {
         [undefined],
         [null],
         ['kg'],
-        ['kg_EG'],
-        ['kg_dry'],
-        ['kg_DIN'],
         ['lbs'],
     ])('valid value: $0', async (input) => {
         expect(isValidWeightUnit(input))

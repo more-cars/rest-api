@@ -5,11 +5,10 @@ describe('Validating consumption unit', () => {
     test.each([
         [undefined],
         [null],
-        ['l / 100 km'],
+        ['L/100 km'],
+        ['kWh/100 km'],
+        ['km/L'],
         ['mpg'],
-        ['kWh / 100 km'],
-        ['l / 100 km (NEDC)'],
-        ['l / 100 km (WLTP)'],
     ])('valid value: $0', async (input) => {
         expect(isValidConsumptionUnit(input))
             .toBeTruthy()

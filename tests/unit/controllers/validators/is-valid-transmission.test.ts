@@ -6,10 +6,10 @@ describe('Validating transmission', () => {
         [undefined],
         [null],
         ['manual'],
-        ['dual clutch'],
-        ['auto'],
+        ['dual-clutch'],
+        ['automatic'],
         ['sequential'],
-        ['automated manual'],
+        ['automated-manual'],
         ['cvt'],
         ['other'],
     ])('valid value: $0', async (input) => {

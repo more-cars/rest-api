@@ -27863,20 +27863,20 @@
             "enum": [
               "coupe",
               "convertible",
-              "formula race car",
-              "hatchback",
-              "kei car",
-              "minivan",
-              "offroad",
-              "pickup truck",
               "roadster",
+              "hatchback",
               "sedan",
-              "station wagon",
-              "suv",
-              "t-top",
-              "targa",
-              "truck",
+              "station-wagon",
+              "minivan",
               "van",
+              "suv",
+              "off-roader",
+              "pickup-truck",
+              "truck",
+              "targa",
+              "t-top",
+              "kei-car",
+              "formula-race-car",
               "other",
               null
             ]
@@ -27903,10 +27903,19 @@
             "nullable": true,
             "enum": [
               "kg",
-              "kg_EG",
-              "kg_dry",
-              "kg_DIN",
               "lbs",
+              null
+            ]
+          },
+          "weight_norm": {
+            "type": "string",
+            "description": "",
+            "example": "EG",
+            "nullable": true,
+            "enum": [
+              "dry",
+              "EG",
+              "DIN",
               null
             ]
           },
@@ -27924,7 +27933,17 @@
               "PS",
               "bhp",
               "kW",
-              "PS_SAE",
+              null
+            ]
+          },
+          "max_power_norm": {
+            "type": "string",
+            "description": "",
+            "example": "DIN",
+            "nullable": true,
+            "enum": [
+              "DIN",
+              "SAE",
               null
             ]
           },
@@ -27952,14 +27971,14 @@
           "engine_configuration": {
             "type": "string",
             "description": "",
-            "example": "Inline",
+            "example": "inline",
             "nullable": true,
             "enum": [
-              "Inline",
-              "V",
-              "Flat",
-              "Rotary",
-              "W",
+              "inline",
+              "v",
+              "flat",
+              "rotary",
+              "w",
               "other",
               null
             ]
@@ -27983,13 +28002,13 @@
           "air_induction": {
             "type": "string",
             "description": "",
-            "example": "none",
+            "example": "turbocharged",
             "nullable": true,
             "enum": [
-              "none",
-              "turbo",
-              "super",
-              "turbo_and_supercharged",
+              "naturally-aspirated",
+              "turbocharged",
+              "supercharged",
+              "turbocharged,supercharged",
               "other",
               null
             ]
@@ -28001,11 +28020,11 @@
             "nullable": true,
             "enum": [
               "otto",
-              "hybrid",
-              "electric",
-              "wankel",
               "diesel",
-              "fuel_cell",
+              "electric",
+              "hybrid",
+              "fuel-cell",
+              "wankel",
               "turbine",
               "other",
               null
@@ -28018,8 +28037,8 @@
             "nullable": true,
             "enum": [
               "petrol",
-              "electricity",
               "diesel",
+              "electricity",
               "hydrogen",
               "ethanol",
               "other",
@@ -28033,8 +28052,8 @@
             "nullable": true,
             "enum": [
               "petrol",
-              "electricity",
               "diesel",
+              "electricity",
               "hydrogen",
               "ethanol",
               "other",
@@ -28049,14 +28068,24 @@
           "consumption_unit": {
             "type": "string",
             "description": "",
-            "example": "l / 100 km",
+            "example": "L/100 km",
             "nullable": true,
             "enum": [
-              "l / 100 km",
+              "L/100 km",
+              "kWh/100 km",
+              "km/L",
               "mpg",
-              "kWh / 100 km",
-              "l / 100 km (NEDC)",
-              "l / 100 km (WLTP)",
+              null
+            ]
+          },
+          "consumption_norm": {
+            "type": "string",
+            "description": "",
+            "example": "WLTP",
+            "nullable": true,
+            "enum": [
+              "NEDC",
+              "WLTP",
               null
             ]
           },
@@ -28071,11 +28100,21 @@
             "example": "",
             "nullable": true,
             "enum": [
-              "l / 100 km",
+              "L/100 km",
+              "kWh/100 km",
+              "km/L",
               "mpg",
-              "kWh / 100 km",
-              "l / 100 km (NEDC)",
-              "l / 100 km (WLTP)",
+              null
+            ]
+          },
+          "consumption_2_norm": {
+            "type": "string",
+            "description": "",
+            "example": "",
+            "nullable": true,
+            "enum": [
+              "NEDC",
+              "WLTP",
               null
             ]
           },
@@ -28122,10 +28161,10 @@
             "nullable": true,
             "enum": [
               "manual",
-              "dual clutch",
-              "auto",
+              "dual-clutch",
+              "automatic",
               "sequential",
-              "automated manual",
+              "automated-manual",
               "cvt",
               "other",
               null
@@ -29145,8 +29184,10 @@
           "doors",
           "weight",
           "weight_unit",
+          "weight_norm",
           "max_power",
           "max_power_unit",
+          "max_power_norm",
           "max_torque",
           "max_torque_unit",
           "cylinders",
@@ -29159,8 +29200,10 @@
           "energy_source_2",
           "consumption",
           "consumption_unit",
+          "consumption_norm",
           "consumption_2",
           "consumption_2_unit",
+          "consumption_2_norm",
           "energy_capacity",
           "energy_capacity_unit",
           "energy_capacity_2",
@@ -37240,6 +37283,7 @@
           },
           "isbn": {
             "type": "string",
+            "format": "iso2108",
             "description": "",
             "example": "978-3-86-852889-3"
           },
@@ -37250,6 +37294,7 @@
           },
           "language": {
             "type": "string",
+            "format": "iso639",
             "description": "",
             "example": "en"
           }

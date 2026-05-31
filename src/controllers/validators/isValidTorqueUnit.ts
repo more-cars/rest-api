@@ -11,7 +11,10 @@ export function isValidTorqueUnit(value: unknown) {
         return false
     }
 
-    if (!["Nm", "lb ft"].includes(value)) {
+    if (![
+        "Nm",
+        "lb ft"
+    ].includes(value)) {
         return false
     }
 
