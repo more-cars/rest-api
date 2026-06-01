@@ -3,6 +3,6 @@ import {ApiSpecController} from "../controllers/ApiSpecController"
 
 const router = express.Router()
 
-router.get('/', ApiSpecController.apiSpec)
+router.get('/specification', ApiSpecController.apiSpec)
 
 export default router
