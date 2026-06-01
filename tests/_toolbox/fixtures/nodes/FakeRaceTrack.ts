@@ -11,7 +11,7 @@ export const FakeRaceTrack = {
             closed: faker.number.int({min: 1000, max: 3000}),
             type: faker.helpers.arrayElement(['permanent-race-track', 'street-circuit']),
             location: faker.location.city(),
-            geo_position: '51°32′0″N 13°55′10″E',
+            geo_position: '51°32’0”N 13°55’10”E',
             country_code: faker.location.countryCode(),
         } satisfies DbInputData
     },
@@ -32,7 +32,7 @@ export const FakeRaceTrack = {
                 closed: faker.number.int({min: 1000, max: 3000}),
                 type: faker.helpers.arrayElement(['permanent-race-track', 'street-circuit']),
                 location: faker.location.city(),
-                geo_position: '51°32′0″N 13°55′10″E',
+                geo_position: '51°32’0”N 13°55’10”E',
                 country_code: faker.location.countryCode(),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),

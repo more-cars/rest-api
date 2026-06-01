@@ -11,7 +11,7 @@ test('database query for creating a RACE TRACK node', async () => {
         closed: null,
         type: "permanent-race-track",
         location: "Klettwitz",
-        geo_position: "51°32'0\"N 13°55'10\"E",
+        geo_position: "51°32’0”N 13°55’10”E",
         country_code: "DE",
         created_at: "2025-05-14T11:05:07.793Z",
         updated_at: "2025-05-14T11:05:07.793Z",
@@ -27,7 +27,7 @@ test('database query for creating a RACE TRACK node', async () => {
             "  closed: null,\n" +
             "  type: 'permanent-race-track',\n" +
             "  location: 'Klettwitz',\n" +
-            "  geo_position: '51°32\\'0\"N 13°55\\'10\"E',\n" +
+            "  geo_position: '51°32’0”N 13°55’10”E',\n" +
             "  country_code: 'DE',\n" +
             "  created_at: '2025-05-14T11:05:07.793Z',\n" +
             "  updated_at: '2025-05-14T11:05:07.793Z'\n" +

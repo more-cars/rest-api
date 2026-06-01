@@ -17,7 +17,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             closed: null,
             type: "permanent-race-track",
             location: "Klettwitz",
-            geo_position: "51°32&#39;0&#34;N 13°55&#39;10&#34;E",
+            geo_position: "51°32’0”N 13°55’10”E",
             country_code: "DE",
         },
         elementId: "",
@@ -38,7 +38,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 closed: null,
                 type: "permanent-race-track",
                 location: "Klettwitz",
-                geo_position: "51°32&#39;0&#34;N 13°55&#39;10&#34;E",
+                geo_position: "51°32’0”N 13°55’10”E",
                 country_code: "DE",
             },
         } satisfies RaceTrackNode)
