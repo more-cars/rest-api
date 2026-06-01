@@ -1,7 +1,7 @@
 import express from "express"
-import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
-import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
 import {Rating} from "../../../models/node-types/ratings/Rating"
 import {convertRatingModelNodeToControllerNode} from "./convertRatingModelNodeToControllerNode"
 import {Node} from "../../../models/Node"
@@ -17,8 +17,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
-        const availableProperties = getNamesOfAllNodeProperties(NodeType.Rating)
-        const params = extractCollectionConstraintParameters(req, availableProperties)
+        const params = extractCollectionConstraintParameters(req, getNodeTypeSpecification(NodeType.Rating))
         const modelNodes = await Rating.findAll(params)
         const nodes = modelNodes.map(node => convertRatingModelNodeToControllerNode(node))
         const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.Rating), params)

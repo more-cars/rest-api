@@ -1,4 +1,6 @@
 import express from "express"
+import type {NodeSpecification} from "../../specification/NodeSpecification"
+import type {NodeCollectionConstraints} from "../../models/types/NodeCollectionConstraints"
 import {extractPaginationParameter} from "./extractPaginationParameter"
 import {extractSortingParameters} from "./extractSortingParameters"
 import {extractFilterParameters} from "./extractFilterParameters"
@@ -11,16 +13,21 @@ import {isString} from "../validators/isString"
 import {InvalidPaginationParams} from "../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../models/types/InvalidFilterParams"
-import type {NodeCollectionConstraints} from "../../models/types/NodeCollectionConstraints"
 
-export function extractCollectionConstraintParameters(req: express.Request, nodeProperties: string[]): NodeCollectionConstraints {
+export function extractCollectionConstraintParameters(req: express.Request, nodeProperties: NodeSpecification): NodeCollectionConstraints {
+    const validProperties = nodeProperties
+        .properties
+        .map(prop => prop.name)
+        .concat(['id', 'created_at', 'updated_at'])
+
     const page = extractPaginationParameter(req)
     if (!isValidPaginationValue(page)) {
         throw new InvalidPaginationParams(page)
     }
 
     const {sortByProperty, sortDirection} = extractSortingParameters(req)
-    if (!isValidSortingDirection(sortDirection) || !isValidSortingProperty(sortByProperty, nodeProperties)) {
+    if (!isValidSortingDirection(sortDirection) ||
+        !isValidSortingProperty(sortByProperty, validProperties)) {
         throw new InvalidSortingParams(sortByProperty, sortDirection)
     }
 
@@ -28,7 +35,9 @@ export function extractCollectionConstraintParameters(req: express.Request, node
     if (filterByProperty && !filterValue || !filterByProperty && filterValue) {
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
-    if (!isValidFilterProperty(filterByProperty, nodeProperties) || !isValidFilterOperator(filterOperator) || !isString(filterValue)) {
+    if (!isValidFilterProperty(filterByProperty, validProperties) ||
+        !isValidFilterOperator(filterOperator) ||
+        !isString(filterValue)) {
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
 

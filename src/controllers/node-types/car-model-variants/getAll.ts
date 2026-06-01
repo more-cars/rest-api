@@ -1,7 +1,7 @@
 import express from "express"
-import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
-import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {convertCarModelVariantModelNodeToControllerNode} from "./convertCarModelVariantModelNodeToControllerNode"
 import {Node} from "../../../models/Node"
@@ -17,8 +17,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
-        const availableProperties = getNamesOfAllNodeProperties(NodeType.CarModelVariant)
-        const params = extractCollectionConstraintParameters(req, availableProperties)
+        const params = extractCollectionConstraintParameters(req, getNodeTypeSpecification(NodeType.CarModelVariant))
         const modelNodes = await CarModelVariant.findAll(params)
         const nodes = modelNodes.map(node => convertCarModelVariantModelNodeToControllerNode(node))
         const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.CarModelVariant), params)

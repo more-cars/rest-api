@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {Request} from 'express'
 import {extractCollectionConstraintParameters} from "../../../../src/controllers/nodes/extractCollectionConstraintParameters"
+import {NodeType} from "../../../../src/specification/NodeType"
 
 describe('Extracting sort, filter and pagination parameters from request', () => {
     test('pagination', async () => {
@@ -8,7 +9,10 @@ describe('Extracting sort, filter and pagination parameters from request', () =>
             page: '3',
         })
 
-        const params = extractCollectionConstraintParameters(req, [])
+        const params = extractCollectionConstraintParameters(req, {
+            type: NodeType.Node,
+            properties: [],
+        })
 
         expect(params.page)
             .toBe(3)
@@ -20,7 +24,15 @@ describe('Extracting sort, filter and pagination parameters from request', () =>
             sort_direction: 'asc',
         })
 
-        const params = extractCollectionConstraintParameters(req, ['name'])
+        const params = extractCollectionConstraintParameters(req, {
+            type: NodeType.Node,
+            properties: [{
+                name: 'name',
+                datatype: 'string',
+                mandatory: false,
+                validation: [],
+            }],
+        })
 
         expect(params.sortByProperty)
             .toBe('name')
@@ -36,7 +48,15 @@ describe('Extracting sort, filter and pagination parameters from request', () =>
             filter_value: 'rwd',
         })
 
-        const params = extractCollectionConstraintParameters(req, ['drivetrain'])
+        const params = extractCollectionConstraintParameters(req, {
+            type: NodeType.Node,
+            properties: [{
+                name: 'drivetrain',
+                datatype: 'string',
+                mandatory: false,
+                validation: [],
+            }],
+        })
 
         expect(params.filterByProperty)
             .toBe('drivetrain')
