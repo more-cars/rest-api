@@ -11,7 +11,7 @@ export const FakeRacingSeries = {
             founded: faker.number.int({min: 1000, max: 3000}),
             defunct: faker.number.int({min: 1000, max: 3000}),
             organized_by: faker.company.name(),
-            vehicle_type: faker.helpers.arrayElement(['touring cars', 'rally cars']),
+            vehicle_type: faker.helpers.arrayElement(['touring-cars', 'rally-cars']),
             country_code: faker.location.countryCode(),
         } satisfies DbInputData
     },
@@ -33,7 +33,7 @@ export const FakeRacingSeries = {
                 founded: faker.number.int({min: 1000, max: 3000}),
                 defunct: faker.number.int({min: 1000, max: 3000}),
                 organized_by: faker.company.name(),
-                vehicle_type: faker.helpers.arrayElement(['touring cars', 'rally cars']),
+                vehicle_type: faker.helpers.arrayElement(['touring-cars', 'rally-cars']),
                 country_code: faker.location.countryCode(),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),

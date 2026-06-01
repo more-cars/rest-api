@@ -48,7 +48,7 @@ export const RacingSeriesNodeSpecification: NodeSpecification = {
             name: 'vehicle_type',
             datatype: 'string',
             mandatory: false,
-            example: 'touring cars',
+            example: 'touring-cars',
             scope: 'user',
             validation: ['string', 'vehicleType'],
         },

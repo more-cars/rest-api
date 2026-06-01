@@ -8,7 +8,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         name: "'Lausitzring''",
         opened: 2000,
         closed: null,
-        type: "'permanent race track''",
+        type: "'permanent-race-track''",
         location: "'Klettwitz''",
         geo_position: "'51°32&#39;0&#34;N 13°55&#39;10&#34;E''",
         country_code: "'DE''",
@@ -20,7 +20,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         .toEqual("'Lausitzring''")
 
     expect(createdNode.properties.type)
-        .toEqual("'permanent race track''")
+        .toEqual("'permanent-race-track''")
 
     expect(createdNode.properties.location)
         .toEqual("'Klettwitz''")

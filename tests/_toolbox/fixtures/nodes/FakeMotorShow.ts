@@ -11,7 +11,7 @@ export const FakeMotorShow = {
             date_until: faker.date.past().toISOString().substring(0, 10),
             location: faker.word.noun(),
             target_audience: faker.helpers.arrayElement(['international', 'national']),
-            focus: faker.helpers.arrayElement(['new_cars', 'other']),
+            focus: faker.helpers.arrayElement(['new-cars', 'other']),
             country_code: faker.location.countryCode(),
         } satisfies DbInputData
     },
@@ -32,7 +32,7 @@ export const FakeMotorShow = {
                 date_until: faker.date.past().toISOString().substring(0, 10),
                 location: faker.word.noun(),
                 target_audience: faker.helpers.arrayElement(['international', 'national']),
-                focus: faker.helpers.arrayElement(['new_cars', 'other']),
+                focus: faker.helpers.arrayElement(['new-cars', 'other']),
                 country_code: faker.location.countryCode(),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),

@@ -8,7 +8,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         founded: 1950,
         defunct: null,
         organized_by: "FIA",
-        vehicle_type: "formula racing cars",
+        vehicle_type: "open-wheel-cars",
         country_code: "US",
         my_property: "Hello",
     }
@@ -30,7 +30,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             founded: 1950,
             defunct: null,
             organized_by: "FIA",
-            vehicle_type: "formula racing cars",
+            vehicle_type: "open-wheel-cars",
             country_code: "US",
         })
 })

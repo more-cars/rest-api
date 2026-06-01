@@ -9,7 +9,7 @@ test('database query for creating a MAGAZINE node', async () => {
         name: "Top Gear",
         founded: 1993,
         defunct: null,
-        focus: "sports cars",
+        focus: "sports-cars",
         publication_frequency: "monthly",
         single_copy_price: 5.99,
         single_copy_price_unit: "GBP",
@@ -31,7 +31,7 @@ test('database query for creating a MAGAZINE node', async () => {
             "  name: 'Top Gear',\n" +
             "  founded: 1993,\n" +
             "  defunct: null,\n" +
-            "  focus: 'sports cars',\n" +
+            "  focus: 'sports-cars',\n" +
             "  publication_frequency: 'monthly',\n" +
             "  single_copy_price: 5.99,\n" +
             "  single_copy_price_unit: 'GBP',\n" +

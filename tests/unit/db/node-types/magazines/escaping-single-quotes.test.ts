@@ -9,7 +9,7 @@ test('single quotes are correctly escaped', async () => {
         name: "'Top Gear",
         founded: null,
         defunct: null,
-        focus: "'sports cars",
+        focus: "'sports-cars",
         publication_frequency: "'monthly",
         single_copy_price: null,
         single_copy_price_unit: "'GBP",
@@ -31,7 +31,7 @@ test('single quotes are correctly escaped', async () => {
             "  name: '\\'Top Gear',\n" +
             "  founded: null,\n" +
             "  defunct: null,\n" +
-            "  focus: '\\'sports cars',\n" +
+            "  focus: '\\'sports-cars',\n" +
             "  publication_frequency: '\\'monthly',\n" +
             "  single_copy_price: null,\n" +
             "  single_copy_price_unit: '\\'GBP',\n" +

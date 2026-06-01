@@ -8,7 +8,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         date_until: "2017-09-24",
         location: "Frankfurt",
         target_audience: "international",
-        focus: "new cars",
+        focus: "new-cars",
         country_code: "DE",
         my_property: "Hello",
     }
@@ -30,7 +30,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             date_until: "2017-09-24",
             location: "Frankfurt",
             target_audience: "international",
-            focus: "new cars",
+            focus: "new-cars",
             country_code: "DE",
         })
 })

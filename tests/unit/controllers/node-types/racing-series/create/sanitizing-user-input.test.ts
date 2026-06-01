@@ -10,7 +10,7 @@ describe('Sanitizing user input', () => {
             founded: 1950,
             defunct: null,
             organized_by: "   FIA  ",
-            vehicle_type: "   formula racing cars  ",
+            vehicle_type: "   open-wheel-cars  ",
             country_code: "   US  ",
         }
 
@@ -31,7 +31,7 @@ describe('Sanitizing user input', () => {
                 founded: 1950,
                 defunct: null,
                 organized_by: "FIA",
-                vehicle_type: "formula racing cars",
+                vehicle_type: "open-wheel-cars",
                 country_code: "US",
             })
     })

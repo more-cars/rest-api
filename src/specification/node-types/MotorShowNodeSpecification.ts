@@ -48,7 +48,7 @@ export const MotorShowNodeSpecification: NodeSpecification = {
             name: 'focus',
             datatype: 'string',
             mandatory: false,
-            example: 'new cars',
+            example: 'new-cars',
             scope: 'user',
             validation: ['string', 'motorShowFocus'],
         },

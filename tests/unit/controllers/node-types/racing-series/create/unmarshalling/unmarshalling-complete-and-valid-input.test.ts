@@ -8,7 +8,7 @@ test('unmarshalling a complete and valid request', async () => {
         founded: 1950,
         defunct: null,
         organized_by: "FIA",
-        vehicle_type: "formula racing cars",
+        vehicle_type: "open-wheel-cars",
         country_code: "US",
     }
 
@@ -29,7 +29,7 @@ test('unmarshalling a complete and valid request', async () => {
             founded: 1950,
             defunct: null,
             organized_by: "FIA",
-            vehicle_type: "formula racing cars",
+            vehicle_type: "open-wheel-cars",
             country_code: "US",
         })
 })

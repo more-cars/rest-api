@@ -12,7 +12,7 @@ export const FakeSessionResult = {
             team_name: faker.company.name(),
             race_time: "PT1H10M5S",
             laps: faker.number.int({min: 1, max: 99}),
-            status: faker.helpers.arrayElement(['Finished', 'DSQ']),
+            status: faker.helpers.arrayElement(['finished', 'DSQ']),
             points: faker.number.int({min: 1, max: 99}),
         } satisfies DbInputData
     },
@@ -35,7 +35,7 @@ export const FakeSessionResult = {
                 team_name: faker.company.name(),
                 race_time: "PT1H10M5S",
                 laps: faker.number.int({min: 1, max: 99}),
-                status: faker.helpers.arrayElement(['Finished', 'DSQ']),
+                status: faker.helpers.arrayElement(['finished', 'DSQ']),
                 points: faker.number.int({min: 1, max: 99}),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),

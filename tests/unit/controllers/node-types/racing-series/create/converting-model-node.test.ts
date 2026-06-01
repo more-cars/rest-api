@@ -16,7 +16,7 @@ test("converting a RACING SERIES node", async () => {
             founded: 1950,
             defunct: null,
             organized_by: "FIA",
-            vehicle_type: "formula racing cars",
+            vehicle_type: "open-wheel-cars",
             country_code: "US",
         }
     }
@@ -33,7 +33,7 @@ test("converting a RACING SERIES node", async () => {
                 founded: 1950,
                 defunct: null,
                 organized_by: "FIA",
-                vehicle_type: "formula racing cars",
+                vehicle_type: "open-wheel-cars",
                 country_code: "US",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",

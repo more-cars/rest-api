@@ -9,7 +9,7 @@ test('database query for creating a RACE TRACK node', async () => {
         name: "Lausitzring",
         opened: 2000,
         closed: null,
-        type: "permanent race track",
+        type: "permanent-race-track",
         location: "Klettwitz",
         geo_position: "51°32'0\"N 13°55'10\"E",
         country_code: "DE",
@@ -25,7 +25,7 @@ test('database query for creating a RACE TRACK node', async () => {
             "  name: 'Lausitzring',\n" +
             "  opened: 2000,\n" +
             "  closed: null,\n" +
-            "  type: 'permanent race track',\n" +
+            "  type: 'permanent-race-track',\n" +
             "  location: 'Klettwitz',\n" +
             "  geo_position: '51°32\\'0\"N 13°55\\'10\"E',\n" +
             "  country_code: 'DE',\n" +

@@ -17,7 +17,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             date_until: "2017-09-24",
             location: "Frankfurt",
             target_audience: "international",
-            focus: "new cars",
+            focus: "new-cars",
             country_code: "DE",
         },
         elementId: "",
@@ -38,7 +38,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 date_until: "2017-09-24",
                 location: "Frankfurt",
                 target_audience: "international",
-                focus: "new cars",
+                focus: "new-cars",
                 country_code: "DE",
             },
         } satisfies MotorShowNode)

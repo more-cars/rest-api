@@ -32,7 +32,7 @@ export const RaceTrackNodeSpecification: NodeSpecification = {
             name: 'type',
             datatype: 'string',
             mandatory: false,
-            example: 'permanent race track',
+            example: 'permanent-race-track',
             scope: 'user',
             validation: ['string', 'trackType'],
         },

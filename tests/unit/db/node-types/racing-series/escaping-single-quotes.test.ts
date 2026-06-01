@@ -11,7 +11,7 @@ test('single quotes are correctly escaped', async () => {
         founded: null,
         defunct: null,
         organized_by: "'FIA",
-        vehicle_type: "'formula racing cars",
+        vehicle_type: "'open-wheel-cars",
         country_code: "'US",
         created_at: "2025-05-14T11:05:07.793Z",
         updated_at: "2025-05-14T11:05:07.793Z",
@@ -27,7 +27,7 @@ test('single quotes are correctly escaped', async () => {
             "  founded: null,\n" +
             "  defunct: null,\n" +
             "  organized_by: '\\'FIA',\n" +
-            "  vehicle_type: '\\'formula racing cars',\n" +
+            "  vehicle_type: '\\'open-wheel-cars',\n" +
             "  country_code: '\\'US',\n" +
             "  created_at: '2025-05-14T11:05:07.793Z',\n" +
             "  updated_at: '2025-05-14T11:05:07.793Z'\n" +

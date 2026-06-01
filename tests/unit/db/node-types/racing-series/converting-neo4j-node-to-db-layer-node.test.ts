@@ -17,7 +17,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             founded: 1950,
             defunct: null,
             organized_by: "FIA",
-            vehicle_type: "formula racing cars",
+            vehicle_type: "open-wheel-cars",
             country_code: "US",
         },
         elementId: "",
@@ -38,7 +38,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 founded: 1950,
                 defunct: null,
                 organized_by: "FIA",
-                vehicle_type: "formula racing cars",
+                vehicle_type: "open-wheel-cars",
                 country_code: "US",
             },
         } satisfies RacingSeriesNode)

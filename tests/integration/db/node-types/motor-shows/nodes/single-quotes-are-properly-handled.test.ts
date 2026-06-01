@@ -10,7 +10,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         date_until: "'2017-09-24''",
         location: "'Frankfurt''",
         target_audience: "'international''",
-        focus: "'new cars''",
+        focus: "'new-cars''",
         country_code: "'DE''",
     }
 
@@ -32,7 +32,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         .toEqual("'international''")
 
     expect(createdNode.properties.focus)
-        .toEqual("'new cars''")
+        .toEqual("'new-cars''")
 
     expect(createdNode.properties.country_code)
         .toEqual("'DE''")

@@ -11,7 +11,7 @@ test('single quotes are correctly escaped', async () => {
         date_until: "'2017-09-24",
         location: "'Frankfurt",
         target_audience: "'international",
-        focus: "'new cars",
+        focus: "'new-cars",
         country_code: "'DE",
         created_at: "2025-05-14T11:05:07.793Z",
         updated_at: "2025-05-14T11:05:07.793Z",
@@ -27,7 +27,7 @@ test('single quotes are correctly escaped', async () => {
             "  date_until: '\\'2017-09-24',\n" +
             "  location: '\\'Frankfurt',\n" +
             "  target_audience: '\\'international',\n" +
-            "  focus: '\\'new cars',\n" +
+            "  focus: '\\'new-cars',\n" +
             "  country_code: '\\'DE',\n" +
             "  created_at: '2025-05-14T11:05:07.793Z',\n" +
             "  updated_at: '2025-05-14T11:05:07.793Z'\n" +

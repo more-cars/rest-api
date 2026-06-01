@@ -10,7 +10,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         founded: 1950,
         defunct: null,
         organized_by: "'FIA''",
-        vehicle_type: "'formula racing cars''",
+        vehicle_type: "'open-wheel-cars''",
         country_code: "'US''",
     }
 
@@ -26,7 +26,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         .toEqual("'FIA''")
 
     expect(createdNode.properties.vehicle_type)
-        .toEqual("'formula racing cars''")
+        .toEqual("'open-wheel-cars''")
 
     expect(createdNode.properties.country_code)
         .toEqual("'US''")

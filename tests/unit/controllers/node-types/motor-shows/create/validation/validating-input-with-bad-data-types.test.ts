@@ -3,13 +3,13 @@ import {validateInputData} from "../../../../../../../src/controllers/nodes/vali
 import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
-    [false, "2017-09-14", "2017-09-24", "Frankfurt", "international", "new cars", "DE"],
-    ["2017 IAA Frankfurt", false, "2017-09-24", "Frankfurt", "international", "new cars", "DE"],
-    ["2017 IAA Frankfurt", "2017-09-14", false, "Frankfurt", "international", "new cars", "DE"],
-    ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", false, "international", "new cars", "DE"],
-    ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", "Frankfurt", false, "new cars", "DE"],
+    [false, "2017-09-14", "2017-09-24", "Frankfurt", "international", "new-cars", "DE"],
+    ["2017 IAA Frankfurt", false, "2017-09-24", "Frankfurt", "international", "new-cars", "DE"],
+    ["2017 IAA Frankfurt", "2017-09-14", false, "Frankfurt", "international", "new-cars", "DE"],
+    ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", false, "international", "new-cars", "DE"],
+    ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", "Frankfurt", false, "new-cars", "DE"],
     ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", "Frankfurt", "international", false, "DE"],
-    ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", "Frankfurt", "international", "new cars", false],
+    ["2017 IAA Frankfurt", "2017-09-14", "2017-09-24", "Frankfurt", "international", "new-cars", false],
 ])('validating a request where the fields have invalid data types', async (
     name,
     date_from,

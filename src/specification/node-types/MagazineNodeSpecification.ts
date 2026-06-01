@@ -32,7 +32,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             name: 'focus',
             datatype: 'string',
             mandatory: false,
-            example: 'sports cars',
+            example: 'sports-cars',
             scope: 'user',
             validation: ['string', 'magazineFocus'],
         },

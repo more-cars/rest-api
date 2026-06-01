@@ -9,7 +9,7 @@ test('validating a request where mandatory fields are missing', async () => {
         founded: 1950,
         defunct: null,
         organized_by: "FIA",
-        vehicle_type: "formula racing cars",
+        vehicle_type: "open-wheel-cars",
         country_code: "US",
     }
 

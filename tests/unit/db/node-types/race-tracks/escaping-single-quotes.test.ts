@@ -9,7 +9,7 @@ test('single quotes are correctly escaped', async () => {
         name: "'Lausitzring",
         opened: null,
         closed: null,
-        type: "'permanent race track",
+        type: "'permanent-race-track",
         location: "'Klettwitz",
         geo_position: "'51°32'0\"N 13°55'10\"E",
         country_code: "'DE",
@@ -25,7 +25,7 @@ test('single quotes are correctly escaped', async () => {
             "  name: '\\'Lausitzring',\n" +
             "  opened: null,\n" +
             "  closed: null,\n" +
-            "  type: '\\'permanent race track',\n" +
+            "  type: '\\'permanent-race-track',\n" +
             "  location: '\\'Klettwitz',\n" +
             "  geo_position: '\\'51°32\\'0\"N 13°55\\'10\"E',\n" +
             "  country_code: '\\'DE',\n" +

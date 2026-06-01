@@ -8,7 +8,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         name: "'Top Gear''",
         founded: 1993,
         defunct: null,
-        focus: "'sports cars''",
+        focus: "'sports-cars''",
         publication_frequency: "'monthly''",
         single_copy_price: 5.99,
         single_copy_price_unit: "'GBP''",
@@ -26,7 +26,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         .toEqual("'Top Gear''")
 
     expect(createdNode.properties.focus)
-        .toEqual("'sports cars''")
+        .toEqual("'sports-cars''")
 
     expect(createdNode.properties.publication_frequency)
         .toEqual("'monthly''")

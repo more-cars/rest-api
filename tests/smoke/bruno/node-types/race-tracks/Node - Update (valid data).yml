@@ -16,7 +16,7 @@ http:
         "name": "Lausitzring - Updated",
         "opened": 2002,
         "closed": null,
-        "type": "permanent race track",
+        "type": "permanent-race-track",
         "location": "Klettwitz - Updated",
         "geo_position": "11°32′0″N 13°55′10″E",
         "country_code": "AT"
