@@ -4,7 +4,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}"
+  url: "{{baseUrl}}/specification"
 
 runtime:
   assertions:
