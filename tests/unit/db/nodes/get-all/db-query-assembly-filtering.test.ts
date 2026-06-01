@@ -27,7 +27,7 @@ describe('database query for fetching all nodes of a type - filtering', () => {
                     "MATCH (n:" + nodeType + "_A_" + appInstanceId + ")\n" +
                     "WHERE n." + filterByProperty + " " + filterOperator + " '" + filterValue + "'\n" +
                     "RETURN n\n" +
-                    "  ORDER BY toLower(toString(n.dummy)) dummy\n" +
+                    "  ORDER BY n.dummy dummy\n" +
                     "  SKIP 0\n" +
                     "  LIMIT 100")
         })

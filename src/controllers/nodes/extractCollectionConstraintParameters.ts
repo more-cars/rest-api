@@ -52,6 +52,7 @@ export function extractCollectionConstraintParameters(req: express.Request, node
     return {
         page,
         sortByProperty,
+        sortByPropertyValuesDatatype: propertyDataType ? propertyDataType.datatype : undefined,
         sortDirection,
         filterByProperty,
         filterValue: safeFilterValue,

@@ -22,7 +22,7 @@ describe('database query for fetching all nodes of a type - sorting', () => {
                 .toEqual(
                     "MATCH (n:" + nodeType + "_A_" + appInstanceId + ")\n" +
                     "RETURN n\n" +
-                    "  ORDER BY toLower(toString(n." + sortByProperty + ")) " + sortDirection + "\n" +
+                    "  ORDER BY n." + sortByProperty + " " + sortDirection + "\n" +
                     "  SKIP 0\n" +
                     "  LIMIT 100")
         })

@@ -18,6 +18,7 @@ describe('get sorted node collection - sorting is case-insensitive', () => {
             limit: 100,
             offset: 0,
             sortByProperty: "name",
+            sortByPropertyValuesDatatype: "string",
             sortDirection: "ASC"
         })
 

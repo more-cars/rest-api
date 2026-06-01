@@ -3,6 +3,7 @@ import type {FilterOperator} from "./FilterOperator"
 export type NodeCollectionConstraints = {
     page?: number | null
     sortByProperty?: string | null
+    sortByPropertyValuesDatatype?: string | number | boolean
     sortDirection?: string | null
     filterByProperty?: string | null
     filterValue?: string | number | boolean | null
