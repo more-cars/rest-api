@@ -26,8 +26,7 @@ skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(rela
                   "example": "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
                 },
                 "id": {
-                  "type": "integer",
-                  "example": "87654321"
+                  "$ref": "#/components/schemas/NodeId"
                 },
                 "attributes": {
                   "$ref": "#/components/schemas/<%= h.changeCase.pascal(endNodeType) %>"
