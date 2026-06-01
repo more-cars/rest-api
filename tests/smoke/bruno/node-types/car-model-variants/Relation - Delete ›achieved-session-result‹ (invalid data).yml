@@ -33,4 +33,3 @@ runtime:
       code: |-
         const Ids = require('./lib/Ids.js')
         await Ids.generateInvalidId('CarModelVariant')
-        await Ids.generateInvalidId('SessionResult')

@@ -36,4 +36,3 @@ runtime:
       code: |-
         const Ids = require('./lib/Ids.js')
         await Ids.generateInvalidId('<%= h.changeCase.pascal(startNodeType) %>')
-        await Ids.generateInvalidId('<%= h.changeCase.pascal(endNodeType) %>')
