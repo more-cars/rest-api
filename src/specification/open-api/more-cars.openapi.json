@@ -36832,7 +36832,7 @@
           "language": {
             "type": "string",
             "format": "iso639",
-            "description": "",
+            "description": "ISO 639 two-letter language code",
             "example": "en"
           },
           "created_at": {
