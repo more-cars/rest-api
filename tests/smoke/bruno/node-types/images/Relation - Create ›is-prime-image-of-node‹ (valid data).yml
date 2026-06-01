@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "is-prime-image-of-node",
+          "type": "brands",
           "id": "{{validBrandId}}"
         }
       }

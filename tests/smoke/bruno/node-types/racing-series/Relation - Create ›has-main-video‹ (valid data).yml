@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-main-video",
+          "type": "videos",
           "id": "{{validVideoId}}"
         }
       }

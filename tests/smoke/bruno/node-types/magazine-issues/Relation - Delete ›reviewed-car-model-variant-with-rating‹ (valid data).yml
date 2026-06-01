@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "reviewed-car-model-variant-with-rating",
+          "type": "ratings",
           "id": "{{validRatingId}}"
         }
       }

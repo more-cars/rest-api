@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-episode",
+          "type": "programme-episodes",
           "id": "{{validProgrammeEpisodeId}}"
         }
       }

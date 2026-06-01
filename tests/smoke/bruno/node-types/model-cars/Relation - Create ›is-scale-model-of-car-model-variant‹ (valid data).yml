@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "is-scale-model-of-car-model-variant",
+          "type": "car-model-variants",
           "id": "{{validCarModelVariantId}}"
         }
       }

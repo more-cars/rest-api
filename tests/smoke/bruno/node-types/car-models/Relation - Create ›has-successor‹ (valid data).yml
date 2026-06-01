@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-successor",
+          "type": "car-models",
           "id": "{{validSecondCarModelId}}"
         }
       }

@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "created-model-car",
+          "type": "model-cars",
           "id": "{{validModelCarId}}"
         }
       }

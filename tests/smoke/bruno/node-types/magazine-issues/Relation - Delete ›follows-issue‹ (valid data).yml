@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "follows-issue",
+          "type": "magazine-issues",
           "id": "{{validSecondMagazineIssueId}}"
         }
       }

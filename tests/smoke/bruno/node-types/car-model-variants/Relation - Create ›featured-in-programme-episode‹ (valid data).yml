@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "featured-in-programme-episode",
+          "type": "programme-episodes",
           "id": "{{validProgrammeEpisodeId}}"
         }
       }

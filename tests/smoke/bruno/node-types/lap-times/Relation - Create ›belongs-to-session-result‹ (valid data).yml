@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "belongs-to-session-result",
+          "type": "session-results",
           "id": "{{validSessionResultId}}"
         }
       }

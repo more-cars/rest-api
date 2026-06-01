@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "follows-event",
+          "type": "racing-events",
           "id": "{{validSecondRacingEventId}}"
         }
       }

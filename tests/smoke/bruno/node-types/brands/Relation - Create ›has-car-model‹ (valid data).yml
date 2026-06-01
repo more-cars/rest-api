@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-car-model",
+          "type": "car-models",
           "id": "{{validCarModelId}}"
         }
       }

@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "reviewed-by-magazine-issue-with-rating",
+          "type": "ratings",
           "id": "{{validRatingId}}"
         }
       }

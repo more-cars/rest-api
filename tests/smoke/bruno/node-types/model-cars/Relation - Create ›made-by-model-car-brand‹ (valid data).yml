@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "made-by-model-car-brand",
+          "type": "model-car-brands",
           "id": "{{validModelCarBrandId}}"
         }
       }

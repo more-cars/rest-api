@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "was-used-by-racing-event",
+          "type": "racing-events",
           "id": "{{validRacingEventId}}"
         }
       }

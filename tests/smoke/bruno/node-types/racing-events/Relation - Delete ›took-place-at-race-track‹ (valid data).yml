@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "took-place-at-race-track",
+          "type": "race-tracks",
           "id": "{{validRaceTrackId}}"
         }
       }

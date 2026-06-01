@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "belongs-to-node",
+          "type": "nodes",
           "id": "{{validNodeId}}"
         }
       }

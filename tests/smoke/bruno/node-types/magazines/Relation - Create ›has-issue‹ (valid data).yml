@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-issue",
+          "type": "magazine-issues",
           "id": "{{validMagazineIssueId}}"
         }
       }

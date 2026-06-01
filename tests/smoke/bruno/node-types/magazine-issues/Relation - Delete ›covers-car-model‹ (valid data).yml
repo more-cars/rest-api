@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "covers-car-model",
+          "type": "car-models",
           "id": "{{validCarModelId}}"
         }
       }

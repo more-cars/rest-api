@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-racing-session",
+          "type": "racing-sessions",
           "id": "{{validRacingSessionId}}"
         }
       }

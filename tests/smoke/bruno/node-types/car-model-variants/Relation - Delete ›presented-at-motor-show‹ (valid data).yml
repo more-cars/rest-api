@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "presented-at-motor-show",
+          "type": "motor-shows",
           "id": "{{validMotorShowId}}"
         }
       }

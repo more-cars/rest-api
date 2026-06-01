@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "is-featured-in-racing-game",
+          "type": "racing-games",
           "id": "{{validRacingGameId}}"
         }
       }

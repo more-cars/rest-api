@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "used-the-track-layout",
+          "type": "track-layouts",
           "id": "{{validTrackLayoutId}}"
         }
       }

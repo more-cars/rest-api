@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "is-followed-by-episode",
+          "type": "programme-episodes",
           "id": "{{validSecondProgrammeEpisodeId}}"
         }
       }

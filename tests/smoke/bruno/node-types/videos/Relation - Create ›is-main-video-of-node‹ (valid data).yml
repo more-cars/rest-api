@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "is-main-video-of-node",
+          "type": "nodes",
           "id": "{{validNodeId}}"
         }
       }

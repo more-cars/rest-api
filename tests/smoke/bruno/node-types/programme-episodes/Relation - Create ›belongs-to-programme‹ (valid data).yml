@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "belongs-to-programme",
+          "type": "programmes",
           "id": "{{validProgrammeId}}"
         }
       }

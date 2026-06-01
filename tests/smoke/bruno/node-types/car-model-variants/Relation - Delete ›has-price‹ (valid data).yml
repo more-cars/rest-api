@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "has-price",
+          "type": "prices",
           "id": "{{validPriceId}}"
         }
       }

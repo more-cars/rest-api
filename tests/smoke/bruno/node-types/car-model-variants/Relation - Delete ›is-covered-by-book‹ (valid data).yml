@@ -14,7 +14,7 @@ http:
     data: |-
       {
         "data": {
-          "type": "is-covered-by-book",
+          "type": "books",
           "id": "{{validBookId}}"
         }
       }
