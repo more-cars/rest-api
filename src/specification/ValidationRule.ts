@@ -26,6 +26,7 @@ export type ValidationRule =
     'issn' |
     'duration' |
     'date' |
+    'time' |
     'magazineFocus' |
     'publicationFormat' |
     'publicationFrequency' |

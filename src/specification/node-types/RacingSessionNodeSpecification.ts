@@ -26,7 +26,7 @@ export const RacingSessionNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '15:00',
             scope: 'user',
-            validation: ['string'],
+            validation: ['time'],
         },
         {
             name: 'duration',

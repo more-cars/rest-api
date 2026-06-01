@@ -15,7 +15,7 @@ http:
       {
         "name": "Grand Prix - Updated",
         "start_date": "2025-05-23",
-        "start_time": "15:00 - Updated",
+        "start_time": "15:00",
         "duration": "PT122M",
         "distance": 63,
         "distance_unit": "laps"

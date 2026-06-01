@@ -8,7 +8,7 @@ export const FakeRacingSession = {
         return {
             name: faker.word.noun(),
             start_date: faker.date.past().toISOString().substring(0, 10),
-            start_time: faker.number.int().toString(),
+            start_time: faker.date.past().toTimeString().slice(0, 8),
             duration: "PT120M",
             distance: faker.number.int({min: 1000, max: 3000}),
             distance_unit: faker.helpers.arrayElement(['km', 'miles']),
@@ -28,7 +28,7 @@ export const FakeRacingSession = {
                 id: faker.number.int({min: 12_000_000, max: 20_000_000}),
                 name: faker.word.noun(),
                 start_date: faker.date.past().toISOString().substring(0, 10),
-                start_time: faker.number.int().toString(),
+                start_time: faker.date.past().toTimeString().slice(0, 8),
                 duration: "PT120M",
                 distance: faker.number.int({min: 1000, max: 3000}),
                 distance_unit: faker.helpers.arrayElement(['km', 'miles']),

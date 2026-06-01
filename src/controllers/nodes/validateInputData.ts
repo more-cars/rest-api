@@ -29,6 +29,7 @@ import {isValidTorqueUnit} from "../validators/isValidTorqueUnit"
 import {isValidTransmission} from "../validators/isValidTransmission"
 import {isValidDuration} from "../validators/isValidDuration"
 import {isValidDate} from "../validators/isValidDate"
+import {isValidTime} from "../validators/isValidTime"
 import {isValidMagazineFocus} from "../validators/isValidMagazineFocus"
 import {isValidPublicationFormat} from "../validators/isValidPublicationFormat"
 import {isValidPublicationFrequency} from "../validators/isValidPublicationFrequency"
@@ -105,6 +106,7 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['issn', isValidIssn],
         ['duration', isValidDuration],
         ['date', isValidDate],
+        ['time', isValidTime],
         ['magazineFocus', isValidMagazineFocus],
         ['publicationFormat', isValidPublicationFormat],
         ['publicationFrequency', isValidPublicationFrequency],
