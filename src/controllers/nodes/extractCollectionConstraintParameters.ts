@@ -32,7 +32,9 @@ export function extractCollectionConstraintParameters(req: express.Request, node
     }
 
     const {filterByProperty, filterOperator, filterValue} = extractFilterParameters(req)
-    if (filterByProperty && !filterValue || !filterByProperty && filterValue) {
+    if ((filterByProperty === null && filterValue !== null) ||
+        (filterByProperty !== null && filterValue === null)
+    ) {
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
     if (!isValidFilterProperty(filterByProperty, validProperties) ||
@@ -41,12 +43,18 @@ export function extractCollectionConstraintParameters(req: express.Request, node
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
 
+    const propertyDataType = nodeProperties.properties.find(prop => prop.name === filterByProperty)
+    const safeFilterValue = !propertyDataType ? undefined :
+        propertyDataType.datatype === 'number' ? Number(filterValue) :
+            propertyDataType.datatype === 'boolean' ? Boolean(filterValue) :
+                filterValue
+
     return {
         page,
         sortByProperty,
         sortDirection,
         filterByProperty,
-        filterValue, // TODO parse as number, boolean or string (depending on the data type of the property)
+        filterValue: safeFilterValue,
         filterOperator,
     }
 }
