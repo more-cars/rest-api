@@ -9,8 +9,7 @@ test('single quotes are correctly escaped', async () => {
         name: "'Grand Prix",
         start_date: "'2025-05-20",
         start_time: "'14:00",
-        duration: null,
-        duration_unit: "'min",
+        duration: "'PT120M",
         distance: null,
         distance_unit: "'laps",
         created_at: "2025-05-14T11:05:07.793Z",
@@ -25,8 +24,7 @@ test('single quotes are correctly escaped', async () => {
             "  name: '\\'Grand Prix',\n" +
             "  start_date: '\\'2025-05-20',\n" +
             "  start_time: '\\'14:00',\n" +
-            "  duration: null,\n" +
-            "  duration_unit: '\\'min',\n" +
+            "  duration: '\\'PT120M',\n" +
             "  distance: null,\n" +
             "  distance_unit: '\\'laps',\n" +
             "  created_at: '2025-05-14T11:05:07.793Z',\n" +

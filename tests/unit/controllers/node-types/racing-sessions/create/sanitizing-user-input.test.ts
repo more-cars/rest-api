@@ -8,8 +8,7 @@ describe('Sanitizing user input', () => {
             name: "   Grand Prix  ",
             start_date: "   2025-05-20  ",
             start_time: "   14:00  ",
-            duration: 120,
-            duration_unit: "   min  ",
+            duration: "PT120M",
             distance: 58,
             distance_unit: "   laps  ",
         }
@@ -19,7 +18,6 @@ describe('Sanitizing user input', () => {
             'start_date',
             'start_time',
             'duration',
-            'duration_unit',
             'distance',
             'distance_unit',
         ])
@@ -29,8 +27,7 @@ describe('Sanitizing user input', () => {
                 name: "Grand Prix",
                 start_date: "2025-05-20",
                 start_time: "14:00",
-                duration: 120,
-                duration_unit: "min",
+                duration: "PT120M",
                 distance: 58,
                 distance_unit: "laps",
             })

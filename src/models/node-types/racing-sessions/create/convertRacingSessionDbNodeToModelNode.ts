@@ -11,7 +11,6 @@ export function convertRacingSessionDbNodeToModelNode(data: DbRacingSessionNode)
             start_date: data.properties.start_date,
             start_time: data.properties.start_time,
             duration: data.properties.duration,
-            duration_unit: data.properties.duration_unit,
             distance: data.properties.distance,
             distance_unit: data.properties.distance_unit,
             created_at: data.properties.created_at,

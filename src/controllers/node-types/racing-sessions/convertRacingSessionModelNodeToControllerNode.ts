@@ -11,7 +11,6 @@ export function convertRacingSessionModelNodeToControllerNode(modelNode: ModelRa
             start_date: modelNode.attributes.start_date ?? null,
             start_time: modelNode.attributes.start_time ?? null,
             duration: modelNode.attributes.duration ?? null,
-            duration_unit: modelNode.attributes.duration_unit ?? null,
             distance: modelNode.attributes.distance ?? null,
             distance_unit: modelNode.attributes.distance_unit ?? null,
             created_at: modelNode.attributes.created_at,

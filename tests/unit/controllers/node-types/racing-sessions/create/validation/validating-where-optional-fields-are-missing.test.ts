@@ -8,7 +8,6 @@ test('validating a valid request where optional fields are missing', async () =>
         start_date: undefined,
         start_time: undefined,
         duration: undefined,
-        duration_unit: undefined,
         distance: undefined,
         distance_unit: undefined,
     }

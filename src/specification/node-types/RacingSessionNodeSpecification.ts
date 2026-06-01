@@ -30,19 +30,11 @@ export const RacingSessionNodeSpecification: NodeSpecification = {
         },
         {
             name: 'duration',
-            datatype: 'number',
-            mandatory: false,
-            example: 120,
-            scope: 'user',
-            validation: ['number'],
-        },
-        {
-            name: 'duration_unit',
             datatype: 'string',
             mandatory: false,
-            example: 'min',
+            example: "PT120M",
             scope: 'user',
-            validation: ['string'],
+            validation: ['duration'],
         },
         {
             name: 'distance',

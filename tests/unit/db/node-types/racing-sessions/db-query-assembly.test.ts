@@ -9,8 +9,7 @@ test('database query for creating a RACING SESSION node', async () => {
         name: "Grand Prix",
         start_date: "2025-05-20",
         start_time: "14:00",
-        duration: 120,
-        duration_unit: "min",
+        duration: "PT120M",
         distance: 58,
         distance_unit: "laps",
         created_at: "2025-05-14T11:05:07.793Z",
@@ -25,8 +24,7 @@ test('database query for creating a RACING SESSION node', async () => {
             "  name: 'Grand Prix',\n" +
             "  start_date: '2025-05-20',\n" +
             "  start_time: '14:00',\n" +
-            "  duration: 120,\n" +
-            "  duration_unit: 'min',\n" +
+            "  duration: 'PT120M',\n" +
             "  distance: 58,\n" +
             "  distance_unit: 'laps',\n" +
             "  created_at: '2025-05-14T11:05:07.793Z',\n" +

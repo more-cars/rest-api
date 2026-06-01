@@ -8,8 +8,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         name: "'Grand Prix''",
         start_date: "'2025-05-20''",
         start_time: "'14:00''",
-        duration: 120,
-        duration_unit: "'min''",
+        duration: "'PT120M''",
         distance: 58,
         distance_unit: "'laps''",
     }
@@ -25,8 +24,8 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
     expect(createdNode.properties.start_time)
         .toEqual("'14:00''")
 
-    expect(createdNode.properties.duration_unit)
-        .toEqual("'min''")
+    expect(createdNode.properties.duration)
+        .toEqual("'PT120M''")
 
     expect(createdNode.properties.distance_unit)
         .toEqual("'laps''")

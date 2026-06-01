@@ -7,8 +7,7 @@ test('validating a complete and valid request', async () => {
         name: "Grand Prix",
         start_date: "2025-05-20",
         start_time: "14:00",
-        duration: 120,
-        duration_unit: "min",
+        duration: "PT120M",
         distance: 58,
         distance_unit: "laps",
     }

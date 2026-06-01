@@ -7,7 +7,6 @@ export function convertInputData(data: RacingSessionInput): DbInputData {
         start_date: data.start_date,
         start_time: data.start_time,
         duration: data.duration,
-        duration_unit: data.duration_unit,
         distance: data.distance,
         distance_unit: data.distance_unit,
     }

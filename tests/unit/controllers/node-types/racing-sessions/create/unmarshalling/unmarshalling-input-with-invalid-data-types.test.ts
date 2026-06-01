@@ -7,7 +7,6 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         start_date: true,
         start_time: true,
         duration: true,
-        duration_unit: true,
         distance: true,
         distance_unit: true,
     }
@@ -17,7 +16,6 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         'start_date',
         'start_time',
         'duration',
-        'duration_unit',
         'distance',
         'distance_unit',
     ])
@@ -28,7 +26,6 @@ test('unmarshalling a request where the data types are incorrect', async () => {
             start_date: true,
             start_time: true,
             duration: true,
-            duration_unit: true,
             distance: true,
             distance_unit: true,
         })
