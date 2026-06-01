@@ -42,7 +42,7 @@ export const TrackLayoutNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'km',
             scope: 'user',
-            validation: ['string', 'lengthUnit'],
+            validation: ['lengthUnit'],
         },
         {
             name: 'direction',
@@ -50,7 +50,7 @@ export const TrackLayoutNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'clockwise',
             scope: 'user',
-            validation: ['string', 'trackDirection'],
+            validation: ['trackDirection'],
         },
         {
             name: 'elevation_change',
@@ -66,7 +66,7 @@ export const TrackLayoutNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'm',
             scope: 'user',
-            validation: ['string', 'lengthUnit'],
+            validation: ['lengthUnit'],
         },
         {
             name: 'surface',
@@ -74,7 +74,7 @@ export const TrackLayoutNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'asphalt',
             scope: 'user',
-            validation: ['string', 'trackSurface'],
+            validation: ['trackSurface'],
         },
     ],
 }

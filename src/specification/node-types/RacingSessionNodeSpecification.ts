@@ -18,7 +18,7 @@ export const RacingSessionNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2025-05-25',
             scope: 'user',
-            validation: ['string', 'date'],
+            validation: ['date'],
         },
         {
             name: 'start_time',
@@ -50,7 +50,7 @@ export const RacingSessionNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'laps',
             scope: 'user',
-            validation: ['string', 'lengthUnit'],
+            validation: ['lengthUnit'],
         },
     ],
 }

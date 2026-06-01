@@ -34,7 +34,7 @@ export const ModelCarNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '1:64',
             scope: 'user',
-            validation: ['string', 'modelScale'],
+            validation: ['modelScale'],
         },
         {
             name: 'series',

@@ -18,7 +18,7 @@ export const MotorShowNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2017-09-14',
             scope: 'user',
-            validation: ['string', 'date'],
+            validation: ['date'],
         },
         {
             name: 'date_until',
@@ -26,7 +26,7 @@ export const MotorShowNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2017-09-24',
             scope: 'user',
-            validation: ['string', 'date'],
+            validation: ['date'],
         },
         {
             name: 'location',
@@ -42,7 +42,7 @@ export const MotorShowNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'international',
             scope: 'user',
-            validation: ['string', 'targetAudience'],
+            validation: ['targetAudience'],
         },
         {
             name: 'focus',
@@ -50,7 +50,7 @@ export const MotorShowNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'new-cars',
             scope: 'user',
-            validation: ['string', 'motorShowFocus'],
+            validation: ['motorShowFocus'],
         },
         {
             name: 'country_code',

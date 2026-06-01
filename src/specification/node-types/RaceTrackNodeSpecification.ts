@@ -34,7 +34,7 @@ export const RaceTrackNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'permanent-race-track',
             scope: 'user',
-            validation: ['string', 'trackType'],
+            validation: ['trackType'],
         },
         {
             name: 'location',
@@ -50,7 +50,7 @@ export const RaceTrackNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '51°32’0”N 13°55’10”E',
             scope: 'user',
-            validation: ['string', 'geoPosition'],
+            validation: ['geoPosition'],
         },
         {
             name: 'country_code',

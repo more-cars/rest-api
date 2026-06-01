@@ -42,7 +42,7 @@ export const MagazineIssueNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2025-10-01',
             scope: 'user',
-            validation: ['string', 'date'],
+            validation: ['date'],
         },
         {
             name: 'single_copy_price',

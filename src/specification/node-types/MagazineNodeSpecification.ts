@@ -34,7 +34,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'sports-cars',
             scope: 'user',
-            validation: ['string', 'magazineFocus'],
+            validation: ['magazineFocus'],
         },
         {
             name: 'publication_frequency',
@@ -42,7 +42,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'monthly',
             scope: 'user',
-            validation: ['string', 'publicationFrequency'],
+            validation: ['publicationFrequency'],
         },
         {
             name: 'single_copy_price',
@@ -65,7 +65,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'print',
             scope: 'user',
-            validation: ['string', 'publicationFormat'],
+            validation: ['publicationFormat'],
         },
         {
             name: 'circulation',

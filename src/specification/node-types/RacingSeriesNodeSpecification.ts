@@ -50,7 +50,7 @@ export const RacingSeriesNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'touring-cars',
             scope: 'user',
-            validation: ['string', 'vehicleType'],
+            validation: ['vehicleType'],
         },
         {
             name: 'country_code',
