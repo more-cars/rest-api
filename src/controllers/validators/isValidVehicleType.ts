@@ -11,7 +11,14 @@ export function isValidVehicleType(value: unknown) {
         return false
     }
 
-    if (!['formula racing cars', 'rally cars', 'touring cars', 'sports cars', 'other'].includes(value)) {
+    if (![
+        "open-wheel-cars",
+        "rally-cars",
+        "touring-cars",
+        "gt-cars",
+        "stock-cars",
+        "other",
+    ].includes(value)) {
         return false
     }
 

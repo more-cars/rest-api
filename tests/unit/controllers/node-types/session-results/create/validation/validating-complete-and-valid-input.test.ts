@@ -10,7 +10,7 @@ test('validating a complete and valid request', async () => {
         team_name: "Mercedes",
         race_time: "PT1H23M45.678S",
         laps: 51,
-        status: "Finished",
+        status: "finished",
         points: 25,
     }
 

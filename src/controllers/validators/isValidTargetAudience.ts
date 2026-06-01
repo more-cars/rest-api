@@ -11,7 +11,12 @@ export function isValidTargetAudience(value: unknown) {
         return false
     }
 
-    if (!['international', 'national', 'regional', 'other'].includes(value)) {
+    if (![
+        "international",
+        "national",
+        "regional",
+        "other",
+    ].includes(value)) {
         return false
     }
 

@@ -11,7 +11,9 @@ export function isValidVideoProvider(value: unknown) {
         return false
     }
 
-    if (!['youtube'].includes(value)) {
+    if (![
+        "youtube"
+    ].includes(value)) {
         return false
     }
 

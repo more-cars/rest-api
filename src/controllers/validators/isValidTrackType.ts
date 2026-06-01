@@ -11,7 +11,11 @@ export function isValidTrackType(value: unknown) {
         return false
     }
 
-    if (!['permanent race track', 'street circuit', 'other'].includes(value)) {
+    if (![
+        "permanent-race-track",
+        "street-circuit",
+        "other",
+    ].includes(value)) {
         return false
     }
 

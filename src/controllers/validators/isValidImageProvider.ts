@@ -11,7 +11,10 @@ export function isValidImageProvider(value: unknown) {
         return false
     }
 
-    if (!['wikimedia', 'flickr'].includes(value)) {
+    if (![
+        "wikimedia",
+        "flickr",
+    ].includes(value)) {
         return false
     }
 

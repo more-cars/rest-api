@@ -11,7 +11,11 @@ export function isValidTrackSurface(value: unknown) {
         return false
     }
 
-    if (!['asphalt', 'mixed', 'other'].includes(value)) {
+    if (![
+        "asphalt",
+        "mixed",
+        "other",
+    ].includes(value)) {
         return false
     }
 

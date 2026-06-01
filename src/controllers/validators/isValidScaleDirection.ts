@@ -11,7 +11,10 @@ export function isValidScaleDirection(value: unknown) {
         return false
     }
 
-    if (!['up', 'down'].includes(value)) {
+    if (![
+        "up",
+        "down",
+    ].includes(value)) {
         return false
     }
 

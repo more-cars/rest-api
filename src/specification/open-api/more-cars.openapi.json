@@ -27759,12 +27759,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -28144,6 +28138,12 @@
             "type": "number",
             "description": "",
             "example": 50000
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -29074,8 +29074,6 @@
       "CarModelVariantProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "internal_code",
           "built_from",
@@ -29115,7 +29113,9 @@
           "sprint_time_0_100_kmh",
           "top_speed",
           "top_speed_unit",
-          "total_production"
+          "total_production",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -29128,12 +29128,6 @@
           "country_code"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "price": {
             "type": "number",
             "description": "",
@@ -29155,6 +29149,12 @@
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -29337,11 +29337,12 @@
       "PriceProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "price",
+          "price_year",
           "currency_code",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "price"
       },
@@ -29351,12 +29352,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "The official name of the race track. Might contain the owner or sponsor name, like `Red Bull Ring` or `WeatherTech Raceway Laguna Seca`",
@@ -29375,11 +29370,11 @@
           "type": {
             "type": "string",
             "description": "Is it a permanent race track or a temporary one?",
-            "example": "permanent race track",
+            "example": "permanent-race-track",
             "nullable": true,
             "enum": [
-              "permanent race track",
-              "street circuit",
+              "permanent-race-track",
+              "street-circuit",
               "other",
               null
             ]
@@ -29400,6 +29395,12 @@
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -29777,15 +29778,15 @@
       "RaceTrackProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "opened",
           "closed",
           "type",
           "location",
           "geo_position",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -29795,12 +29796,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -29830,7 +29825,6 @@
               "m",
               "km",
               "miles",
-              "laps",
               null
             ]
           },
@@ -29873,6 +29867,12 @@
               "other",
               null
             ]
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -30348,8 +30348,6 @@
       "TrackLayoutProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "year_from",
           "year_to",
@@ -30358,7 +30356,9 @@
           "direction",
           "elevation_change",
           "elevation_change_unit",
-          "surface"
+          "surface",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -30368,12 +30368,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -30402,13 +30396,14 @@
           "vehicle_type": {
             "type": "string",
             "description": "",
-            "example": "formula racing cars",
+            "example": "open-wheel-cars",
             "nullable": true,
             "enum": [
-              "formula racing cars",
-              "rally cars",
-              "touring cars",
-              "sports cars",
+              "open-wheel-cars",
+              "rally-cars",
+              "touring-cars",
+              "gt-cars",
+              "stock-cars",
               "other",
               null
             ]
@@ -30418,6 +30413,12 @@
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "US"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -30730,15 +30731,15 @@
       "RacingSeriesProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "short_name",
           "founded",
           "defunct",
           "organized_by",
           "vehicle_type",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -30748,12 +30749,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -30775,6 +30770,12 @@
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2025-05-27"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -31317,12 +31318,12 @@
       "RacingEventProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "round",
           "date_from",
-          "date_to"
+          "date_to",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -31332,12 +31333,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -31378,6 +31373,12 @@
               "laps",
               null
             ]
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -31723,15 +31724,14 @@
       "RacingSessionProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "start_date",
           "start_time",
           "duration",
-          "duration_unit",
           "distance",
-          "distance_unit"
+          "distance_unit",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -31742,12 +31742,6 @@
           "driver_name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "position": {
             "type": "number",
             "description": "",
@@ -31782,10 +31776,10 @@
           "status": {
             "type": "string",
             "description": "",
-            "example": "Finished",
+            "example": "finished",
             "nullable": true,
             "enum": [
-              "Finished",
+              "finished",
               "DSQ",
               "DNF",
               "DNC",
@@ -31798,6 +31792,12 @@
             "type": "number",
             "description": "",
             "example": 25
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -32078,8 +32078,6 @@
       "SessionResultProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "position",
           "race_number",
           "driver_name",
@@ -32087,7 +32085,9 @@
           "race_time",
           "laps",
           "status",
-          "points"
+          "points",
+          "created_at",
+          "updated_at"
         ],
         "default": "position"
       },
@@ -32098,12 +32098,6 @@
           "driver_name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "time": {
             "type": "string",
             "format": "iso8601",
@@ -32120,6 +32114,12 @@
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "1996-08-03"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -32499,11 +32499,11 @@
       "LapTimeProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "time",
           "driver_name",
-          "date"
+          "date",
+          "created_at",
+          "updated_at"
         ],
         "default": "driver_name"
       },
@@ -32513,12 +32513,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -32538,6 +32532,12 @@
             "type": "string",
             "description": "",
             "example": "Microsoft Studios"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -32980,12 +32980,12 @@
       "RacingGameProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "release_year",
           "developer",
-          "publisher"
+          "publisher",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -32995,12 +32995,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -33015,6 +33009,12 @@
             "type": "string",
             "description": "",
             "example": "Sony"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -33327,11 +33327,11 @@
       "GamingPlatformProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "release_year",
-          "manufacturer"
+          "manufacturer",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -33341,12 +33341,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -33381,6 +33375,12 @@
             "type": "string",
             "description": "",
             "example": "BMW"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -33694,13 +33694,13 @@
       "ModelCarProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "product_code",
           "release_year",
           "scale",
-          "series"
+          "series",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -33710,12 +33710,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -33724,18 +33718,24 @@
           "founded": {
             "type": "number",
             "description": "",
-            "example": "1968"
+            "example": 1968
           },
           "defunct": {
             "type": "number",
             "description": "",
-            "example": ""
+            "example": null
           },
           "country_code": {
             "type": "string",
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "US"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -34048,12 +34048,12 @@
       "ModelCarBrandProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "founded",
           "defunct",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -34063,12 +34063,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -34087,16 +34081,16 @@
           "focus": {
             "type": "string",
             "description": "",
-            "example": "new cars",
+            "example": "new-cars",
             "nullable": true,
             "enum": [
-              "new cars",
-              "sports cars",
-              "classic cars",
-              "brand specific",
-              "race cars",
-              "tuned cars",
-              "american cars",
+              "new-cars",
+              "sports-cars",
+              "classic-cars",
+              "brand-specific",
+              "race-cars",
+              "tuned-cars",
+              "american-cars",
               "mixed",
               "other",
               null
@@ -34109,12 +34103,12 @@
             "nullable": true,
             "enum": [
               "yearly",
-              "twice a year",
+              "twice-a-year",
               "quarterly",
-              "every two months",
-              "every six weeks",
+              "every-two-months",
+              "every-six-weeks",
               "monthly",
-              "twice per month",
+              "twice-per-month",
               "weekly",
               "irregular",
               "other",
@@ -34140,7 +34134,7 @@
             "enum": [
               "print",
               "digital",
-              "print_and_digital",
+              "print,digital",
               "other",
               null
             ]
@@ -34171,6 +34165,12 @@
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "GB"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -34483,8 +34483,6 @@
       "MagazineProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "founded",
           "defunct",
@@ -34497,7 +34495,9 @@
           "circulation_year",
           "publisher",
           "issn",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -34507,12 +34507,6 @@
           "title"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "title": {
             "type": "string",
             "description": "",
@@ -34521,37 +34515,45 @@
           "consecutive_number": {
             "type": "number",
             "description": "",
-            "example": "402"
+            "example": 402
           },
           "issue_number": {
             "type": "number",
             "description": "",
-            "example": "12"
+            "example": 12
           },
           "issue_year": {
             "type": "number",
             "description": "",
-            "example": "2025"
+            "example": 2025
           },
           "release_date": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2025-11-26"
           },
           "single_copy_price": {
             "type": "number",
             "description": "",
-            "example": "5.99"
+            "example": 5.99
           },
           "single_copy_price_unit": {
             "type": "string",
-            "description": "",
+            "format": "iso4217",
+            "description": "3-letter ISO 4217 currency code",
             "example": "GBP"
           },
           "pages": {
             "type": "number",
             "description": "",
-            "example": "156"
+            "example": 156
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -35223,8 +35225,6 @@
       "MagazineIssueProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "title",
           "consecutive_number",
           "issue_number",
@@ -35232,7 +35232,9 @@
           "release_date",
           "single_copy_price",
           "single_copy_price_unit",
-          "pages"
+          "pages",
+          "created_at",
+          "updated_at"
         ],
         "default": "title"
       },
@@ -35245,12 +35247,6 @@
           "scale_direction"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "rating_value": {
             "type": "number",
             "description": "",
@@ -35276,6 +35272,12 @@
               "down",
               null
             ]
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -35491,12 +35493,12 @@
       "RatingProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "rating_value",
           "scale_minimum",
           "scale_maximum",
-          "scale_direction"
+          "scale_direction",
+          "created_at",
+          "updated_at"
         ],
         "default": "rating_value"
       },
@@ -35506,12 +35508,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -35553,6 +35549,12 @@
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "GB"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -35865,8 +35867,6 @@
       "ProgrammeProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "aired_from_year",
           "aired_until_year",
@@ -35874,7 +35874,9 @@
           "total_seasons",
           "total_episodes",
           "regular_episode_running_time",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -35884,12 +35886,6 @@
           "title"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "title": {
             "type": "string",
             "description": "",
@@ -35916,6 +35912,12 @@
             "format": "iso8601",
             "description": "ISO 8601 duration",
             "example": "PT55M"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -36392,13 +36394,13 @@
       "ProgrammeEpisodeProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "title",
           "season_number",
           "season_episode_number",
           "original_air_date",
-          "duration"
+          "duration",
+          "created_at",
+          "updated_at"
         ],
         "default": "title"
       },
@@ -36408,12 +36410,6 @@
           "name"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "name": {
             "type": "string",
             "description": "",
@@ -36452,10 +36448,11 @@
           "focus": {
             "type": "string",
             "description": "",
-            "example": "new_cars",
+            "example": "new-cars",
             "nullable": true,
             "enum": [
-              "new_cars",
+              "new-cars",
+              "oldtimer",
               "other",
               null
             ]
@@ -36465,6 +36462,12 @@
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -36777,15 +36780,15 @@
       "MotorShowProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "name",
           "date_from",
           "date_until",
           "location",
           "target_audience",
           "focus",
-          "country_code"
+          "country_code",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -36795,12 +36798,6 @@
           "title"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "title": {
             "type": "string",
             "description": "",
@@ -36837,6 +36834,12 @@
             "format": "iso639",
             "description": "",
             "example": "en"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -37149,15 +37152,15 @@
       "BookProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "title",
           "author",
           "publisher",
           "year_of_publication",
           "isbn",
           "pages",
-          "language"
+          "language",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },
@@ -37168,16 +37171,14 @@
           "external_id"
         ],
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "A unique identifier which is generated by the system. Cannot be changed.",
-            "readOnly": true,
-            "example": 21186
-          },
           "image_provider": {
             "type": "string",
-            "description": "The platform that is hosting the image. Supported options are: 'flickr' and 'wikimedia'.",
-            "example": "flickr"
+            "description": "The platform that is hosting the photo.",
+            "example": "flickr",
+            "enum": [
+              "flickr",
+              "wikimedia"
+            ]
           },
           "external_id": {
             "type": "string",
@@ -37483,12 +37484,6 @@
           "external_id"
         ],
         "properties": {
-          "created_at": {
-            "$ref": "#/components/schemas/CreatedAt"
-          },
-          "updated_at": {
-            "$ref": "#/components/schemas/UpdatedAt"
-          },
           "video_provider": {
             "type": "string",
             "description": "",
@@ -37557,6 +37552,12 @@
             "type": "string",
             "description": "",
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/CreatedAt"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UpdatedAt"
           }
         }
       },
@@ -37738,8 +37739,6 @@
       "VideoProperties": {
         "type": "string",
         "enum": [
-          "created_at",
-          "updated_at",
           "video_provider",
           "external_id",
           "title",
@@ -37752,7 +37751,9 @@
           "thumbnail_url_l",
           "thumbnail_url_m",
           "thumbnail_url_s",
-          "thumbnail_url_xs"
+          "thumbnail_url_xs",
+          "created_at",
+          "updated_at"
         ],
         "default": "name"
       },

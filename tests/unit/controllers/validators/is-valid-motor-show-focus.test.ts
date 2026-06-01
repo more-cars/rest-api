@@ -5,7 +5,8 @@ describe('Validating motor show focus', () => {
     test.each([
         [undefined],
         [null],
-        ['new_cars'],
+        ['new-cars'],
+        ['oldtimer'],
         ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidMotorShowFocus(input))

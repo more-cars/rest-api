@@ -5,8 +5,8 @@ describe('Validating track type', () => {
     test.each([
         [undefined],
         [null],
-        ['permanent race track'],
-        ['street circuit'],
+        ['permanent-race-track'],
+        ['street-circuit'],
         ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidTrackType(input))

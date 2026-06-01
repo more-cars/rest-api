@@ -11,7 +11,14 @@ export function isValidModelScale(value: unknown) {
         return false
     }
 
-    if (!['1:64', '1:43', '1:24', '1:18', '1:10', 'other'].includes(value)) {
+    if (![
+        "1:64",
+        "1:43",
+        "1:24",
+        "1:18",
+        "1:10",
+        "other",
+    ].includes(value)) {
         return false
     }
 

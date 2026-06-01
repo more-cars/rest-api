@@ -11,7 +11,10 @@ export function isValidTrackDirection(value: unknown) {
         return false
     }
 
-    if (!['clockwise', 'counterclockwise'].includes(value)) {
+    if (![
+        "clockwise",
+        "counterclockwise",
+    ].includes(value)) {
         return false
     }
 

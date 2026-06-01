@@ -11,7 +11,14 @@ export function isValidSessionResultStatus(value: unknown) {
         return false
     }
 
-    if (!['Finished', 'DSQ', 'DNF', 'DNC', 'DNS', 'other'].includes(value)) {
+    if (![
+        "finished",
+        "DSQ",
+        "DNF",
+        "DNC",
+        "DNS",
+        "other",
+    ].includes(value)) {
         return false
     }
 

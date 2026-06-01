@@ -5,10 +5,11 @@ describe('Validating vehicle type', () => {
     test.each([
         [undefined],
         [null],
-        ['formula racing cars'],
-        ['rally cars'],
-        ['touring cars'],
-        ['sports cars'],
+        ['open-wheel-cars'],
+        ['rally-cars'],
+        ['touring-cars'],
+        ['gt-cars'],
+        ['stock-cars'],
         ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidVehicleType(input))

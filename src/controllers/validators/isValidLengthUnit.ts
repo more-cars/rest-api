@@ -11,7 +11,12 @@ export function isValidLengthUnit(value: unknown) {
         return false
     }
 
-    if (!['m', 'km', 'miles', 'laps'].includes(value)) {
+    if (![
+        "m",
+        "km",
+        "miles",
+        "laps",
+    ].includes(value)) {
         return false
     }
 

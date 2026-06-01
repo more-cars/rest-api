@@ -7,7 +7,7 @@ describe('Validating publication format', () => {
         [null],
         ['print'],
         ['digital'],
-        ['print_and_digital'],
+        ['print,digital'],
         ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidPublicationFormat(input))

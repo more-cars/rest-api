@@ -11,7 +11,11 @@ export function isValidMotorShowFocus(value: unknown) {
         return false
     }
 
-    if (!['new_cars', 'other'].includes(value)) {
+    if (![
+        "new-cars",
+        "oldtimer",
+        "other",
+    ].includes(value)) {
         return false
     }
 

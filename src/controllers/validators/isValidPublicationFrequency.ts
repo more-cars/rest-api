@@ -11,7 +11,18 @@ export function isValidPublicationFrequency(value: unknown) {
         return false
     }
 
-    if (!['yearly', 'twice a year', 'quarterly', 'every two months', 'every six weeks', 'monthly', 'twice per month', 'weekly', 'irregular', 'other'].includes(value)) {
+    if (![
+        "yearly",
+        "twice-a-year",
+        "quarterly",
+        "every-two-months",
+        "every-six-weeks",
+        "monthly",
+        "twice-per-month",
+        "weekly",
+        "irregular",
+        "other",
+    ].includes(value)) {
         return false
     }
 

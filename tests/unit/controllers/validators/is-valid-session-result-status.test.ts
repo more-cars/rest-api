@@ -5,7 +5,7 @@ describe('Validating session result status', () => {
     test.each([
         [undefined],
         [null],
-        ['Finished'],
+        ['finished'],
         ['DSQ'],
         ['DNF'],
         ['DNC'],
