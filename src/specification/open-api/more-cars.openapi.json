@@ -17,7 +17,7 @@
   ],
   "tags": [],
   "paths": {
-    "/": {
+    "/specification": {
       "get": {
         "summary": "OpenAPI specification",
         "responses": {
