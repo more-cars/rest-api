@@ -27095,37 +27095,54 @@
           "name": {
             "type": "string",
             "description": "The official name of the car company, incl. the legal entity type (AG, SE, GmbH, N.V., s.p.a., Ltd).",
-            "nullable": false,
             "example": "BMW AG"
           },
           "founded": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "The year the company was founded.",
             "example": 1916
           },
           "defunct": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "The year the company was shut down.",
             "example": null
           },
           "headquarters_location": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "The city, town or region in which the company has its (de facto) headquarters.",
             "example": "Munich"
           },
           "hq_country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           },
           "legal_headquarters_location": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "The city, town or region where the company has its official headquarters. As an example, `Ferrari` is an Italian company, based in `Maranello`, but on paper they are a Dutch company, located in `Amsterdam`.",
             "example": "Munich"
           },
           "legal_hq_country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
@@ -27462,36 +27479,53 @@
           "name": {
             "type": "string",
             "description": "The name of the brand (e.g. 'Ferrari'). Not to be confused with the company name (e.g. 'Ferrari S.p.A.'). The official spelling is used (e.g. 'MINI' instead of 'Mini').",
-            "nullable": false,
             "example": "DKW"
           },
           "full_name": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "The long form of the brand's name, should it be abbreviated (e.g. 'VW' -> 'Volkswagen').",
             "example": "Dampfkraftwagen"
           },
           "founded": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "The year in which the brand was established as a CAR brand. Not necessarily the year the company was founded. 'Peugeot' was founded in 1810, but they are building cars only since 1891.",
             "example": 1916
           },
           "defunct": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "The last year the brand name was officially used for a car model.",
             "example": 1966
           },
           "wmi": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "The WMI (World Manufacturer Identifier) is a unique identifier for a car brand resp. car company. In general it is a three character code as specified in 'ISO 3780'. Some manufacturers have multiple WMIs, some have none at all. Multiple WMIs are separated by comma.",
             "example": null
           },
           "hsn": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "HSN (Herstellerschlüsselnummer) is the German counterpart of the 'WMI'. It is a four-digit code that identifies the car manufacturer globally. Some manufacturers have multiple HSNs, some have none at all. Multiple HSNs are separated by comma.",
             "example": "0010"
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
@@ -27864,31 +27898,45 @@
           "name": {
             "type": "string",
             "description": "The official name of the car model. Does not include the brand name, the internal code or generational information. E.g. instead of 'BMW M3 (E36)' it is just 'M3'",
-            "nullable": false,
             "example": "Testarossa"
           },
           "built_from": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "The first year of production. (Might differ from the 'model year'.)",
             "example": 1984
           },
           "built_to": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "The last year of production. (Might differ from the 'model year'.)",
             "example": 1996
           },
           "generation": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "When there exist multiple generations of a car model this number specifies which of those iterations is represented here. E.g. '7' for the 7th-generation of the 'VW Golf'. Multiple iterations can belong to the same generation (e.g. in case of facelifts).",
             "example": 7
           },
           "internal_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "Uniquely identifies the generation (or facelift or variant) of a car model E.g. '997.2' is Porsche's code for the facelift model of the 6th generation of the '911'.",
             "example": "F110"
           },
           "total_production": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "The number of cars that have been built in this generation. Includes all variants and special editions.",
             "example": 7177
           },
@@ -28455,29 +28503,39 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "BMW M3"
           },
           "internal_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "E46"
           },
           "built_from": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2000
           },
           "built_to": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2006
           },
           "body_style": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "coupe",
-            "nullable": true,
             "enum": [
               "coupe",
               "convertible",
@@ -28500,25 +28558,36 @@
             ]
           },
           "drag_coefficient": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 0.31
           },
           "doors": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2
           },
           "weight": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 1549
           },
           "weight_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "kg",
-            "nullable": true,
             "enum": [
               "kg",
               "lbs",
@@ -28526,10 +28595,12 @@
             ]
           },
           "weight_norm": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "EG",
-            "nullable": true,
             "enum": [
               "dry",
               "EG",
@@ -28538,15 +28609,20 @@
             ]
           },
           "max_power": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 343
           },
           "max_power_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "PS",
-            "nullable": true,
             "enum": [
               "PS",
               "bhp",
@@ -28555,10 +28631,12 @@
             ]
           },
           "max_power_norm": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "DIN",
-            "nullable": true,
             "enum": [
               "DIN",
               "SAE",
@@ -28566,15 +28644,20 @@
             ]
           },
           "max_torque": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 365
           },
           "max_torque_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Nm",
-            "nullable": true,
             "enum": [
               "Nm",
               "lb ft",
@@ -28582,15 +28665,20 @@
             ]
           },
           "cylinders": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 6
           },
           "engine_configuration": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "inline",
-            "nullable": true,
             "enum": [
               "inline",
               "v",
@@ -28602,15 +28690,20 @@
             ]
           },
           "displacement": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 3246
           },
           "displacement_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "ccm",
-            "nullable": true,
             "enum": [
               "ccm",
               "cu",
@@ -28618,10 +28711,12 @@
             ]
           },
           "air_induction": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "turbocharged",
-            "nullable": true,
             "enum": [
               "naturally-aspirated",
               "turbocharged",
@@ -28632,10 +28727,12 @@
             ]
           },
           "engine_type": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "otto",
-            "nullable": true,
             "enum": [
               "otto",
               "diesel",
@@ -28649,10 +28746,12 @@
             ]
           },
           "energy_source": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "petrol",
-            "nullable": true,
             "enum": [
               "petrol",
               "diesel",
@@ -28664,10 +28763,12 @@
             ]
           },
           "energy_source_2": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "",
-            "nullable": true,
             "enum": [
               "petrol",
               "diesel",
@@ -28679,15 +28780,20 @@
             ]
           },
           "consumption": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 11.9
           },
           "consumption_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "L/100 km",
-            "nullable": true,
             "enum": [
               "L/100 km",
               "kWh/100 km",
@@ -28697,10 +28803,12 @@
             ]
           },
           "consumption_norm": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "WLTP",
-            "nullable": true,
             "enum": [
               "NEDC",
               "WLTP",
@@ -28708,15 +28816,20 @@
             ]
           },
           "consumption_2": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": ""
           },
           "consumption_2_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "",
-            "nullable": true,
             "enum": [
               "L/100 km",
               "kWh/100 km",
@@ -28726,10 +28839,12 @@
             ]
           },
           "consumption_2_norm": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "",
-            "nullable": true,
             "enum": [
               "NEDC",
               "WLTP",
@@ -28737,15 +28852,20 @@
             ]
           },
           "energy_capacity": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 63
           },
           "energy_capacity_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "l",
-            "nullable": true,
             "enum": [
               "l",
               "kWh",
@@ -28755,15 +28875,20 @@
             ]
           },
           "energy_capacity_2": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": ""
           },
           "energy_capacity_2_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "",
-            "nullable": true,
             "enum": [
               "l",
               "kWh",
@@ -28773,10 +28898,12 @@
             ]
           },
           "transmission": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "sequential",
-            "nullable": true,
             "enum": [
               "manual",
               "dual-clutch",
@@ -28789,15 +28916,20 @@
             ]
           },
           "gears": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 6
           },
           "drivetrain": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "RWD",
-            "nullable": true,
             "enum": [
               "RWD",
               "AWD",
@@ -28807,20 +28939,28 @@
             ]
           },
           "sprint_time_0_100_kmh": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 5.2
           },
           "top_speed": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 250
           },
           "top_speed_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "km/h",
-            "nullable": true,
             "enum": [
               "km/h",
               "mph",
@@ -28829,7 +28969,10 @@
             ]
           },
           "total_production": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 50000
           },
@@ -29819,27 +29962,23 @@
           "price": {
             "type": "number",
             "description": "",
-            "nullable": false,
             "example": 59990
           },
           "price_year": {
             "type": "number",
             "description": "",
-            "nullable": false,
             "example": 2020
           },
           "currency_code": {
             "type": "string",
             "format": "iso4217",
             "description": "3-letter ISO 4217 currency code",
-            "nullable": false,
             "example": "EUR"
           },
           "country_code": {
             "type": "string",
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
-            "nullable": false,
             "example": "DE"
           },
           "created_at": {
@@ -30044,24 +30183,31 @@
           "name": {
             "type": "string",
             "description": "The official name of the race track. Might contain the owner or sponsor name, like `Red Bull Ring` or `WeatherTech Raceway Laguna Seca`",
-            "nullable": false,
             "example": "Lausitzring"
           },
           "opened": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "The year in which the race track was opened to the public.",
             "example": 2000
           },
           "closed": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "The year in which the race track was shut down.",
             "example": null
           },
           "type": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "Is it a permanent race track or a temporary one?",
             "example": "permanent-race-track",
-            "nullable": true,
             "enum": [
               "permanent-race-track",
               "street-circuit",
@@ -30070,18 +30216,27 @@
             ]
           },
           "location": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "The city or region where this track is located.",
             "example": "Klettwitz"
           },
           "geo_position": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso6709",
             "description": "ISO 6709 coordinates.",
             "example": "51°32′0″N 13°55′10″E"
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
@@ -30486,29 +30641,39 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "GP Circuit"
           },
           "year_from": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 1967
           },
           "year_to": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 1999
           },
           "length": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 7.004
           },
           "length_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "km",
-            "nullable": true,
             "enum": [
               "m",
               "km",
@@ -30517,10 +30682,12 @@
             ]
           },
           "direction": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "clockwise",
-            "nullable": true,
             "enum": [
               "clockwise",
               "counterclockwise",
@@ -30528,15 +30695,20 @@
             ]
           },
           "elevation_change": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 71
           },
           "elevation_change_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "m",
-            "nullable": true,
             "enum": [
               "m",
               "km",
@@ -30545,10 +30717,12 @@
             ]
           },
           "surface": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "asphalt",
-            "nullable": true,
             "enum": [
               "asphalt",
               "mixed",
@@ -31056,34 +31230,47 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Formula 1"
           },
           "short_name": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "F1"
           },
           "founded": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 1950
           },
           "defunct": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": null
           },
           "organized_by": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "FIA"
           },
           "vehicle_type": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "open-wheel-cars",
-            "nullable": true,
             "enum": [
               "open-wheel-cars",
               "rally-cars",
@@ -31095,7 +31282,10 @@
             ]
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "US"
@@ -31435,22 +31625,30 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "GP Monaco 2025"
           },
           "round": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 8
           },
           "date_from": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2025-05-25"
           },
           "date_to": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2025-05-27"
@@ -32017,37 +32215,50 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Grand Prix"
           },
           "start_date": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2025-05-20"
           },
           "start_time": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 time",
             "example": "14:00:00"
           },
           "duration": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
             "example": "PT120M"
           },
           "distance": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 58
           },
           "distance_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "laps",
-            "nullable": true,
             "enum": [
               "m",
               "km",
@@ -32423,41 +32634,53 @@
           "position": {
             "type": "number",
             "description": "",
-            "nullable": false,
             "example": 1
           },
           "race_number": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "44"
           },
           "driver_name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Lewis Hamilton"
           },
           "team_name": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Mercedes"
           },
           "race_time": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
             "example": "PT1H23M45.678S"
           },
           "laps": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 51
           },
           "status": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "finished",
-            "nullable": true,
             "enum": [
               "finished",
               "DSQ",
@@ -32469,7 +32692,10 @@
             ]
           },
           "points": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 25
           },
@@ -32778,17 +33004,18 @@
             "type": "string",
             "format": "iso8601",
             "description": "ISO 8601 duration",
-            "nullable": false,
             "example": "PT1M33.294S"
           },
           "driver_name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Klaus Ludwig"
           },
           "date": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "1996-08-03"
@@ -33191,21 +33418,29 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Forza Motorsport 7"
           },
           "release_year": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2017
           },
           "developer": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Turn 10 Studios"
           },
           "publisher": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Microsoft Studios"
           },
@@ -33671,16 +33906,21 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "PlayStation 5"
           },
           "release_year": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2020
           },
           "manufacturer": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Sony"
           },
@@ -34015,24 +34255,31 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "BMW 2002"
           },
           "product_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "DHX60"
           },
           "release_year": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2016
           },
           "scale": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "1:64",
-            "nullable": true,
             "enum": [
               "1:64",
               "1:43",
@@ -34044,7 +34291,10 @@
             ]
           },
           "series": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "BMW"
           },
@@ -34382,21 +34632,29 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Hot Wheels"
           },
           "founded": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 1968
           },
           "defunct": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": null
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "US"
@@ -34733,24 +34991,31 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Top Gear"
           },
           "founded": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "",
             "example": 1993
           },
           "defunct": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "",
             "example": null
           },
           "focus": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "new-cars",
-            "nullable": true,
             "enum": [
               "new-cars",
               "sports-cars",
@@ -34765,10 +35030,12 @@
             ]
           },
           "publication_frequency": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "monthly",
-            "nullable": true,
             "enum": [
               "yearly",
               "twice-a-year",
@@ -34784,21 +35051,29 @@
             ]
           },
           "single_copy_price": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 5.99
           },
           "single_copy_price_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso4217",
             "description": "3-letter ISO 4217 currency code",
             "example": "GBP"
           },
           "publication_format": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "print",
-            "nullable": true,
             "enum": [
               "print",
               "digital",
@@ -34808,28 +35083,43 @@
             ]
           },
           "circulation": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "",
             "example": 150884
           },
           "circulation_year": {
-            "type": "integer",
+            "type": [
+              "integer",
+              null
+            ],
             "description": "",
             "example": 2013
           },
           "publisher": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Immediate Media Company"
           },
           "issn": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3297",
             "description": "ISO 3297 ISSN number",
             "example": "1350-9624"
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "GB"
@@ -35175,43 +35465,63 @@
           "title": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Performance Car of the Year"
           },
           "consecutive_number": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 402
           },
           "issue_number": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 12
           },
           "issue_year": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2025
           },
           "release_date": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2025-11-26"
           },
           "single_copy_price": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 5.99
           },
           "single_copy_price_unit": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso4217",
             "description": "3-letter ISO 4217 currency code",
             "example": "GBP"
           },
           "pages": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 156
           },
@@ -35910,25 +36220,21 @@
           "rating_value": {
             "type": "number",
             "description": "",
-            "nullable": false,
             "example": 93
           },
           "scale_minimum": {
             "type": "number",
             "description": "",
-            "nullable": false,
             "example": 0
           },
           "scale_maximum": {
             "type": "number",
             "description": "",
-            "nullable": false,
             "example": 100
           },
           "scale_direction": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "up",
             "enum": [
               "up",
@@ -36170,42 +36476,62 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Top Gear"
           },
           "aired_from_year": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2002
           },
           "aired_until_year": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2022
           },
           "channel": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "BBC Two"
           },
           "total_seasons": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 33
           },
           "total_episodes": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 240
           },
           "regular_episode_running_time": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
             "example": "PT60M"
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "GB"
@@ -36546,27 +36872,38 @@
           "title": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "The Falls Guys"
           },
           "season_number": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2
           },
           "season_episode_number": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2
           },
           "original_air_date": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2017-12-08"
           },
           "duration": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
             "example": "PT55M"
@@ -37068,31 +37405,41 @@
           "name": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "2017 IAA Frankfurt"
           },
           "date_from": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2017-09-14"
           },
           "date_until": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 date",
             "example": "2017-09-24"
           },
           "location": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Frankfurt"
           },
           "target_audience": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "international",
-            "nullable": true,
             "enum": [
               "international",
               "national",
@@ -37102,10 +37449,12 @@
             ]
           },
           "focus": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "new-cars",
-            "nullable": true,
             "enum": [
               "new-cars",
               "oldtimer",
@@ -37114,7 +37463,10 @@
             ]
           },
           "country_code": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
@@ -37454,37 +37806,54 @@
           "title": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "Living the Supercar Dream"
           },
           "author": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Tim Burton"
           },
           "publisher": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "example": "Blink Publishing"
           },
           "year_of_publication": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 2016
           },
           "isbn": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso2108",
             "description": "",
             "example": "978-3-86-852889-3"
           },
           "pages": {
-            "type": "number",
+            "type": [
+              "number",
+              null
+            ],
             "description": "",
             "example": 256
           },
           "language": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso639",
             "description": "ISO 639 two-letter language code",
             "example": "en"
@@ -37824,7 +38193,6 @@
           "image_provider": {
             "type": "string",
             "description": "The platform that is hosting the photo.",
-            "nullable": false,
             "example": "flickr",
             "enum": [
               "flickr",
@@ -37834,7 +38202,6 @@
           "external_id": {
             "type": "string",
             "description": "The official identifier of the image. Flickr uses numbers (e.g. '43644091312'). Wikimedia uses a URL-friendly version of the image name (e.g. 'File:BMW_Z4_Concept.jpg').",
-            "nullable": false,
             "example": "36039295304"
           }
         }
@@ -37863,7 +38230,10 @@
             "example": "1958 Lincoln Premiere"
           },
           "description": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "A short description of the photo or image.",
             "example": null
@@ -37881,7 +38251,10 @@
             "example": "CC BY 2.0"
           },
           "tags": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "A comma-separated list of keywords which describe the picture.",
             "example": "Oldtimer, Lincoln, pink"
@@ -37901,42 +38274,60 @@
             "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_z.jpg"
           },
           "image_url_xxl": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "The URL of the image in XXL size. Optional.",
             "format": "url",
             "example": null
           },
           "image_url_xl": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "The URL of the image in XL size. Optional.",
             "format": "url",
             "example": "https://live.staticflickr.com/4389/36039295304_bdf7d4b0ec_o.jpg"
           },
           "image_url_l": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "The URL of the image in L size. Optional.",
             "format": "url",
             "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_b.jpg"
           },
           "image_url_m": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "The URL of the image in M size. Optional.",
             "format": "url",
             "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_z.jpg"
           },
           "image_url_s": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "The URL of the image in S size. Optional.",
             "format": "url",
             "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_n.jpg"
           },
           "image_url_xs": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "readOnly": true,
             "description": "The URL of the image in XS size. Optional.",
             "format": "url",
@@ -38163,7 +38554,6 @@
           "video_provider": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "youtube",
             "enum": [
               "youtube"
@@ -38172,7 +38562,6 @@
           "external_id": {
             "type": "string",
             "description": "",
-            "nullable": false,
             "example": "NqsBncRslsg"
           }
         }
@@ -38200,7 +38589,10 @@
             "example": "P1 vs F40"
           },
           "description": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "readOnly": true,
             "example": "Drag Race - P1 vs F40"
@@ -38218,7 +38610,10 @@
             "example": "youtube"
           },
           "tags": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "readOnly": true,
             "example": "F40, P1"
@@ -38230,32 +38625,47 @@
             "example": "https://www.youtube.com/watch?v=NqsBncRslsg"
           },
           "duration": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
             "readOnly": true,
             "example": "PT7M24S"
           },
           "thumbnail_url_l": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/maxresdefault.jpg"
           },
           "thumbnail_url_m": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/sddefault.jpg"
           },
           "thumbnail_url_s": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/mqdefault.jpg"
           },
           "thumbnail_url_xs": {
-            "type": "string",
+            "type": [
+              "string",
+              null
+            ],
             "description": "",
             "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
