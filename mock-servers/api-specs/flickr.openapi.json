@@ -1,16 +1,20 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.0",
   "info": {
-    "title": "Flickr API - API Specification",
-    "description": "OpenAPI specification for the Flickr API. Includes only the parts that are relevant for More Cars.",
-    "version": "0.1.0"
+    "title": "Flickr Mock API",
+    "description": "This document contains all Flickr API endpoints that are relevant for More Cars. It is used by the e2e tests to automatically create mock servers.",
+    "version": "1.0.0",
+    "license": {
+      "name": "UNLICENSED - For internal use only",
+      "url": "https://flickr-mock-api.more-cars.net/license"
+    }
   },
   "servers": [
     {
-      "url": "http://localhost:3006",
-      "description": "Local"
+      "url": "https://flickr-mock-api.more-cars.net"
     }
   ],
+  "security": [],
   "paths": {
     "/services/rest": {
       "get": {
@@ -83,6 +87,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request"
           }
         }
       }

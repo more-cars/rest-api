@@ -1,16 +1,20 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Wikimedia API - API Specification",
-    "description": "OpenAPI specification for the Wikimedia API. Includes only the parts that are relevant for More Cars.",
-    "version": "0.1.0"
+    "title": "Wikimedia Mock API",
+    "description": "This document contains all Wikimedia API endpoints that are relevant for More Cars. It is used by the e2e tests to automatically create mock servers.",
+    "version": "1.0.0",
+    "license": {
+      "name": "UNLICENSED - For internal use only",
+      "url": "https://wikimedia-mock-api.more-cars.net/license"
+    }
   },
   "servers": [
     {
-      "url": "http://localhost:3005",
-      "description": "Local"
+      "url": "https://wikimedia-mock-api.more-cars.net"
     }
   ],
+  "security": [],
   "paths": {
     "/w/api.php": {
       "get": {
@@ -84,6 +88,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request"
           }
         }
       }

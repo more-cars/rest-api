@@ -1,16 +1,20 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.0",
   "info": {
-    "title": "YouTube API v3 - API Specification",
-    "description": "OpenAPI specification for the YouTube API. Includes only the parts that are relevant for More Cars.",
-    "version": "0.1.0"
+    "title": "YouTube Mock API",
+    "description": "This document contains all YouTube API endpoints that are relevant for More Cars. It is used by the e2e tests to automatically create mock servers.",
+    "version": "3.0.0",
+    "license": {
+      "name": "UNLICENSED - For internal use only",
+      "url": "https://youtube-mock-api.more-cars.net/license"
+    }
   },
   "servers": [
     {
-      "url": "http://localhost:3004",
-      "description": "Local"
+      "url": "https://youtube-mock-api.more-cars.net"
     }
   ],
+  "security": [],
   "paths": {
     "/youtube/v3/videos": {
       "get": {
@@ -52,6 +56,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request"
           }
         }
       }
@@ -101,11 +108,11 @@
                       },
                       "width": {
                         "type": "integer",
-                        "example": "120"
+                        "example": 120
                       },
                       "height": {
                         "type": "integer",
-                        "example": "90"
+                        "example": 90
                       }
                     }
                   },
@@ -118,11 +125,11 @@
                       },
                       "width": {
                         "type": "integer",
-                        "example": "320"
+                        "example": 320
                       },
                       "height": {
                         "type": "integer",
-                        "example": "180"
+                        "example": 180
                       }
                     }
                   },
@@ -135,11 +142,11 @@
                       },
                       "width": {
                         "type": "integer",
-                        "example": "480"
+                        "example": 480
                       },
                       "height": {
                         "type": "integer",
-                        "example": "360"
+                        "example": 360
                       }
                     }
                   },
@@ -152,11 +159,11 @@
                       },
                       "width": {
                         "type": "integer",
-                        "example": "640"
+                        "example": 640
                       },
                       "height": {
                         "type": "integer",
-                        "example": "360"
+                        "example": 360
                       }
                     }
                   },
@@ -169,11 +176,11 @@
                       },
                       "width": {
                         "type": "integer",
-                        "example": "1280"
+                        "example": 1280
                       },
                       "height": {
                         "type": "integer",
-                        "example": "720"
+                        "example": 720
                       }
                     }
                   }
