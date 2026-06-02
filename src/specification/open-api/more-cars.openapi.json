@@ -25963,7 +25963,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Image",
+                "$ref": "#/components/schemas/ImageInput",
                 "required": [
                   "image_provider",
                   "external_id"
@@ -26453,7 +26453,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Video",
+                "$ref": "#/components/schemas/VideoInput",
                 "required": [
                   "video_provider",
                   "external_id"
@@ -37647,7 +37647,7 @@
         ],
         "default": "name"
       },
-      "Image": {
+      "ImageInput": {
         "type": "object",
         "properties": {
           "image_provider": {
@@ -37664,6 +37664,25 @@
             "type": "string",
             "description": "The official identifier of the image. Flickr uses numbers (e.g. '43644091312'). Wikimedia uses a URL-friendly version of the image name (e.g. 'File:BMW_Z4_Concept.jpg').",
             "nullable": false,
+            "example": "36039295304"
+          }
+        }
+      },
+      "Image": {
+        "type": "object",
+        "properties": {
+          "image_provider": {
+            "type": "string",
+            "description": "The platform that is hosting the photo.",
+            "example": "flickr",
+            "enum": [
+              "flickr",
+              "wikimedia"
+            ]
+          },
+          "external_id": {
+            "type": "string",
+            "description": "The official identifier of the image. Flickr uses numbers (e.g. '43644091312'). Wikimedia uses a URL-friendly version of the image name (e.g. 'File:BMW_Z4_Concept.jpg').",
             "example": "36039295304"
           },
           "name": {
@@ -37758,7 +37777,16 @@
           "updated_at": {
             "$ref": "#/components/schemas/UpdatedAt"
           }
-        }
+        },
+        "required": [
+          "image_provider",
+          "external_id",
+          "name",
+          "creator",
+          "license",
+          "source",
+          "image_url_original"
+        ]
       },
       "ImageResponse": {
         "type": "object",
@@ -37958,7 +37986,7 @@
         ],
         "default": "name"
       },
-      "Video": {
+      "VideoInput": {
         "type": "object",
         "properties": {
           "video_provider": {
@@ -37975,61 +38003,90 @@
             "description": "",
             "nullable": false,
             "example": "NqsBncRslsg"
+          }
+        }
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "video_provider": {
+            "type": "string",
+            "description": "",
+            "example": "youtube",
+            "enum": [
+              "youtube"
+            ]
+          },
+          "external_id": {
+            "type": "string",
+            "description": "",
+            "example": "NqsBncRslsg"
           },
           "title": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "P1 vs F40"
           },
           "description": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "Drag Race - P1 vs F40"
           },
           "creator": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "Lovecars"
           },
           "license": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "youtube"
           },
           "tags": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "F40, P1"
           },
           "source": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "https://www.youtube.com/watch?v=NqsBncRslsg"
           },
           "duration": {
             "type": "string",
             "format": "iso8601",
             "description": "ISO 8601 duration",
+            "readOnly": true,
             "example": "PT7M24S"
           },
           "thumbnail_url_l": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/maxresdefault.jpg"
           },
           "thumbnail_url_m": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/sddefault.jpg"
           },
           "thumbnail_url_s": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/mqdefault.jpg"
           },
           "thumbnail_url_xs": {
             "type": "string",
             "description": "",
+            "readOnly": true,
             "example": "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
           },
           "created_at": {
@@ -38038,7 +38095,15 @@
           "updated_at": {
             "$ref": "#/components/schemas/UpdatedAt"
           }
-        }
+        },
+        "required": [
+          "video_provider",
+          "external_id",
+          "title",
+          "creator",
+          "license",
+          "source"
+        ]
       },
       "VideoResponse": {
         "type": "object",
@@ -38416,6 +38481,7 @@
       },
       "NodeId": {
         "type": "integer",
+        "readOnly": true,
         "description": "A unique identifier which is generated by the system.",
         "example": "87654321"
       },
