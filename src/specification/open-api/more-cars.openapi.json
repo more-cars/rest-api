@@ -7,14 +7,15 @@
   },
   "servers": [
     {
-      "url": "http://api.testing.more-cars.net",
+      "url": "https://api.testing.more-cars.net",
       "description": "Testing"
     },
     {
-      "url": "http://api.prod.more-cars.net",
+      "url": "https://api.prod.more-cars.net",
       "description": "Production"
     }
   ],
+  "security": [],
   "tags": [],
   "paths": {
     "/specification": {
