@@ -116,6 +116,19 @@
           "Companies"
         ],
         "summary": "Create `Company`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Company` successfully created.",
@@ -197,6 +210,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Company"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Company` successfully updated.",
@@ -325,7 +348,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Company"
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
               }
             }
           }
@@ -981,6 +1004,19 @@
           "Brands"
         ],
         "summary": "Create `Brand`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Brand",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Brand` successfully created.",
@@ -1062,6 +1098,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Brand"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Brand` successfully updated.",
@@ -1967,6 +2013,19 @@
           "Car Models"
         ],
         "summary": "Create `Car Model`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarModel",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Car Model` successfully created.",
@@ -2048,6 +2107,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarModel"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Car Model` successfully updated.",
@@ -3503,6 +3572,19 @@
           "Car Model Variants"
         ],
         "summary": "Create `Car Model Variant`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarModelVariant",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Car Model Variant` successfully created.",
@@ -3584,6 +3666,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CarModelVariant"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Car Model Variant` successfully updated.",
@@ -5658,6 +5750,22 @@
           "Prices"
         ],
         "summary": "Create `Price`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Price",
+                "required": [
+                  "price",
+                  "price_year",
+                  "currency_code",
+                  "country_code"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Price` successfully created.",
@@ -5739,6 +5847,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Price"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Price` successfully updated.",
@@ -6265,6 +6383,19 @@
           "Race Tracks"
         ],
         "summary": "Create `Race Track`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaceTrack",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Race Track` successfully created.",
@@ -6346,6 +6477,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaceTrack"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Race Track` successfully updated.",
@@ -7275,6 +7416,19 @@
           "Track Layouts"
         ],
         "summary": "Create `Track Layout`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrackLayout",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Track Layout` successfully created.",
@@ -7356,6 +7510,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrackLayout"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Track Layout` successfully updated.",
@@ -8535,6 +8699,19 @@
           "Racing Series"
         ],
         "summary": "Create `Racing Series`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingSeries",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Racing Series` successfully created.",
@@ -8616,6 +8793,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingSeries"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Racing Series` successfully updated.",
@@ -9400,6 +9587,19 @@
           "Racing Events"
         ],
         "summary": "Create `Racing Event`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingEvent",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Racing Event` successfully created.",
@@ -9481,6 +9681,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingEvent"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Racing Event` successfully updated.",
@@ -11059,6 +11269,19 @@
           "Racing Sessions"
         ],
         "summary": "Create `Racing Session`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingSession",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Racing Session` successfully created.",
@@ -11140,6 +11363,19 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingSession",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Racing Session` successfully updated.",
@@ -12053,6 +12289,20 @@
           "Session Results"
         ],
         "summary": "Create `Session Result`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionResult",
+                "required": [
+                  "position",
+                  "driver_name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Session Result` successfully created.",
@@ -12134,6 +12384,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionResult"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Session Result` successfully updated.",
@@ -12910,6 +13170,20 @@
           "Lap Times"
         ],
         "summary": "Create `Lap Time`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LapTime",
+                "required": [
+                  "time",
+                  "driver_name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Lap Time` successfully created.",
@@ -12991,6 +13265,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LapTime"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Lap Time` successfully updated.",
@@ -14162,6 +14446,19 @@
           "Racing Games"
         ],
         "summary": "Create `Racing Game`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingGame",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Racing Game` successfully created.",
@@ -14243,6 +14540,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RacingGame"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Racing Game` successfully updated.",
@@ -15285,6 +15592,19 @@
           "Gaming Platforms"
         ],
         "summary": "Create `Gaming Platform`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GamingPlatform",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Gaming Platform` successfully created.",
@@ -15366,6 +15686,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GamingPlatform"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Gaming Platform` successfully updated.",
@@ -16150,6 +16480,19 @@
           "Model Cars"
         ],
         "summary": "Create `Model Car`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelCar",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Model Car` successfully created.",
@@ -16231,6 +16574,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelCar"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Model Car` successfully updated.",
@@ -17144,6 +17497,19 @@
           "Model Car Brands"
         ],
         "summary": "Create `Model Car Brand`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelCarBrand",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Model Car Brand` successfully created.",
@@ -17225,6 +17591,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelCarBrand"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Model Car Brand` successfully updated.",
@@ -18009,6 +18385,19 @@
           "Magazines"
         ],
         "summary": "Create `Magazine`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Magazine",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Magazine` successfully created.",
@@ -18090,6 +18479,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Magazine"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Magazine` successfully updated.",
@@ -18874,6 +19273,19 @@
           "Magazine Issues"
         ],
         "summary": "Create `Magazine Issue`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MagazineIssue",
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Magazine Issue` successfully created.",
@@ -18955,6 +19367,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MagazineIssue"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Magazine Issue` successfully updated.",
@@ -20670,6 +21092,22 @@
           "Ratings"
         ],
         "summary": "Create `Rating`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rating",
+                "required": [
+                  "rating_value",
+                  "scale_minimum",
+                  "scale_maximum",
+                  "scale_direction"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Rating` successfully created.",
@@ -20751,6 +21189,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rating"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Rating` successfully updated.",
@@ -21398,6 +21846,19 @@
           "Programmes"
         ],
         "summary": "Create `Programme`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Programme",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Programme` successfully created.",
@@ -21479,6 +21940,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Programme"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Programme` successfully updated.",
@@ -22263,6 +22734,19 @@
           "Programme Episodes"
         ],
         "summary": "Create `Programme Episode`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgrammeEpisode",
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Programme Episode` successfully created.",
@@ -22344,6 +22828,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgrammeEpisode"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Programme Episode` successfully updated.",
@@ -23656,6 +24150,19 @@
           "Motor Shows"
         ],
         "summary": "Create `Motor Show`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotorShow",
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Motor Show` successfully created.",
@@ -23737,6 +24244,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotorShow"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Motor Show` successfully updated.",
@@ -24529,6 +25046,19 @@
           "Books"
         ],
         "summary": "Create `Book`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book",
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Book` successfully created.",
@@ -24610,6 +25140,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "`Book` successfully updated.",
@@ -25418,6 +25958,20 @@
           "Images"
         ],
         "summary": "Create `Image`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Image",
+                "required": [
+                  "image_provider",
+                  "external_id"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Image` successfully created.",
@@ -25894,6 +26448,20 @@
           "Videos"
         ],
         "summary": "Create `Video`",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Video",
+                "required": [
+                  "video_provider",
+                  "external_id"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "`Video` successfully created.",
@@ -26352,13 +26920,11 @@
     "schemas": {
       "Company": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "The official name of the car company, incl. the legal entity type (AG, SE, GmbH, N.V., s.p.a., Ltd).",
+            "nullable": false,
             "example": "BMW AG"
           },
           "founded": {
@@ -26721,13 +27287,11 @@
       },
       "Brand": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "The name of the brand (e.g. 'Ferrari'). Not to be confused with the company name (e.g. 'Ferrari S.p.A.'). The official spelling is used (e.g. 'MINI' instead of 'Mini').",
+            "nullable": false,
             "example": "DKW"
           },
           "full_name": {
@@ -27125,13 +27689,11 @@
       },
       "CarModel": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "The official name of the car model. Does not include the brand name, the internal code or generational information. E.g. instead of 'BMW M3 (E36)' it is just 'M3'",
+            "nullable": false,
             "example": "Testarossa"
           },
           "built_from": {
@@ -27718,13 +28280,11 @@
       },
       "CarModelVariant": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "BMW M3"
           },
           "internal_code": {
@@ -29084,33 +29644,31 @@
       },
       "Price": {
         "type": "object",
-        "required": [
-          "price",
-          "price_year",
-          "currency_code",
-          "country_code"
-        ],
         "properties": {
           "price": {
             "type": "number",
             "description": "",
+            "nullable": false,
             "example": 59990
           },
           "price_year": {
             "type": "number",
             "description": "",
+            "nullable": false,
             "example": 2020
           },
           "currency_code": {
             "type": "string",
             "format": "iso4217",
             "description": "3-letter ISO 4217 currency code",
+            "nullable": false,
             "example": "EUR"
           },
           "country_code": {
             "type": "string",
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
+            "nullable": false,
             "example": "DE"
           },
           "created_at": {
@@ -29311,13 +29869,11 @@
       },
       "RaceTrack": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "The official name of the race track. Might contain the owner or sponsor name, like `Red Bull Ring` or `WeatherTech Raceway Laguna Seca`",
+            "nullable": false,
             "example": "Lausitzring"
           },
           "opened": {
@@ -29755,13 +30311,11 @@
       },
       "TrackLayout": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "GP Circuit"
           },
           "year_from": {
@@ -30327,13 +30881,11 @@
       },
       "RacingSeries": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Formula 1"
           },
           "short_name": {
@@ -30708,13 +31260,11 @@
       },
       "RacingEvent": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "GP Monaco 2025"
           },
           "round": {
@@ -31292,13 +31842,11 @@
       },
       "RacingSession": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Grand Prix"
           },
           "start_date": {
@@ -31700,14 +32248,11 @@
       },
       "SessionResult": {
         "type": "object",
-        "required": [
-          "position",
-          "driver_name"
-        ],
         "properties": {
           "position": {
             "type": "number",
             "description": "",
+            "nullable": false,
             "example": 1
           },
           "race_number": {
@@ -31718,6 +32263,7 @@
           "driver_name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Lewis Hamilton"
           },
           "team_name": {
@@ -32056,20 +32602,18 @@
       },
       "LapTime": {
         "type": "object",
-        "required": [
-          "time",
-          "driver_name"
-        ],
         "properties": {
           "time": {
             "type": "string",
             "format": "iso8601",
             "description": "ISO 8601 duration",
+            "nullable": false,
             "example": "PT1M33.294S"
           },
           "driver_name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Klaus Ludwig"
           },
           "date": {
@@ -32472,13 +33016,11 @@
       },
       "RacingGame": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Forza Motorsport 7"
           },
           "release_year": {
@@ -32954,13 +33496,11 @@
       },
       "GamingPlatform": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "PlayStation 5"
           },
           "release_year": {
@@ -33300,13 +33840,11 @@
       },
       "ModelCar": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "BMW 2002"
           },
           "product_code": {
@@ -33669,13 +34207,11 @@
       },
       "ModelCarBrand": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Hot Wheels"
           },
           "founded": {
@@ -34022,13 +34558,11 @@
       },
       "Magazine": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Top Gear"
           },
           "founded": {
@@ -34466,13 +35000,11 @@
       },
       "MagazineIssue": {
         "type": "object",
-        "required": [
-          "title"
-        ],
         "properties": {
           "title": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Performance Car of the Year"
           },
           "consecutive_number": {
@@ -35203,37 +35735,33 @@
       },
       "Rating": {
         "type": "object",
-        "required": [
-          "rating_value",
-          "scale_minimum",
-          "scale_maximum",
-          "scale_direction"
-        ],
         "properties": {
           "rating_value": {
             "type": "number",
             "description": "",
+            "nullable": false,
             "example": 93
           },
           "scale_minimum": {
             "type": "number",
             "description": "",
+            "nullable": false,
             "example": 0
           },
           "scale_maximum": {
             "type": "number",
             "description": "",
+            "nullable": false,
             "example": 100
           },
           "scale_direction": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "up",
-            "nullable": true,
             "enum": [
               "up",
-              "down",
-              null
+              "down"
             ]
           },
           "created_at": {
@@ -35467,13 +35995,11 @@
       },
       "Programme": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Top Gear"
           },
           "aired_from_year": {
@@ -35845,13 +36371,11 @@
       },
       "ProgrammeEpisode": {
         "type": "object",
-        "required": [
-          "title"
-        ],
         "properties": {
           "title": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "The Falls Guys"
           },
           "season_number": {
@@ -36369,13 +36893,11 @@
       },
       "MotorShow": {
         "type": "object",
-        "required": [
-          "name"
-        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "2017 IAA Frankfurt"
           },
           "date_from": {
@@ -36757,13 +37279,11 @@
       },
       "Book": {
         "type": "object",
-        "required": [
-          "title"
-        ],
         "properties": {
           "title": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "Living the Supercar Dream"
           },
           "author": {
@@ -37129,14 +37649,11 @@
       },
       "Image": {
         "type": "object",
-        "required": [
-          "image_provider",
-          "external_id"
-        ],
         "properties": {
           "image_provider": {
             "type": "string",
             "description": "The platform that is hosting the photo.",
+            "nullable": false,
             "example": "flickr",
             "enum": [
               "flickr",
@@ -37146,6 +37663,7 @@
           "external_id": {
             "type": "string",
             "description": "The official identifier of the image. Flickr uses numbers (e.g. '43644091312'). Wikimedia uses a URL-friendly version of the image name (e.g. 'File:BMW_Z4_Concept.jpg').",
+            "nullable": false,
             "example": "36039295304"
           },
           "name": {
@@ -37442,14 +37960,11 @@
       },
       "Video": {
         "type": "object",
-        "required": [
-          "video_provider",
-          "external_id"
-        ],
         "properties": {
           "video_provider": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "youtube",
             "enum": [
               "youtube"
@@ -37458,6 +37973,7 @@
           "external_id": {
             "type": "string",
             "description": "",
+            "nullable": false,
             "example": "NqsBncRslsg"
           },
           "title": {
