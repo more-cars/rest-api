@@ -121,9 +121,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Company",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Company"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -1009,9 +1016,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Brand",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Brand"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -2018,9 +2032,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CarModel",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CarModel"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -3577,9 +3598,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CarModelVariant",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CarModelVariant"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -5755,12 +5783,19 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Price",
-                "required": [
-                  "price",
-                  "price_year",
-                  "currency_code",
-                  "country_code"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Price"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "price",
+                      "price_year",
+                      "currency_code",
+                      "country_code"
+                    ]
+                  }
                 ]
               }
             }
@@ -6388,9 +6423,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RaceTrack",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RaceTrack"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -7421,9 +7463,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TrackLayout",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TrackLayout"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -8704,9 +8753,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RacingSeries",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RacingSeries"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -9592,9 +9648,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RacingEvent",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RacingEvent"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -11274,9 +11337,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RacingSession",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RacingSession"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -11368,10 +11438,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RacingSession",
-                "required": [
-                  "name"
-                ]
+                "$ref": "#/components/schemas/RacingSession"
               }
             }
           }
@@ -12294,10 +12361,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SessionResult",
-                "required": [
-                  "position",
-                  "driver_name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SessionResult"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "position",
+                      "driver_name"
+                    ]
+                  }
                 ]
               }
             }
@@ -13175,10 +13249,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LapTime",
-                "required": [
-                  "time",
-                  "driver_name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LapTime"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -14451,9 +14531,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RacingGame",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/RacingGame"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -15597,9 +15684,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GamingPlatform",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/GamingPlatform"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -16485,9 +16579,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ModelCar",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ModelCar"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -17502,9 +17603,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ModelCarBrand",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ModelCarBrand"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -18390,9 +18498,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Magazine",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Magazine"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -19278,9 +19393,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MagazineIssue",
-                "required": [
-                  "title"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/MagazineIssue"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "title"
+                    ]
+                  }
                 ]
               }
             }
@@ -21097,12 +21219,19 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Rating",
-                "required": [
-                  "rating_value",
-                  "scale_minimum",
-                  "scale_maximum",
-                  "scale_direction"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Rating"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "rating_value",
+                      "scale_minimum",
+                      "scale_maximum",
+                      "scale_direction"
+                    ]
+                  }
                 ]
               }
             }
@@ -21851,9 +21980,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Programme",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Programme"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -22739,9 +22875,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProgrammeEpisode",
-                "required": [
-                  "title"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ProgrammeEpisode"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "title"
+                    ]
+                  }
                 ]
               }
             }
@@ -24155,9 +24298,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MotorShow",
-                "required": [
-                  "name"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/MotorShow"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ]
+                  }
                 ]
               }
             }
@@ -25051,9 +25201,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Book",
-                "required": [
-                  "title"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Book"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "title"
+                    ]
+                  }
                 ]
               }
             }
@@ -25963,10 +26120,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ImageInput",
-                "required": [
-                  "image_provider",
-                  "external_id"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ImageInput"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "image_provider",
+                      "external_id"
+                    ]
+                  }
                 ]
               }
             }
@@ -26453,10 +26617,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VideoInput",
-                "required": [
-                  "video_provider",
-                  "external_id"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/VideoInput"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "video_provider",
+                      "external_id"
+                    ]
+                  }
                 ]
               }
             }
