@@ -27100,7 +27100,7 @@
           "founded": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "The year the company was founded.",
             "example": 1916
@@ -27108,7 +27108,7 @@
           "defunct": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "The year the company was shut down.",
             "example": null
@@ -27116,7 +27116,7 @@
           "headquarters_location": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "The city, town or region in which the company has its (de facto) headquarters.",
             "example": "Munich"
@@ -27124,7 +27124,7 @@
           "hq_country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -27133,7 +27133,7 @@
           "legal_headquarters_location": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "The city, town or region where the company has its official headquarters. As an example, `Ferrari` is an Italian company, based in `Maranello`, but on paper they are a Dutch company, located in `Amsterdam`.",
             "example": "Munich"
@@ -27141,7 +27141,7 @@
           "legal_hq_country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -27484,7 +27484,7 @@
           "full_name": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "The long form of the brand's name, should it be abbreviated (e.g. 'VW' -> 'Volkswagen').",
             "example": "Dampfkraftwagen"
@@ -27492,7 +27492,7 @@
           "founded": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "The year in which the brand was established as a CAR brand. Not necessarily the year the company was founded. 'Peugeot' was founded in 1810, but they are building cars only since 1891.",
             "example": 1916
@@ -27500,7 +27500,7 @@
           "defunct": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "The last year the brand name was officially used for a car model.",
             "example": 1966
@@ -27508,7 +27508,7 @@
           "wmi": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "The WMI (World Manufacturer Identifier) is a unique identifier for a car brand resp. car company. In general it is a three character code as specified in 'ISO 3780'. Some manufacturers have multiple WMIs, some have none at all. Multiple WMIs are separated by comma.",
             "example": null
@@ -27516,7 +27516,7 @@
           "hsn": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "HSN (Herstellerschlüsselnummer) is the German counterpart of the 'WMI'. It is a four-digit code that identifies the car manufacturer globally. Some manufacturers have multiple HSNs, some have none at all. Multiple HSNs are separated by comma.",
             "example": "0010"
@@ -27524,7 +27524,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -27903,7 +27903,7 @@
           "built_from": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "The first year of production. (Might differ from the 'model year'.)",
             "example": 1984
@@ -27911,7 +27911,7 @@
           "built_to": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "The last year of production. (Might differ from the 'model year'.)",
             "example": 1996
@@ -27919,7 +27919,7 @@
           "generation": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "When there exist multiple generations of a car model this number specifies which of those iterations is represented here. E.g. '7' for the 7th-generation of the 'VW Golf'. Multiple iterations can belong to the same generation (e.g. in case of facelifts).",
             "example": 7
@@ -27927,7 +27927,7 @@
           "internal_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "Uniquely identifies the generation (or facelift or variant) of a car model E.g. '997.2' is Porsche's code for the facelift model of the 6th generation of the '911'.",
             "example": "F110"
@@ -27935,7 +27935,7 @@
           "total_production": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "The number of cars that have been built in this generation. Includes all variants and special editions.",
             "example": 7177
@@ -28508,7 +28508,7 @@
           "internal_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "E46"
@@ -28516,7 +28516,7 @@
           "built_from": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2000
@@ -28524,7 +28524,7 @@
           "built_to": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2006
@@ -28532,7 +28532,7 @@
           "body_style": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "coupe",
@@ -28560,7 +28560,7 @@
           "drag_coefficient": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 0.31
@@ -28568,7 +28568,7 @@
           "doors": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2
@@ -28576,7 +28576,7 @@
           "weight": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 1549
@@ -28584,20 +28584,19 @@
           "weight_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "kg",
             "enum": [
               "kg",
-              "lbs",
-              null
+              "lbs"
             ]
           },
           "weight_norm": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "EG",
@@ -28611,7 +28610,7 @@
           "max_power": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 343
@@ -28619,7 +28618,7 @@
           "max_power_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "PS",
@@ -28633,7 +28632,7 @@
           "max_power_norm": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "DIN",
@@ -28646,7 +28645,7 @@
           "max_torque": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 365
@@ -28654,7 +28653,7 @@
           "max_torque_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Nm",
@@ -28667,7 +28666,7 @@
           "cylinders": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 6
@@ -28675,7 +28674,7 @@
           "engine_configuration": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "inline",
@@ -28692,7 +28691,7 @@
           "displacement": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 3246
@@ -28700,7 +28699,7 @@
           "displacement_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "ccm",
@@ -28713,7 +28712,7 @@
           "air_induction": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "turbocharged",
@@ -28729,7 +28728,7 @@
           "engine_type": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "otto",
@@ -28748,7 +28747,7 @@
           "energy_source": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "petrol",
@@ -28765,7 +28764,7 @@
           "energy_source_2": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "",
@@ -28782,7 +28781,7 @@
           "consumption": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 11.9
@@ -28790,7 +28789,7 @@
           "consumption_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "L/100 km",
@@ -28805,7 +28804,7 @@
           "consumption_norm": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "WLTP",
@@ -28818,7 +28817,7 @@
           "consumption_2": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": ""
@@ -28826,7 +28825,7 @@
           "consumption_2_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "",
@@ -28841,7 +28840,7 @@
           "consumption_2_norm": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "",
@@ -28854,7 +28853,7 @@
           "energy_capacity": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 63
@@ -28862,7 +28861,7 @@
           "energy_capacity_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "l",
@@ -28877,7 +28876,7 @@
           "energy_capacity_2": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": ""
@@ -28885,7 +28884,7 @@
           "energy_capacity_2_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "",
@@ -28900,7 +28899,7 @@
           "transmission": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "sequential",
@@ -28918,7 +28917,7 @@
           "gears": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 6
@@ -28926,7 +28925,7 @@
           "drivetrain": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "RWD",
@@ -28941,7 +28940,7 @@
           "sprint_time_0_100_kmh": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 5.2
@@ -28949,7 +28948,7 @@
           "top_speed": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 250
@@ -28957,7 +28956,7 @@
           "top_speed_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "km/h",
@@ -28971,7 +28970,7 @@
           "total_production": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 50000
@@ -30188,7 +30187,7 @@
           "opened": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "The year in which the race track was opened to the public.",
             "example": 2000
@@ -30196,7 +30195,7 @@
           "closed": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "The year in which the race track was shut down.",
             "example": null
@@ -30204,7 +30203,7 @@
           "type": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "Is it a permanent race track or a temporary one?",
             "example": "permanent-race-track",
@@ -30218,7 +30217,7 @@
           "location": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "The city or region where this track is located.",
             "example": "Klettwitz"
@@ -30226,7 +30225,7 @@
           "geo_position": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso6709",
             "description": "ISO 6709 coordinates.",
@@ -30235,7 +30234,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -30646,7 +30645,7 @@
           "year_from": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 1967
@@ -30654,7 +30653,7 @@
           "year_to": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 1999
@@ -30662,7 +30661,7 @@
           "length": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 7.004
@@ -30670,7 +30669,7 @@
           "length_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "km",
@@ -30684,7 +30683,7 @@
           "direction": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "clockwise",
@@ -30697,7 +30696,7 @@
           "elevation_change": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 71
@@ -30705,7 +30704,7 @@
           "elevation_change_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "m",
@@ -30719,7 +30718,7 @@
           "surface": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "asphalt",
@@ -31235,7 +31234,7 @@
           "short_name": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "F1"
@@ -31243,7 +31242,7 @@
           "founded": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 1950
@@ -31251,7 +31250,7 @@
           "defunct": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": null
@@ -31259,7 +31258,7 @@
           "organized_by": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "FIA"
@@ -31267,7 +31266,7 @@
           "vehicle_type": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "open-wheel-cars",
@@ -31284,7 +31283,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -31630,7 +31629,7 @@
           "round": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 8
@@ -31638,7 +31637,7 @@
           "date_from": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -31647,7 +31646,7 @@
           "date_to": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -32220,7 +32219,7 @@
           "start_date": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -32229,7 +32228,7 @@
           "start_time": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 time",
@@ -32238,7 +32237,7 @@
           "duration": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
@@ -32247,7 +32246,7 @@
           "distance": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 58
@@ -32255,7 +32254,7 @@
           "distance_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "laps",
@@ -32639,7 +32638,7 @@
           "race_number": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "44"
@@ -32652,7 +32651,7 @@
           "team_name": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Mercedes"
@@ -32660,7 +32659,7 @@
           "race_time": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
@@ -32669,7 +32668,7 @@
           "laps": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 51
@@ -32677,7 +32676,7 @@
           "status": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "finished",
@@ -32694,7 +32693,7 @@
           "points": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 25
@@ -33014,7 +33013,7 @@
           "date": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -33423,7 +33422,7 @@
           "release_year": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2017
@@ -33431,7 +33430,7 @@
           "developer": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Turn 10 Studios"
@@ -33439,7 +33438,7 @@
           "publisher": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Microsoft Studios"
@@ -33911,7 +33910,7 @@
           "release_year": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2020
@@ -33919,7 +33918,7 @@
           "manufacturer": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Sony"
@@ -34260,7 +34259,7 @@
           "product_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "DHX60"
@@ -34268,7 +34267,7 @@
           "release_year": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2016
@@ -34276,7 +34275,7 @@
           "scale": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "1:64",
@@ -34293,7 +34292,7 @@
           "series": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "BMW"
@@ -34637,7 +34636,7 @@
           "founded": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 1968
@@ -34645,7 +34644,7 @@
           "defunct": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": null
@@ -34653,7 +34652,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -34996,7 +34995,7 @@
           "founded": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "",
             "example": 1993
@@ -35004,7 +35003,7 @@
           "defunct": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "",
             "example": null
@@ -35012,7 +35011,7 @@
           "focus": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "new-cars",
@@ -35032,7 +35031,7 @@
           "publication_frequency": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "monthly",
@@ -35053,7 +35052,7 @@
           "single_copy_price": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 5.99
@@ -35061,7 +35060,7 @@
           "single_copy_price_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso4217",
             "description": "3-letter ISO 4217 currency code",
@@ -35070,7 +35069,7 @@
           "publication_format": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "print",
@@ -35085,7 +35084,7 @@
           "circulation": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "",
             "example": 150884
@@ -35093,7 +35092,7 @@
           "circulation_year": {
             "type": [
               "integer",
-              null
+              "null"
             ],
             "description": "",
             "example": 2013
@@ -35101,7 +35100,7 @@
           "publisher": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Immediate Media Company"
@@ -35109,7 +35108,7 @@
           "issn": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3297",
             "description": "ISO 3297 ISSN number",
@@ -35118,7 +35117,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -35470,7 +35469,7 @@
           "consecutive_number": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 402
@@ -35478,7 +35477,7 @@
           "issue_number": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 12
@@ -35486,7 +35485,7 @@
           "issue_year": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2025
@@ -35494,7 +35493,7 @@
           "release_date": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -35503,7 +35502,7 @@
           "single_copy_price": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 5.99
@@ -35511,7 +35510,7 @@
           "single_copy_price_unit": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso4217",
             "description": "3-letter ISO 4217 currency code",
@@ -35520,7 +35519,7 @@
           "pages": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 156
@@ -36481,7 +36480,7 @@
           "aired_from_year": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2002
@@ -36489,7 +36488,7 @@
           "aired_until_year": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2022
@@ -36497,7 +36496,7 @@
           "channel": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "BBC Two"
@@ -36505,7 +36504,7 @@
           "total_seasons": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 33
@@ -36513,7 +36512,7 @@
           "total_episodes": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 240
@@ -36521,7 +36520,7 @@
           "regular_episode_running_time": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
@@ -36530,7 +36529,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -36877,7 +36876,7 @@
           "season_number": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2
@@ -36885,7 +36884,7 @@
           "season_episode_number": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2
@@ -36893,7 +36892,7 @@
           "original_air_date": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -36902,7 +36901,7 @@
           "duration": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
@@ -37410,7 +37409,7 @@
           "date_from": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -37419,7 +37418,7 @@
           "date_until": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 date",
@@ -37428,7 +37427,7 @@
           "location": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Frankfurt"
@@ -37436,7 +37435,7 @@
           "target_audience": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "international",
@@ -37451,7 +37450,7 @@
           "focus": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "new-cars",
@@ -37465,7 +37464,7 @@
           "country_code": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
@@ -37811,7 +37810,7 @@
           "author": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Tim Burton"
@@ -37819,7 +37818,7 @@
           "publisher": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "example": "Blink Publishing"
@@ -37827,7 +37826,7 @@
           "year_of_publication": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 2016
@@ -37835,7 +37834,7 @@
           "isbn": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso2108",
             "description": "",
@@ -37844,7 +37843,7 @@
           "pages": {
             "type": [
               "number",
-              null
+              "null"
             ],
             "description": "",
             "example": 256
@@ -37852,7 +37851,7 @@
           "language": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso639",
             "description": "ISO 639 two-letter language code",
@@ -38232,7 +38231,7 @@
           "description": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "A short description of the photo or image.",
@@ -38253,7 +38252,7 @@
           "tags": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "A comma-separated list of keywords which describe the picture.",
@@ -38276,7 +38275,7 @@
           "image_url_xxl": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "The URL of the image in XXL size. Optional.",
@@ -38286,7 +38285,7 @@
           "image_url_xl": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "The URL of the image in XL size. Optional.",
@@ -38296,7 +38295,7 @@
           "image_url_l": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "The URL of the image in L size. Optional.",
@@ -38306,7 +38305,7 @@
           "image_url_m": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "The URL of the image in M size. Optional.",
@@ -38316,7 +38315,7 @@
           "image_url_s": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "The URL of the image in S size. Optional.",
@@ -38326,7 +38325,7 @@
           "image_url_xs": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "readOnly": true,
             "description": "The URL of the image in XS size. Optional.",
@@ -38591,7 +38590,7 @@
           "description": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "readOnly": true,
@@ -38612,7 +38611,7 @@
           "tags": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "readOnly": true,
@@ -38627,7 +38626,7 @@
           "duration": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "format": "iso8601",
             "description": "ISO 8601 duration",
@@ -38637,7 +38636,7 @@
           "thumbnail_url_l": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "readOnly": true,
@@ -38646,7 +38645,7 @@
           "thumbnail_url_m": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "readOnly": true,
@@ -38655,7 +38654,7 @@
           "thumbnail_url_s": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "readOnly": true,
@@ -38664,7 +38663,7 @@
           "thumbnail_url_xs": {
             "type": [
               "string",
-              null
+              "null"
             ],
             "description": "",
             "readOnly": true,
