@@ -23,10 +23,10 @@ export const VideoNodeSpecification: NodeSpecification = {
         {
             name: 'title',
             datatype: 'string',
-            mandatory: false,
+            mandatory: true,
             example: 'P1 vs F40',
             scope: 'system',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'description',
@@ -39,18 +39,18 @@ export const VideoNodeSpecification: NodeSpecification = {
         {
             name: 'creator',
             datatype: 'string',
-            mandatory: false,
+            mandatory: true,
             example: 'Lovecars',
             scope: 'system',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'license',
             datatype: 'string',
-            mandatory: false,
+            mandatory: true,
             example: 'youtube',
             scope: 'system',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'tags',
@@ -63,10 +63,10 @@ export const VideoNodeSpecification: NodeSpecification = {
         {
             name: 'source',
             datatype: 'string',
-            mandatory: false,
+            mandatory: true,
             example: 'https://www.youtube.com/watch?v=NqsBncRslsg',
             scope: 'system',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'duration',
