@@ -113,6 +113,7 @@
         }
       },
       "post": {
+        "operationId": "createCompany",
         "tags": [
           "Companies"
         ],
@@ -1010,6 +1011,7 @@
         }
       },
       "post": {
+        "operationId": "createBrand",
         "tags": [
           "Brands"
         ],
@@ -2028,6 +2030,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModel",
         "tags": [
           "Car Models"
         ],
@@ -3596,6 +3599,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariant",
         "tags": [
           "Car Model Variants"
         ],
@@ -5783,6 +5787,7 @@
         }
       },
       "post": {
+        "operationId": "createPrice",
         "tags": [
           "Prices"
         ],
@@ -6425,6 +6430,7 @@
         }
       },
       "post": {
+        "operationId": "createRaceTrack",
         "tags": [
           "Race Tracks"
         ],
@@ -7467,6 +7473,7 @@
         }
       },
       "post": {
+        "operationId": "createTrackLayout",
         "tags": [
           "Track Layouts"
         ],
@@ -8759,6 +8766,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingSeries",
         "tags": [
           "Racing Series"
         ],
@@ -9656,6 +9664,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingEvent",
         "tags": [
           "Racing Events"
         ],
@@ -11347,6 +11356,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingSession",
         "tags": [
           "Racing Sessions"
         ],
@@ -12373,6 +12383,7 @@
         }
       },
       "post": {
+        "operationId": "createSessionResult",
         "tags": [
           "Session Results"
         ],
@@ -13263,6 +13274,7 @@
         }
       },
       "post": {
+        "operationId": "createLapTime",
         "tags": [
           "Lap Times"
         ],
@@ -14547,6 +14559,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingGame",
         "tags": [
           "Racing Games"
         ],
@@ -15702,6 +15715,7 @@
         }
       },
       "post": {
+        "operationId": "createGamingPlatform",
         "tags": [
           "Gaming Platforms"
         ],
@@ -16599,6 +16613,7 @@
         }
       },
       "post": {
+        "operationId": "createModelCar",
         "tags": [
           "Model Cars"
         ],
@@ -17625,6 +17640,7 @@
         }
       },
       "post": {
+        "operationId": "createModelCarBrand",
         "tags": [
           "Model Car Brands"
         ],
@@ -18522,6 +18538,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazine",
         "tags": [
           "Magazines"
         ],
@@ -19419,6 +19436,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssue",
         "tags": [
           "Magazine Issues"
         ],
@@ -21247,6 +21265,7 @@
         }
       },
       "post": {
+        "operationId": "createRating",
         "tags": [
           "Ratings"
         ],
@@ -22010,6 +22029,7 @@
         }
       },
       "post": {
+        "operationId": "createProgramme",
         "tags": [
           "Programmes"
         ],
@@ -22907,6 +22927,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeEpisode",
         "tags": [
           "Programme Episodes"
         ],
@@ -24332,6 +24353,7 @@
         }
       },
       "post": {
+        "operationId": "createMotorShow",
         "tags": [
           "Motor Shows"
         ],
@@ -25237,6 +25259,7 @@
         }
       },
       "post": {
+        "operationId": "createBook",
         "tags": [
           "Books"
         ],
@@ -26158,6 +26181,7 @@
         }
       },
       "post": {
+        "operationId": "createImage",
         "tags": [
           "Images"
         ],
@@ -26656,6 +26680,7 @@
         }
       },
       "post": {
+        "operationId": "createVideo",
         "tags": [
           "Videos"
         ],
