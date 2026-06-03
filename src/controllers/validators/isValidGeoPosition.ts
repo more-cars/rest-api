@@ -20,7 +20,7 @@ export function isValidGeoPosition(value: unknown) {
 
 export function isValid(value: string): boolean {
     const dmsRegex =
-        /^([0-8]?\d|90)°([0-5]?\d)’([0-5]?\d)”([NS])\s+([0-1]?[0-7]?\d|180)°([0-5]?\d)’([0-5]?\d)”([EW])$/
+        /^([0-8]?\d|90)°([0-5]?\d)′([0-5]?\d)″([NS])\s+([0-1]?[0-7]?\d|180)°([0-5]?\d)′([0-5]?\d)″([EW])$/
 
     const match = value.match(dmsRegex)
 

@@ -48,7 +48,7 @@ export const RaceTrackNodeSpecification: NodeSpecification = {
             name: 'geo_position',
             datatype: 'string',
             mandatory: false,
-            example: '51°32’0”N 13°55’10”E',
+            example: '51°32′0″N 13°55′10″E',
             scope: 'user',
             validation: ['geoPosition'],
         },

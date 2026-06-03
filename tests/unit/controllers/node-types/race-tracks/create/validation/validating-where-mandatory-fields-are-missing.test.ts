@@ -9,7 +9,7 @@ test('validating a request where mandatory fields are missing', async () => {
         closed: null,
         type: "permanent-race-track",
         location: "Klettwitz",
-        geo_position: "51°32’0”N 13°55’10”E",
+        geo_position: "51°32′0″N 13°55′10″E",
         country_code: "DE",
     }
 
