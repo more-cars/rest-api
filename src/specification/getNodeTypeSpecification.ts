@@ -64,5 +64,6 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         throw new NodeTypeMappingNotFoundError(nodeType)
     }
 
-    return nodeSpecification
+    // IMPORTANT: We need to return a copy here, not the reference to the original spec.
+    return {...nodeSpecification}
 }
