@@ -772,17 +772,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Company` and `Video` successfully created.",
@@ -2447,15 +2448,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-id",
-            "description": "ID of the other `Car Model`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -3390,17 +3382,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Car Model` and `Video` successfully created.",
@@ -5606,17 +5599,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Car Model Variant` and `Video` successfully created.",
@@ -6253,17 +6247,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-image‹ between `Price` and `Image` successfully created.",
@@ -7159,17 +7154,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-prime-image‹ between `Race Track` and `Image` successfully created.",
@@ -7296,17 +7292,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Race Track` and `Video` successfully created.",
@@ -7433,17 +7430,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-main-video‹ between `Race Track` and `Video` successfully created.",
@@ -8601,17 +8599,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Track Layout` and `Video` successfully created.",
@@ -8738,17 +8737,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-main-video‹ between `Track Layout` and `Video` successfully created.",
@@ -9513,17 +9513,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Racing Series` and `Video` successfully created.",
@@ -11225,17 +11226,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Racing Event` and `Video` successfully created.",
@@ -12262,17 +12264,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Racing Session` and `Video` successfully created.",
@@ -14463,17 +14466,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Lap Time` and `Video` successfully created.",
@@ -15631,17 +15635,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Racing Game` and `Video` successfully created.",
@@ -16537,17 +16542,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Gaming Platform` and `Video` successfully created.",
@@ -17574,17 +17580,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Model Car` and `Video` successfully created.",
@@ -18480,17 +18487,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Model Car Brand` and `Video` successfully created.",
@@ -19386,17 +19394,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Magazine` and `Video` successfully created.",
@@ -21229,17 +21238,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Magazine Issue` and `Video` successfully created.",
@@ -21366,17 +21376,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-main-video‹ between `Magazine Issue` and `Video` successfully created.",
@@ -22913,17 +22924,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Programme` and `Video` successfully created.",
@@ -25263,17 +25275,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Motor Show` and `Video` successfully created.",
@@ -25400,17 +25413,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-main-video‹ between `Motor Show` and `Video` successfully created.",
@@ -25913,17 +25927,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-image‹ between `Book` and `Image` successfully created.",
@@ -26050,17 +26065,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-prime-image‹ between `Book` and `Image` successfully created.",
@@ -26187,17 +26203,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-video‹ between `Book` and `Video` successfully created.",
@@ -26324,17 +26341,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "video-id",
-            "description": "ID of the `Video`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›has-main-video‹ between `Book` and `Video` successfully created.",
@@ -26677,17 +26695,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-node-id",
-            "description": "ID of the partner node",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Relationship ›belongs-to-node‹ between `Image` and partner node successfully created.",
@@ -26739,17 +26758,18 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "in": "path",
-            "name": "partner-node-id",
-            "description": "ID of the partner node",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Deleting ›belongs-to-node‹ relationship between `Image` and partner node was successful."
