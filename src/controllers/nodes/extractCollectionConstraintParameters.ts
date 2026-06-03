@@ -43,16 +43,18 @@ export function extractCollectionConstraintParameters(req: express.Request, node
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
 
-    const propertyDataType = nodeProperties.properties.find(prop => prop.name === filterByProperty)
-    const safeFilterValue = !propertyDataType ? undefined :
-        propertyDataType.datatype === 'number' ? Number(filterValue) :
-            propertyDataType.datatype === 'boolean' ? Boolean(filterValue) :
+    const filterByPropertyDataType = nodeProperties.properties.find(prop => prop.name === filterByProperty)
+    const safeFilterValue = !filterByPropertyDataType ? undefined :
+        filterByPropertyDataType.datatype === 'number' ? Number(filterValue) :
+            filterByPropertyDataType.datatype === 'boolean' ? Boolean(filterValue) :
                 filterValue
+
+    const sortByPropertyDataType = nodeProperties.properties.find(prop => prop.name === sortByProperty)
 
     return {
         page,
         sortByProperty,
-        sortByPropertyValuesDatatype: propertyDataType ? propertyDataType.datatype : undefined,
+        sortByPropertyValuesDatatype: sortByPropertyDataType ? sortByPropertyDataType.datatype : undefined,
         sortDirection,
         filterByProperty,
         filterValue: safeFilterValue,

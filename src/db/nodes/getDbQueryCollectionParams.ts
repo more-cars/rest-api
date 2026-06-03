@@ -10,6 +10,10 @@ export function getDbQueryCollectionParams(constraints: NodeCollectionConstraint
         params.sortByProperty = getDbProperty(constraints.sortByProperty)
     }
 
+    if (constraints.sortByPropertyValuesDatatype) {
+        params.sortByPropertyValuesDatatype = constraints.sortByPropertyValuesDatatype
+    }
+
     if (constraints.sortDirection) {
         params.sortDirection = getDbProperty(constraints.sortDirection.toUpperCase())
     }
