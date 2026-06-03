@@ -27561,39 +27561,6 @@
           }
         }
       },
-      "CompanyHasBrandResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/companies/12345678/has-brand"
-              },
-              "related": {
-                "type": "string",
-                "example": "/brands/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "brands"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Brand"
-              }
-            }
-          }
-        }
-      },
       "CompanyHasBrandCollectionResponse": {
         "type": "object",
         "properties": {
@@ -27621,39 +27588,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/Brand"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CompanyHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/companies/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -28004,39 +27938,6 @@
           }
         }
       },
-      "BrandHasCarModelResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/brands/12345678/has-car-model"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-models/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-models"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModel"
-              }
-            }
-          }
-        }
-      },
       "BrandHasCarModelCollectionResponse": {
         "type": "object",
         "properties": {
@@ -28064,39 +27965,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/CarModel"
                 }
-              }
-            }
-          }
-        }
-      },
-      "BrandHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/brands/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -28162,39 +28030,6 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/Image"
-              }
-            }
-          }
-        }
-      },
-      "BrandHasVideoResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/brands/12345678/has-video"
-              },
-              "related": {
-                "type": "string",
-                "example": "/videos/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "videos"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Video"
               }
             }
           }
@@ -28500,39 +28335,6 @@
           }
         }
       },
-      "CarModelHasVariantResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-models/12345678/has-variant"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-model-variants/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-model-variants"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModelVariant"
-              }
-            }
-          }
-        }
-      },
       "CarModelHasVariantCollectionResponse": {
         "type": "object",
         "properties": {
@@ -28560,39 +28362,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/CarModelVariant"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelCoveredByMagazineIssueResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-models/12345678/covered-by-magazine-issue"
-              },
-              "related": {
-                "type": "string",
-                "example": "/magazine-issues/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "magazine-issues"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/MagazineIssue"
               }
             }
           }
@@ -28630,39 +28399,6 @@
           }
         }
       },
-      "CarModelCoveredByProgrammeEpisodeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-models/12345678/covered-by-programme-episode"
-              },
-              "related": {
-                "type": "string",
-                "example": "/programme-episodes/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "programme-episodes"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/ProgrammeEpisode"
-              }
-            }
-          }
-        }
-      },
       "CarModelCoveredByProgrammeEpisodeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -28690,39 +28426,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/ProgrammeEpisode"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-models/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -29625,39 +29328,6 @@
           }
         }
       },
-      "CarModelVariantAchievedSessionResultResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/achieved-session-result"
-              },
-              "related": {
-                "type": "string",
-                "example": "/session-results/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "session-results"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/SessionResult"
-              }
-            }
-          }
-        }
-      },
       "CarModelVariantAchievedSessionResultCollectionResponse": {
         "type": "object",
         "properties": {
@@ -29685,39 +29355,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/SessionResult"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelVariantAchievedLapTimeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/achieved-lap-time"
-              },
-              "related": {
-                "type": "string",
-                "example": "/lap-times/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "lap-times"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/LapTime"
               }
             }
           }
@@ -29755,39 +29392,6 @@
           }
         }
       },
-      "CarModelVariantIsPresentedInMagazineIssueResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/is-presented-in-magazine-issue"
-              },
-              "related": {
-                "type": "string",
-                "example": "/magazine-issues/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "magazine-issues"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/MagazineIssue"
-              }
-            }
-          }
-        }
-      },
       "CarModelVariantIsPresentedInMagazineIssueCollectionResponse": {
         "type": "object",
         "properties": {
@@ -29815,39 +29419,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/MagazineIssue"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelVariantReviewedByMagazineIssueWithRatingResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/reviewed-by-magazine-issue-with-rating"
-              },
-              "related": {
-                "type": "string",
-                "example": "/ratings/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "ratings"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Rating"
               }
             }
           }
@@ -29885,39 +29456,6 @@
           }
         }
       },
-      "CarModelVariantFeaturedInProgrammeEpisodeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/featured-in-programme-episode"
-              },
-              "related": {
-                "type": "string",
-                "example": "/programme-episodes/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "programme-episodes"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/ProgrammeEpisode"
-              }
-            }
-          }
-        }
-      },
       "CarModelVariantFeaturedInProgrammeEpisodeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -29945,39 +29483,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/ProgrammeEpisode"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelVariantIsFeaturedInRacingGameResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/is-featured-in-racing-game"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-games/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-games"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingGame"
               }
             }
           }
@@ -30015,39 +29520,6 @@
           }
         }
       },
-      "CarModelVariantHasScaleModelResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/has-scale-model"
-              },
-              "related": {
-                "type": "string",
-                "example": "/model-cars/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "model-cars"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/ModelCar"
-              }
-            }
-          }
-        }
-      },
       "CarModelVariantHasScaleModelCollectionResponse": {
         "type": "object",
         "properties": {
@@ -30075,39 +29547,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/ModelCar"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelVariantPresentedAtMotorShowResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/presented-at-motor-show"
-              },
-              "related": {
-                "type": "string",
-                "example": "/motor-shows/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "motor-shows"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/MotorShow"
               }
             }
           }
@@ -30145,39 +29584,6 @@
           }
         }
       },
-      "CarModelVariantHasPriceResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/has-price"
-              },
-              "related": {
-                "type": "string",
-                "example": "/prices/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "prices"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Price"
-              }
-            }
-          }
-        }
-      },
       "CarModelVariantHasPriceCollectionResponse": {
         "type": "object",
         "properties": {
@@ -30210,39 +29616,6 @@
           }
         }
       },
-      "CarModelVariantIsCoveredByBookResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/is-covered-by-book"
-              },
-              "related": {
-                "type": "string",
-                "example": "/books/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "books"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Book"
-              }
-            }
-          }
-        }
-      },
       "CarModelVariantIsCoveredByBookCollectionResponse": {
         "type": "object",
         "properties": {
@@ -30270,39 +29643,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/Book"
                 }
-              }
-            }
-          }
-        }
-      },
-      "CarModelVariantHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/car-model-variants/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -30881,39 +30221,6 @@
           }
         }
       },
-      "RaceTrackHasLayoutResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/race-tracks/12345678/has-layout"
-              },
-              "related": {
-                "type": "string",
-                "example": "/track-layouts/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "track-layouts"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/TrackLayout"
-              }
-            }
-          }
-        }
-      },
       "RaceTrackHasLayoutCollectionResponse": {
         "type": "object",
         "properties": {
@@ -30946,39 +30253,6 @@
           }
         }
       },
-      "RaceTrackHostedRacingEventResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/race-tracks/12345678/hosted-racing-event"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-events/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-events"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingEvent"
-              }
-            }
-          }
-        }
-      },
       "RaceTrackHostedRacingEventCollectionResponse": {
         "type": "object",
         "properties": {
@@ -31006,39 +30280,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/RacingEvent"
                 }
-              }
-            }
-          }
-        }
-      },
-      "RaceTrackHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/race-tracks/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -31435,39 +30676,6 @@
           }
         }
       },
-      "TrackLayoutWasUsedByRacingEventResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/track-layouts/12345678/was-used-by-racing-event"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-events/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-events"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingEvent"
-              }
-            }
-          }
-        }
-      },
       "TrackLayoutWasUsedByRacingEventCollectionResponse": {
         "type": "object",
         "properties": {
@@ -31495,39 +30703,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/RacingEvent"
                 }
-              }
-            }
-          }
-        }
-      },
-      "TrackLayoutHasLapTimeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/track-layouts/12345678/has-lap-time"
-              },
-              "related": {
-                "type": "string",
-                "example": "/lap-times/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "lap-times"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/LapTime"
               }
             }
           }
@@ -31565,39 +30740,6 @@
           }
         }
       },
-      "TrackLayoutIsFeaturedInRacingGameResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/track-layouts/12345678/is-featured-in-racing-game"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-games/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-games"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingGame"
-              }
-            }
-          }
-        }
-      },
       "TrackLayoutIsFeaturedInRacingGameCollectionResponse": {
         "type": "object",
         "properties": {
@@ -31625,39 +30767,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/RacingGame"
                 }
-              }
-            }
-          }
-        }
-      },
-      "TrackLayoutHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/track-layouts/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -31986,39 +31095,6 @@
           }
         }
       },
-      "RacingSeriesHasRacingEventResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-series/12345678/has-racing-event"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-events/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-events"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingEvent"
-              }
-            }
-          }
-        }
-      },
       "RacingSeriesHasRacingEventCollectionResponse": {
         "type": "object",
         "properties": {
@@ -32046,39 +31122,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/RacingEvent"
                 }
-              }
-            }
-          }
-        }
-      },
-      "RacingSeriesHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-series/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -32526,39 +31569,6 @@
           }
         }
       },
-      "RacingEventHasRacingSessionResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-events/12345678/has-racing-session"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-sessions/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-sessions"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingSession"
-              }
-            }
-          }
-        }
-      },
       "RacingEventHasRacingSessionCollectionResponse": {
         "type": "object",
         "properties": {
@@ -32591,39 +31601,6 @@
           }
         }
       },
-      "RacingEventCoveredByMagazineIssueResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-events/12345678/covered-by-magazine-issue"
-              },
-              "related": {
-                "type": "string",
-                "example": "/magazine-issues/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "magazine-issues"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/MagazineIssue"
-              }
-            }
-          }
-        }
-      },
       "RacingEventCoveredByMagazineIssueCollectionResponse": {
         "type": "object",
         "properties": {
@@ -32651,39 +31628,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/MagazineIssue"
                 }
-              }
-            }
-          }
-        }
-      },
-      "RacingEventHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-events/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -33028,39 +31972,6 @@
           }
         }
       },
-      "RacingSessionHasSessionResultResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-sessions/12345678/has-session-result"
-              },
-              "related": {
-                "type": "string",
-                "example": "/session-results/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "session-results"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/SessionResult"
-              }
-            }
-          }
-        }
-      },
       "RacingSessionHasSessionResultCollectionResponse": {
         "type": "object",
         "properties": {
@@ -33088,39 +31999,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/SessionResult"
                 }
-              }
-            }
-          }
-        }
-      },
-      "RacingSessionHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-sessions/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -33484,39 +32362,6 @@
           }
         }
       },
-      "SessionResultHasLapTimeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/session-results/12345678/has-lap-time"
-              },
-              "related": {
-                "type": "string",
-                "example": "/lap-times/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "lap-times"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/LapTime"
-              }
-            }
-          }
-        }
-      },
       "SessionResultHasLapTimeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -33577,39 +32422,6 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/CarModelVariant"
-              }
-            }
-          }
-        }
-      },
-      "SessionResultHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/session-results/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -33908,39 +32720,6 @@
           }
         }
       },
-      "LapTimeHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/lap-times/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
-              }
-            }
-          }
-        }
-      },
       "LapTimeHasImageCollectionResponse": {
         "type": "object",
         "properties": {
@@ -34212,39 +32991,6 @@
           }
         }
       },
-      "RacingGameFeaturesCarModelVariantResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-games/12345678/features-car-model-variant"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-model-variants/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-model-variants"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModelVariant"
-              }
-            }
-          }
-        }
-      },
       "RacingGameFeaturesCarModelVariantCollectionResponse": {
         "type": "object",
         "properties": {
@@ -34272,39 +33018,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/CarModelVariant"
                 }
-              }
-            }
-          }
-        }
-      },
-      "RacingGameFeaturesTrackLayoutResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-games/12345678/features-track-layout"
-              },
-              "related": {
-                "type": "string",
-                "example": "/track-layouts/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "track-layouts"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/TrackLayout"
               }
             }
           }
@@ -34342,39 +33055,6 @@
           }
         }
       },
-      "RacingGameReleasedOnGamingPlatformResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-games/12345678/released-on-gaming-platform"
-              },
-              "related": {
-                "type": "string",
-                "example": "/gaming-platforms/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "gaming-platforms"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/GamingPlatform"
-              }
-            }
-          }
-        }
-      },
       "RacingGameReleasedOnGamingPlatformCollectionResponse": {
         "type": "object",
         "properties": {
@@ -34402,39 +33082,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/GamingPlatform"
                 }
-              }
-            }
-          }
-        }
-      },
-      "RacingGameHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/racing-games/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -34700,39 +33347,6 @@
           }
         }
       },
-      "GamingPlatformFeaturesRacingGameResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/gaming-platforms/12345678/features-racing-game"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-games/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-games"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingGame"
-              }
-            }
-          }
-        }
-      },
       "GamingPlatformFeaturesRacingGameCollectionResponse": {
         "type": "object",
         "properties": {
@@ -34760,39 +33374,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/RacingGame"
                 }
-              }
-            }
-          }
-        }
-      },
-      "GamingPlatformHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/gaming-platforms/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -35156,39 +33737,6 @@
           }
         }
       },
-      "ModelCarHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/model-cars/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
-              }
-            }
-          }
-        }
-      },
       "ModelCarHasImageCollectionResponse": {
         "type": "object",
         "properties": {
@@ -35463,39 +34011,6 @@
           }
         }
       },
-      "ModelCarBrandCreatedModelCarResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/model-car-brands/12345678/created-model-car"
-              },
-              "related": {
-                "type": "string",
-                "example": "/model-cars/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "model-cars"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/ModelCar"
-              }
-            }
-          }
-        }
-      },
       "ModelCarBrandCreatedModelCarCollectionResponse": {
         "type": "object",
         "properties": {
@@ -35523,39 +34038,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/ModelCar"
                 }
-              }
-            }
-          }
-        }
-      },
-      "ModelCarBrandHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/model-car-brands/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -35976,39 +34458,6 @@
           }
         }
       },
-      "MagazineHasIssueResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazines/12345678/has-issue"
-              },
-              "related": {
-                "type": "string",
-                "example": "/magazine-issues/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "magazine-issues"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/MagazineIssue"
-              }
-            }
-          }
-        }
-      },
       "MagazineHasIssueCollectionResponse": {
         "type": "object",
         "properties": {
@@ -36036,39 +34485,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/MagazineIssue"
                 }
-              }
-            }
-          }
-        }
-      },
-      "MagazineHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazines/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -36504,39 +34920,6 @@
           }
         }
       },
-      "MagazineIssueCoversCarModelResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazine-issues/12345678/covers-car-model"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-models/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-models"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModel"
-              }
-            }
-          }
-        }
-      },
       "MagazineIssueCoversCarModelCollectionResponse": {
         "type": "object",
         "properties": {
@@ -36564,39 +34947,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/CarModel"
                 }
-              }
-            }
-          }
-        }
-      },
-      "MagazineIssuePresentsCarModelVariantResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazine-issues/12345678/presents-car-model-variant"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-model-variants/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-model-variants"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModelVariant"
               }
             }
           }
@@ -36634,39 +34984,6 @@
           }
         }
       },
-      "MagazineIssueReviewedCarModelVariantWithRatingResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazine-issues/12345678/reviewed-car-model-variant-with-rating"
-              },
-              "related": {
-                "type": "string",
-                "example": "/ratings/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "ratings"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Rating"
-              }
-            }
-          }
-        }
-      },
       "MagazineIssueReviewedCarModelVariantWithRatingCollectionResponse": {
         "type": "object",
         "properties": {
@@ -36694,39 +35011,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/Rating"
                 }
-              }
-            }
-          }
-        }
-      },
-      "MagazineIssueCoversRacingEventResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazine-issues/12345678/covers-racing-event"
-              },
-              "related": {
-                "type": "string",
-                "example": "/racing-events/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "racing-events"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/RacingEvent"
               }
             }
           }
@@ -36764,39 +35048,6 @@
           }
         }
       },
-      "MagazineIssueDocumentsLapTimeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazine-issues/12345678/documents-lap-time"
-              },
-              "related": {
-                "type": "string",
-                "example": "/lap-times/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "lap-times"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/LapTime"
-              }
-            }
-          }
-        }
-      },
       "MagazineIssueDocumentsLapTimeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -36824,39 +35075,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/LapTime"
                 }
-              }
-            }
-          }
-        }
-      },
-      "MagazineIssueHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/magazine-issues/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -37187,39 +35405,6 @@
           }
         }
       },
-      "RatingHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/ratings/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
-              }
-            }
-          }
-        }
-      },
       "RatingHasImageCollectionResponse": {
         "type": "object",
         "properties": {
@@ -37444,39 +35629,6 @@
           }
         }
       },
-      "ProgrammeHasEpisodeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/programmes/12345678/has-episode"
-              },
-              "related": {
-                "type": "string",
-                "example": "/programme-episodes/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "programme-episodes"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/ProgrammeEpisode"
-              }
-            }
-          }
-        }
-      },
       "ProgrammeHasEpisodeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -37504,39 +35656,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/ProgrammeEpisode"
                 }
-              }
-            }
-          }
-        }
-      },
-      "ProgrammeHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/programmes/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -37931,39 +36050,6 @@
           }
         }
       },
-      "ProgrammeEpisodeCoversCarModelResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/programme-episodes/12345678/covers-car-model"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-models/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-models"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModel"
-              }
-            }
-          }
-        }
-      },
       "ProgrammeEpisodeCoversCarModelCollectionResponse": {
         "type": "object",
         "properties": {
@@ -37996,39 +36082,6 @@
           }
         }
       },
-      "ProgrammeEpisodeFeaturesCarModelVariantResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/programme-episodes/12345678/features-car-model-variant"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-model-variants/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-model-variants"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModelVariant"
-              }
-            }
-          }
-        }
-      },
       "ProgrammeEpisodeFeaturesCarModelVariantCollectionResponse": {
         "type": "object",
         "properties": {
@@ -38056,39 +36109,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/CarModelVariant"
                 }
-              }
-            }
-          }
-        }
-      },
-      "ProgrammeEpisodeHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/programme-episodes/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -38154,39 +36174,6 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/Image"
-              }
-            }
-          }
-        }
-      },
-      "ProgrammeEpisodeHasVideoResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/programme-episodes/12345678/has-video"
-              },
-              "related": {
-                "type": "string",
-                "example": "/videos/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "videos"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Video"
               }
             }
           }
@@ -38419,39 +36406,6 @@
           }
         }
       },
-      "MotorShowPresentsCarModelVariantResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/motor-shows/12345678/presents-car-model-variant"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-model-variants/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-model-variants"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModelVariant"
-              }
-            }
-          }
-        }
-      },
       "MotorShowPresentsCarModelVariantCollectionResponse": {
         "type": "object",
         "properties": {
@@ -38479,39 +36433,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/CarModelVariant"
                 }
-              }
-            }
-          }
-        }
-      },
-      "MotorShowHasImageResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/motor-shows/12345678/has-image"
-              },
-              "related": {
-                "type": "string",
-                "example": "/images/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "images"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Image"
               }
             }
           }
@@ -38827,39 +36748,6 @@
           },
           "meta": {
             "$ref": "#/components/schemas/MetaData"
-          }
-        }
-      },
-      "BookCoversCarModelVariantResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/books/12345678/covers-car-model-variant"
-              },
-              "related": {
-                "type": "string",
-                "example": "/car-model-variants/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "car-model-variants"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/CarModelVariant"
-              }
-            }
           }
         }
       },
@@ -39411,39 +37299,6 @@
           }
         }
       },
-      "ImageIsPrimeImageOfNodeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/images/12345678/is-prime-image-of-node"
-              },
-              "related": {
-                "type": "string",
-                "example": "/nodes/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "companies"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Node"
-              }
-            }
-          }
-        }
-      },
       "ImageIsPrimeImageOfNodeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -39710,39 +37565,6 @@
           }
         }
       },
-      "VideoBelongsToNodeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/videos/12345678/belongs-to-node"
-              },
-              "related": {
-                "type": "string",
-                "example": "/nodes/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "companies"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Node"
-              }
-            }
-          }
-        }
-      },
       "VideoBelongsToNodeCollectionResponse": {
         "type": "object",
         "properties": {
@@ -39770,39 +37592,6 @@
                 "attributes": {
                   "$ref": "#/components/schemas/Node"
                 }
-              }
-            }
-          }
-        }
-      },
-      "VideoIsMainVideoOfNodeResponse": {
-        "type": "object",
-        "properties": {
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "example": "/videos/12345678/is-main-video-of-node"
-              },
-              "related": {
-                "type": "string",
-                "example": "/nodes/87654321"
-              }
-            }
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "companies"
-              },
-              "id": {
-                "$ref": "#/components/schemas/NodeId"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/Node"
               }
             }
           }
