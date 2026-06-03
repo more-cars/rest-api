@@ -385,6 +385,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCompanyHasBrandRel",
         "tags": [
           "Companies"
         ],
@@ -515,6 +516,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCompanyHasImageRel",
         "tags": [
           "Companies"
         ],
@@ -1413,6 +1415,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteBrandHasCarModelRel",
         "tags": [
           "Brands"
         ],
@@ -1543,6 +1546,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteBrandHasImageRel",
         "tags": [
           "Brands"
         ],
@@ -1802,6 +1806,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteBrandHasVideoRel",
         "tags": [
           "Brands"
         ],
@@ -2719,6 +2724,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelHasVariantRel",
         "tags": [
           "Car Models"
         ],
@@ -2849,6 +2855,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelCoveredByMagazineIssueRel",
         "tags": [
           "Car Models"
         ],
@@ -2979,6 +2986,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelCoveredByProgrammeEpisodeRel",
         "tags": [
           "Car Models"
         ],
@@ -3109,6 +3117,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelHasImageRel",
         "tags": [
           "Car Models"
         ],
@@ -4007,6 +4016,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantAchievedSessionResultRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4137,6 +4147,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantAchievedLapTimeRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4267,6 +4278,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantIsPresentedInMagazineIssueRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4397,6 +4409,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantReviewedByMagazineIssueWithRatingRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4527,6 +4540,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantFeaturedInProgrammeEpisodeRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4657,6 +4671,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantIsFeaturedInRacingGameRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4787,6 +4802,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantHasScaleModelRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4917,6 +4933,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantPresentedAtMotorShowRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -5047,6 +5064,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantHasPriceRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -5177,6 +5195,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantIsCoveredByBookRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -5307,6 +5326,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariantHasImageRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -6718,6 +6738,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRaceTrackHasLayoutRel",
         "tags": [
           "Race Tracks"
         ],
@@ -6848,6 +6869,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRaceTrackHostedRacingEventRel",
         "tags": [
           "Race Tracks"
         ],
@@ -6978,6 +7000,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRaceTrackHasImageRel",
         "tags": [
           "Race Tracks"
         ],
@@ -7890,6 +7913,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteTrackLayoutWasUsedByRacingEventRel",
         "tags": [
           "Track Layouts"
         ],
@@ -8020,6 +8044,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteTrackLayoutHasLapTimeRel",
         "tags": [
           "Track Layouts"
         ],
@@ -8150,6 +8175,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteTrackLayoutIsFeaturedInRacingGameRel",
         "tags": [
           "Track Layouts"
         ],
@@ -8280,6 +8306,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteTrackLayoutHasImageRel",
         "tags": [
           "Track Layouts"
         ],
@@ -9056,6 +9083,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingSeriesHasRacingEventRel",
         "tags": [
           "Racing Series"
         ],
@@ -9186,6 +9214,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingSeriesHasImageRel",
         "tags": [
           "Racing Series"
         ],
@@ -10620,6 +10649,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingEventHasRacingSessionRel",
         "tags": [
           "Racing Events"
         ],
@@ -10750,6 +10780,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingEventCoveredByMagazineIssueRel",
         "tags": [
           "Racing Events"
         ],
@@ -10880,6 +10911,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingEventHasImageRel",
         "tags": [
           "Racing Events"
         ],
@@ -11778,6 +11810,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingSessionHasSessionResultRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -11908,6 +11941,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingSessionHasImageRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -12807,6 +12841,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteSessionResultHasLapTimeRel",
         "tags": [
           "Session Results"
         ],
@@ -13066,6 +13101,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteSessionResultHasImageRel",
         "tags": [
           "Session Results"
         ],
@@ -14086,6 +14122,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteLapTimeHasImageRel",
         "tags": [
           "Lap Times"
         ],
@@ -14855,6 +14892,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingGameFeaturesCarModelVariantRel",
         "tags": [
           "Racing Games"
         ],
@@ -14985,6 +15023,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingGameFeaturesTrackLayoutRel",
         "tags": [
           "Racing Games"
         ],
@@ -15115,6 +15154,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingGameReleasedOnGamingPlatformRel",
         "tags": [
           "Racing Games"
         ],
@@ -15245,6 +15285,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingGameHasImageRel",
         "tags": [
           "Racing Games"
         ],
@@ -16014,6 +16055,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteGamingPlatformFeaturesRacingGameRel",
         "tags": [
           "Gaming Platforms"
         ],
@@ -16144,6 +16186,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteGamingPlatformHasImageRel",
         "tags": [
           "Gaming Platforms"
         ],
@@ -17171,6 +17214,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteModelCarHasImageRel",
         "tags": [
           "Model Cars"
         ],
@@ -17940,6 +17984,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteModelCarBrandCreatedModelCarRel",
         "tags": [
           "Model Car Brands"
         ],
@@ -18070,6 +18115,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteModelCarBrandHasImageRel",
         "tags": [
           "Model Car Brands"
         ],
@@ -18839,6 +18885,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineHasIssueRel",
         "tags": [
           "Magazines"
         ],
@@ -18969,6 +19016,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineHasImageRel",
         "tags": [
           "Magazines"
         ],
@@ -20145,6 +20193,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssueCoversCarModelRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20275,6 +20324,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssuePresentsCarModelVariantRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20405,6 +20455,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssueReviewedCarModelVariantWithRatingRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20535,6 +20586,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssueCoversRacingEventRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20665,6 +20717,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssueDocumentsLapTimeRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20795,6 +20848,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssueHasImageRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -21832,6 +21886,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRatingHasImageRel",
         "tags": [
           "Ratings"
         ],
@@ -22336,6 +22391,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeHasEpisodeRel",
         "tags": [
           "Programmes"
         ],
@@ -22466,6 +22522,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeHasImageRel",
         "tags": [
           "Programmes"
         ],
@@ -23641,6 +23698,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeEpisodeCoversCarModelRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -23771,6 +23829,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeEpisodeFeaturesCarModelVariantRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -23901,6 +23960,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeEpisodeHasImageRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -24160,6 +24220,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeEpisodeHasVideoRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -24664,6 +24725,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMotorShowPresentsCarModelVariantRel",
         "tags": [
           "Motor Shows"
         ],
@@ -24794,6 +24856,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMotorShowHasImageRel",
         "tags": [
           "Motor Shows"
         ],
@@ -25568,6 +25631,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteBookCoversCarModelVariantRel",
         "tags": [
           "Books"
         ],
@@ -26944,6 +27008,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteVideoBelongsToNodeRel",
         "tags": [
           "Videos"
         ],
@@ -27074,6 +27139,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteVideoIsMainVideoOfNodeRel",
         "tags": [
           "Videos"
         ],
