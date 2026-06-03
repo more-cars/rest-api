@@ -263,6 +263,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCompany",
         "tags": [
           "Companies"
         ],
@@ -1159,6 +1160,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteBrand",
         "tags": [
           "Brands"
         ],
@@ -2176,6 +2178,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModel",
         "tags": [
           "Car Models"
         ],
@@ -3743,6 +3746,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteCarModelVariant",
         "tags": [
           "Car Model Variants"
         ],
@@ -5932,6 +5936,7 @@
         }
       },
       "delete": {
+        "operationId": "deletePrice",
         "tags": [
           "Prices"
         ],
@@ -6570,6 +6575,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRaceTrack",
         "tags": [
           "Race Tracks"
         ],
@@ -7611,6 +7617,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteTrackLayout",
         "tags": [
           "Track Layouts"
         ],
@@ -8902,6 +8909,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingSeries",
         "tags": [
           "Racing Series"
         ],
@@ -9798,6 +9806,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingEvent",
         "tags": [
           "Racing Events"
         ],
@@ -11488,6 +11497,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingSession",
         "tags": [
           "Racing Sessions"
         ],
@@ -12514,6 +12524,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteSessionResult",
         "tags": [
           "Session Results"
         ],
@@ -13402,6 +13413,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteLapTime",
         "tags": [
           "Lap Times"
         ],
@@ -14685,6 +14697,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRacingGame",
         "tags": [
           "Racing Games"
         ],
@@ -15839,6 +15852,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteGamingPlatform",
         "tags": [
           "Gaming Platforms"
         ],
@@ -16735,6 +16749,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteModelCar",
         "tags": [
           "Model Cars"
         ],
@@ -17760,6 +17775,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteModelCarBrand",
         "tags": [
           "Model Car Brands"
         ],
@@ -18656,6 +18672,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazine",
         "tags": [
           "Magazines"
         ],
@@ -19552,6 +19569,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMagazineIssue",
         "tags": [
           "Magazine Issues"
         ],
@@ -21382,6 +21400,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteRating",
         "tags": [
           "Ratings"
         ],
@@ -22141,6 +22160,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgramme",
         "tags": [
           "Programmes"
         ],
@@ -23037,6 +23057,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteProgrammeEpisode",
         "tags": [
           "Programme Episodes"
         ],
@@ -24461,6 +24482,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteMotorShow",
         "tags": [
           "Motor Shows"
         ],
@@ -25365,6 +25387,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteBook",
         "tags": [
           "Books"
         ],
@@ -26246,6 +26269,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteImage",
         "tags": [
           "Images"
         ],
@@ -26743,6 +26767,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteVideo",
         "tags": [
           "Videos"
         ],
