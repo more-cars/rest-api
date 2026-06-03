@@ -726,9 +726,7 @@
             }
           }
         }
-      }
-    },
-    "/companies/{company-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Companies"
@@ -3321,9 +3319,7 @@
             }
           }
         }
-      }
-    },
-    "/car-models/{car-model-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Car Models"
@@ -5520,9 +5516,7 @@
             }
           }
         }
-      }
-    },
-    "/car-model-variants/{car-model-variant-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Car Model Variants"
@@ -6163,9 +6157,7 @@
             }
           }
         }
-      }
-    },
-    "/prices/{price-id}/has-image/{image-id}": {
+      },
       "delete": {
         "tags": [
           "Prices"
@@ -7064,9 +7056,7 @@
             }
           }
         }
-      }
-    },
-    "/race-tracks/{race-track-id}/has-prime-image/{image-id}": {
+      },
       "delete": {
         "tags": [
           "Race Tracks"
@@ -7201,9 +7191,7 @@
             }
           }
         }
-      }
-    },
-    "/race-tracks/{race-track-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Race Tracks"
@@ -7338,9 +7326,7 @@
             }
           }
         }
-      }
-    },
-    "/race-tracks/{race-track-id}/has-main-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Race Tracks"
@@ -8498,9 +8484,7 @@
             }
           }
         }
-      }
-    },
-    "/track-layouts/{track-layout-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Track Layouts"
@@ -8635,9 +8619,7 @@
             }
           }
         }
-      }
-    },
-    "/track-layouts/{track-layout-id}/has-main-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Track Layouts"
@@ -9406,9 +9388,7 @@
             }
           }
         }
-      }
-    },
-    "/racing-series/{racing-series-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Racing Series"
@@ -11101,9 +11081,7 @@
             }
           }
         }
-      }
-    },
-    "/racing-events/{racing-event-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Racing Events"
@@ -12130,9 +12108,7 @@
             }
           }
         }
-      }
-    },
-    "/racing-sessions/{racing-session-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Racing Sessions"
@@ -14309,9 +14285,7 @@
             }
           }
         }
-      }
-    },
-    "/lap-times/{lap-time-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Lap Times"
@@ -15469,9 +15443,7 @@
             }
           }
         }
-      }
-    },
-    "/racing-games/{racing-game-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Racing Games"
@@ -16369,9 +16341,7 @@
             }
           }
         }
-      }
-    },
-    "/gaming-platforms/{gaming-platform-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Gaming Platforms"
@@ -17397,9 +17367,7 @@
             }
           }
         }
-      }
-    },
-    "/model-cars/{model-car-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Model Cars"
@@ -18297,9 +18265,7 @@
             }
           }
         }
-      }
-    },
-    "/model-car-brands/{model-car-brand-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Model Car Brands"
@@ -19197,9 +19163,7 @@
             }
           }
         }
-      }
-    },
-    "/magazines/{magazine-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Magazines"
@@ -21024,9 +20988,7 @@
             }
           }
         }
-      }
-    },
-    "/magazine-issues/{magazine-issue-id}/has-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Magazine Issues"
@@ -21161,9 +21123,7 @@
             }
           }
         }
-      }
-    },
-    "/magazine-issues/{magazine-issue-id}/has-main-video/{video-id}": {
+      },
       "delete": {
         "tags": [
           "Magazine Issues"
