@@ -5,6 +5,7 @@ import {analyticsMiddleware} from "./tracking/analyticsMiddleware"
 import {authentication} from "./routes/middleware/authentication"
 import {basicAuthentication} from "./routes/middleware/basicAuthentication"
 import {userDbNamespace} from "./userDbNamespace"
+import root from "./routes/root"
 import openApiSpecification from "./routes/open-api-specification"
 import health from "./routes/health"
 import nodes from "./routes/nodes/nodes"
@@ -38,6 +39,7 @@ app.use(express.json())
 app.use(userDbNamespace)
 
 // registering the routes
+app.use('/', root)
 app.use('/', openApiSpecification)
 app.use('/', health)
 app.use('/', nodes)
