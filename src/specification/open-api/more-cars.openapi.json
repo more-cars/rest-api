@@ -24,6 +24,7 @@
   "paths": {
     "/specification": {
       "get": {
+        "operationId": "getApiSpec",
         "summary": "OpenAPI specification",
         "responses": {
           "200": {
@@ -51,6 +52,7 @@
     },
     "/health": {
       "get": {
+        "operationId": "healthCheck",
         "summary": "Health check",
         "responses": {
           "200": {
