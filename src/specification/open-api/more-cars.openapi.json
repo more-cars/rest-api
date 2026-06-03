@@ -339,6 +339,7 @@
         }
       },
       "post": {
+        "operationId": "createCompanyHasBrandRel",
         "tags": [
           "Companies"
         ],
@@ -468,6 +469,7 @@
         }
       },
       "post": {
+        "operationId": "createCompanyHasImageRel",
         "tags": [
           "Companies"
         ],
@@ -1366,6 +1368,7 @@
         }
       },
       "post": {
+        "operationId": "createBrandHasCarModelRel",
         "tags": [
           "Brands"
         ],
@@ -1495,6 +1498,7 @@
         }
       },
       "post": {
+        "operationId": "createBrandHasImageRel",
         "tags": [
           "Brands"
         ],
@@ -1753,6 +1757,7 @@
         }
       },
       "post": {
+        "operationId": "createBrandHasVideoRel",
         "tags": [
           "Brands"
         ],
@@ -2669,6 +2674,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelHasVariantRel",
         "tags": [
           "Car Models"
         ],
@@ -2798,6 +2804,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelCoveredByMagazineIssueRel",
         "tags": [
           "Car Models"
         ],
@@ -2927,6 +2934,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelCoveredByProgrammeEpisodeRel",
         "tags": [
           "Car Models"
         ],
@@ -3056,6 +3064,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelHasImageRel",
         "tags": [
           "Car Models"
         ],
@@ -3954,6 +3963,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantAchievedSessionResultRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4083,6 +4093,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantAchievedLapTimeRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4212,6 +4223,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantIsPresentedInMagazineIssueRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4341,6 +4353,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantReviewedByMagazineIssueWithRatingRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4470,6 +4483,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantFeaturedInProgrammeEpisodeRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4599,6 +4613,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantIsFeaturedInRacingGameRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4728,6 +4743,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantHasScaleModelRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4857,6 +4873,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantPresentedAtMotorShowRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -4986,6 +5003,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantHasPriceRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -5115,6 +5133,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantIsCoveredByBookRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -5244,6 +5263,7 @@
         }
       },
       "post": {
+        "operationId": "createCarModelVariantHasImageRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -6656,6 +6676,7 @@
         }
       },
       "post": {
+        "operationId": "createRaceTrackHasLayoutRel",
         "tags": [
           "Race Tracks"
         ],
@@ -6785,6 +6806,7 @@
         }
       },
       "post": {
+        "operationId": "createRaceTrackHostedRacingEventRel",
         "tags": [
           "Race Tracks"
         ],
@@ -6914,6 +6936,7 @@
         }
       },
       "post": {
+        "operationId": "createRaceTrackHasImageRel",
         "tags": [
           "Race Tracks"
         ],
@@ -7828,6 +7851,7 @@
         }
       },
       "post": {
+        "operationId": "createTrackLayoutWasUsedByRacingEventRel",
         "tags": [
           "Track Layouts"
         ],
@@ -7957,6 +7981,7 @@
         }
       },
       "post": {
+        "operationId": "createTrackLayoutHasLapTimeRel",
         "tags": [
           "Track Layouts"
         ],
@@ -8086,6 +8111,7 @@
         }
       },
       "post": {
+        "operationId": "createTrackLayoutIsFeaturedInRacingGameRel",
         "tags": [
           "Track Layouts"
         ],
@@ -8215,6 +8241,7 @@
         }
       },
       "post": {
+        "operationId": "createTrackLayoutHasImageRel",
         "tags": [
           "Track Layouts"
         ],
@@ -8992,6 +9019,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingSeriesHasRacingEventRel",
         "tags": [
           "Racing Series"
         ],
@@ -9121,6 +9149,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingSeriesHasImageRel",
         "tags": [
           "Racing Series"
         ],
@@ -10555,6 +10584,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingEventHasRacingSessionRel",
         "tags": [
           "Racing Events"
         ],
@@ -10684,6 +10714,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingEventCoveredByMagazineIssueRel",
         "tags": [
           "Racing Events"
         ],
@@ -10813,6 +10844,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingEventHasImageRel",
         "tags": [
           "Racing Events"
         ],
@@ -11711,6 +11743,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingSessionHasSessionResultRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -11840,6 +11873,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingSessionHasImageRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -12739,6 +12773,7 @@
         }
       },
       "post": {
+        "operationId": "createSessionResultHasLapTimeRel",
         "tags": [
           "Session Results"
         ],
@@ -12997,6 +13032,7 @@
         }
       },
       "post": {
+        "operationId": "createSessionResultHasImageRel",
         "tags": [
           "Session Results"
         ],
@@ -14016,6 +14052,7 @@
         }
       },
       "post": {
+        "operationId": "createLapTimeHasImageRel",
         "tags": [
           "Lap Times"
         ],
@@ -14785,6 +14822,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingGameFeaturesCarModelVariantRel",
         "tags": [
           "Racing Games"
         ],
@@ -14914,6 +14952,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingGameFeaturesTrackLayoutRel",
         "tags": [
           "Racing Games"
         ],
@@ -15043,6 +15082,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingGameReleasedOnGamingPlatformRel",
         "tags": [
           "Racing Games"
         ],
@@ -15172,6 +15212,7 @@
         }
       },
       "post": {
+        "operationId": "createRacingGameHasImageRel",
         "tags": [
           "Racing Games"
         ],
@@ -15941,6 +15982,7 @@
         }
       },
       "post": {
+        "operationId": "createGamingPlatformFeaturesRacingGameRel",
         "tags": [
           "Gaming Platforms"
         ],
@@ -16070,6 +16112,7 @@
         }
       },
       "post": {
+        "operationId": "createGamingPlatformHasImageRel",
         "tags": [
           "Gaming Platforms"
         ],
@@ -17097,6 +17140,7 @@
         }
       },
       "post": {
+        "operationId": "createModelCarHasImageRel",
         "tags": [
           "Model Cars"
         ],
@@ -17866,6 +17910,7 @@
         }
       },
       "post": {
+        "operationId": "createModelCarBrandCreatedModelCarRel",
         "tags": [
           "Model Car Brands"
         ],
@@ -17995,6 +18040,7 @@
         }
       },
       "post": {
+        "operationId": "createModelCarBrandHasImageRel",
         "tags": [
           "Model Car Brands"
         ],
@@ -18764,6 +18810,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineHasIssueRel",
         "tags": [
           "Magazines"
         ],
@@ -18893,6 +18940,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineHasImageRel",
         "tags": [
           "Magazines"
         ],
@@ -20069,6 +20117,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssueCoversCarModelRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20198,6 +20247,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssuePresentsCarModelVariantRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20327,6 +20377,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssueReviewedCarModelVariantWithRatingRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20456,6 +20507,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssueCoversRacingEventRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20585,6 +20637,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssueDocumentsLapTimeRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -20714,6 +20767,7 @@
         }
       },
       "post": {
+        "operationId": "createMagazineIssueHasImageRel",
         "tags": [
           "Magazine Issues"
         ],
@@ -21752,6 +21806,7 @@
         }
       },
       "post": {
+        "operationId": "createRatingHasImageRel",
         "tags": [
           "Ratings"
         ],
@@ -22255,6 +22310,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeHasEpisodeRel",
         "tags": [
           "Programmes"
         ],
@@ -22384,6 +22440,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeHasImageRel",
         "tags": [
           "Programmes"
         ],
@@ -23560,6 +23617,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeEpisodeCoversCarModelRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -23689,6 +23747,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeEpisodeFeaturesCarModelVariantRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -23818,6 +23877,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeEpisodeHasImageRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -24076,6 +24136,7 @@
         }
       },
       "post": {
+        "operationId": "createProgrammeEpisodeHasVideoRel",
         "tags": [
           "Programme Episodes"
         ],
@@ -24579,6 +24640,7 @@
         }
       },
       "post": {
+        "operationId": "createMotorShowPresentsCarModelVariantRel",
         "tags": [
           "Motor Shows"
         ],
@@ -24708,6 +24770,7 @@
         }
       },
       "post": {
+        "operationId": "createMotorShowHasImageRel",
         "tags": [
           "Motor Shows"
         ],
@@ -25485,6 +25548,7 @@
         }
       },
       "post": {
+        "operationId": "createBookCoversCarModelVariantRel",
         "tags": [
           "Books"
         ],
@@ -26522,6 +26586,7 @@
         }
       },
       "post": {
+        "operationId": "createImageIsPrimeImageOfNodeRel",
         "tags": [
           "Images"
         ],
@@ -26867,6 +26932,7 @@
         }
       },
       "post": {
+        "operationId": "createVideoBelongsToNodeRel",
         "tags": [
           "Videos"
         ],
@@ -26996,6 +27062,7 @@
         }
       },
       "post": {
+        "operationId": "createVideoIsMainVideoOfNodeRel",
         "tags": [
           "Videos"
         ],
