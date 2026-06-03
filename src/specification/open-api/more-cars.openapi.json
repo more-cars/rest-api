@@ -26636,6 +26636,7 @@
         }
       },
       "post": {
+        "operationId": "createImageBelongsToNodeRel",
         "tags": [
           "Images"
         ],
