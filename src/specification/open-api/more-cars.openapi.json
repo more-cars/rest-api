@@ -31,6 +31,16 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
+                }
+              }
+            }
           }
         }
       }
@@ -45,6 +55,16 @@
               "text/plain": {
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -27419,6 +27439,16 @@
               "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/NodesHasPrimeImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
