@@ -203,6 +203,7 @@
         }
       },
       "patch": {
+        "operationId": "patchCompany",
         "tags": [
           "Companies"
         ],
@@ -1098,6 +1099,7 @@
         }
       },
       "patch": {
+        "operationId": "patchBrand",
         "tags": [
           "Brands"
         ],
@@ -2114,6 +2116,7 @@
         }
       },
       "patch": {
+        "operationId": "patchCarModel",
         "tags": [
           "Car Models"
         ],
@@ -3680,6 +3683,7 @@
         }
       },
       "patch": {
+        "operationId": "patchCarModelVariant",
         "tags": [
           "Car Model Variants"
         ],
@@ -5868,6 +5872,7 @@
         }
       },
       "patch": {
+        "operationId": "patchPrice",
         "tags": [
           "Prices"
         ],
@@ -6505,6 +6510,7 @@
         }
       },
       "patch": {
+        "operationId": "patchRaceTrack",
         "tags": [
           "Race Tracks"
         ],
@@ -7545,6 +7551,7 @@
         }
       },
       "patch": {
+        "operationId": "patchTrackLayout",
         "tags": [
           "Track Layouts"
         ],
@@ -8835,6 +8842,7 @@
         }
       },
       "patch": {
+        "operationId": "patchRacingSeries",
         "tags": [
           "Racing Series"
         ],
@@ -9730,6 +9738,7 @@
         }
       },
       "patch": {
+        "operationId": "patchRacingEvent",
         "tags": [
           "Racing Events"
         ],
@@ -11419,6 +11428,7 @@
         }
       },
       "patch": {
+        "operationId": "patchRacingSession",
         "tags": [
           "Racing Sessions"
         ],
@@ -12444,6 +12454,7 @@
         }
       },
       "patch": {
+        "operationId": "patchSessionResult",
         "tags": [
           "Session Results"
         ],
@@ -13331,6 +13342,7 @@
         }
       },
       "patch": {
+        "operationId": "patchLapTime",
         "tags": [
           "Lap Times"
         ],
@@ -14613,6 +14625,7 @@
         }
       },
       "patch": {
+        "operationId": "patchRacingGame",
         "tags": [
           "Racing Games"
         ],
@@ -15766,6 +15779,7 @@
         }
       },
       "patch": {
+        "operationId": "patchGamingPlatform",
         "tags": [
           "Gaming Platforms"
         ],
@@ -16661,6 +16675,7 @@
         }
       },
       "patch": {
+        "operationId": "patchModelCar",
         "tags": [
           "Model Cars"
         ],
@@ -17685,6 +17700,7 @@
         }
       },
       "patch": {
+        "operationId": "patchModelCarBrand",
         "tags": [
           "Model Car Brands"
         ],
@@ -18580,6 +18596,7 @@
         }
       },
       "patch": {
+        "operationId": "patchMagazine",
         "tags": [
           "Magazines"
         ],
@@ -19475,6 +19492,7 @@
         }
       },
       "patch": {
+        "operationId": "patchMagazineIssue",
         "tags": [
           "Magazine Issues"
         ],
@@ -21304,6 +21322,7 @@
         }
       },
       "patch": {
+        "operationId": "patchRating",
         "tags": [
           "Ratings"
         ],
@@ -22062,6 +22081,7 @@
         }
       },
       "patch": {
+        "operationId": "patchProgramme",
         "tags": [
           "Programmes"
         ],
@@ -22957,6 +22977,7 @@
         }
       },
       "patch": {
+        "operationId": "patchProgrammeEpisode",
         "tags": [
           "Programme Episodes"
         ],
@@ -24380,6 +24401,7 @@
         }
       },
       "patch": {
+        "operationId": "patchMotorShow",
         "tags": [
           "Motor Shows"
         ],
@@ -25283,6 +25305,7 @@
         }
       },
       "patch": {
+        "operationId": "patchBook",
         "tags": [
           "Books"
         ],
