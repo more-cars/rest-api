@@ -727,49 +727,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteCompanyHasVideoCollectionRel",
-        "tags": [
-          "Companies"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Company` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "company-id",
-            "description": "ID of the `Company`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Company` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Companies"
@@ -811,6 +768,49 @@
           },
           "404": {
             "description": "Request failed. `Company` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCompanyHasVideoCollectionRel",
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Company` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "company-id",
+            "description": "ID of the `Company`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Company` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -3321,49 +3321,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteCarModelHasVideoCollectionRel",
-        "tags": [
-          "Car Models"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Car Model` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "car-model-id",
-            "description": "ID of the `Car Model`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Car Model` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Car Models"
@@ -3405,6 +3362,49 @@
           },
           "404": {
             "description": "Request failed. `Car Model` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCarModelHasVideoCollectionRel",
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Car Model` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Car Model` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -5519,49 +5519,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteCarModelVariantHasVideoCollectionRel",
-        "tags": [
-          "Car Model Variants"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Car Model Variant` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "car-model-variant-id",
-            "description": "ID of the `Car Model Variant`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Car Model Variant` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Car Model Variants"
@@ -5603,6 +5560,49 @@
           },
           "404": {
             "description": "Request failed. `Car Model Variant` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteCarModelVariantHasVideoCollectionRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Car Model Variant` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Car Model Variant` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -6161,49 +6161,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deletePriceHasImageCollectionRel",
-        "tags": [
-          "Prices"
-        ],
-        "summary": "Deletes the ›has-image‹ relationship between the `Price` and the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "price-id",
-            "description": "ID of the `Price`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-image‹ relationship between `Price` and `Image` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Prices"
@@ -6245,6 +6202,49 @@
           },
           "404": {
             "description": "Request failed. `Price` and/or `Image` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deletePriceHasImageCollectionRel",
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Deletes the ›has-image‹ relationship between the `Price` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-image‹ relationship between `Price` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -7061,49 +7061,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteRaceTrackHasPrimeImageRel",
-        "tags": [
-          "Race Tracks"
-        ],
-        "summary": "Deletes the ›has-prime-image‹ relationship between the `Race Track` and the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "race-track-id",
-            "description": "ID of the `Race Track`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-prime-image‹ relationship between `Race Track` and `Image` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Race Tracks"
@@ -7154,6 +7111,49 @@
             }
           }
         }
+      },
+      "delete": {
+        "operationId": "deleteRaceTrackHasPrimeImageRel",
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Race Track` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Race Track` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/race-tracks/{race-track-id}/has-video": {
@@ -7187,49 +7187,6 @@
           },
           "404": {
             "description": "Request failed. The `Race Track` could not be found in the database.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "operationId": "deleteRaceTrackHasVideoCollectionRel",
-        "tags": [
-          "Race Tracks"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Race Track` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "race-track-id",
-            "description": "ID of the `Race Track`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Race Track` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -7290,6 +7247,49 @@
             }
           }
         }
+      },
+      "delete": {
+        "operationId": "deleteRaceTrackHasVideoCollectionRel",
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Race Track` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Race Track` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/race-tracks/{race-track-id}/has-main-video": {
@@ -7323,49 +7323,6 @@
           },
           "404": {
             "description": "Request failed. The `Race Track` could not be found in the database.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "operationId": "deleteRaceTrackHasMainVideoRel",
-        "tags": [
-          "Race Tracks"
-        ],
-        "summary": "Deletes the ›has-main-video‹ relationship between the `Race Track` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "race-track-id",
-            "description": "ID of the `Race Track`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-main-video‹ relationship between `Race Track` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -7417,6 +7374,49 @@
           },
           "404": {
             "description": "Request failed. `Race Track` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRaceTrackHasMainVideoRel",
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Race Track` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Race Track` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -8492,49 +8492,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteTrackLayoutHasVideoCollectionRel",
-        "tags": [
-          "Track Layouts"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Track Layout` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "track-layout-id",
-            "description": "ID of the `Track Layout`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Track Layout` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Track Layouts"
@@ -8576,6 +8533,49 @@
           },
           "404": {
             "description": "Request failed. `Track Layout` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTrackLayoutHasVideoCollectionRel",
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Track Layout` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Track Layout` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -8628,49 +8628,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteTrackLayoutHasMainVideoRel",
-        "tags": [
-          "Track Layouts"
-        ],
-        "summary": "Deletes the ›has-main-video‹ relationship between the `Track Layout` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "track-layout-id",
-            "description": "ID of the `Track Layout`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-main-video‹ relationship between `Track Layout` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Track Layouts"
@@ -8712,6 +8669,49 @@
           },
           "404": {
             "description": "Request failed. `Track Layout` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTrackLayoutHasMainVideoRel",
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Track Layout` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Track Layout` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -9398,49 +9398,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteRacingSeriesHasVideoCollectionRel",
-        "tags": [
-          "Racing Series"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Racing Series` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "racing-series-id",
-            "description": "ID of the `Racing Series`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Racing Series` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Racing Series"
@@ -9482,6 +9439,49 @@
           },
           "404": {
             "description": "Request failed. `Racing Series` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRacingSeriesHasVideoCollectionRel",
+        "tags": [
+          "Racing Series"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Racing Series` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-series-id",
+            "description": "ID of the `Racing Series`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Racing Series` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -11092,49 +11092,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteRacingEventHasVideoCollectionRel",
-        "tags": [
-          "Racing Events"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Racing Event` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "racing-event-id",
-            "description": "ID of the `Racing Event`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Racing Event` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Racing Events"
@@ -11176,6 +11133,49 @@
           },
           "404": {
             "description": "Request failed. `Racing Event` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRacingEventHasVideoCollectionRel",
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Racing Event` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Racing Event` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -12120,49 +12120,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteRacingSessionHasVideoCollectionRel",
-        "tags": [
-          "Racing Sessions"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Racing Session` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "racing-session-id",
-            "description": "ID of the `Racing Session`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Racing Session` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Racing Sessions"
@@ -12204,6 +12161,49 @@
           },
           "404": {
             "description": "Request failed. `Racing Session` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRacingSessionHasVideoCollectionRel",
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Racing Session` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Racing Session` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -14298,49 +14298,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteLapTimeHasVideoCollectionRel",
-        "tags": [
-          "Lap Times"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Lap Time` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "lap-time-id",
-            "description": "ID of the `Lap Time`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Lap Time` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Lap Times"
@@ -14382,6 +14339,49 @@
           },
           "404": {
             "description": "Request failed. `Lap Time` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteLapTimeHasVideoCollectionRel",
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Lap Time` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Lap Time` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -15457,49 +15457,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteRacingGameHasVideoCollectionRel",
-        "tags": [
-          "Racing Games"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Racing Game` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "racing-game-id",
-            "description": "ID of the `Racing Game`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Racing Game` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Racing Games"
@@ -15541,6 +15498,49 @@
           },
           "404": {
             "description": "Request failed. `Racing Game` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRacingGameHasVideoCollectionRel",
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Racing Game` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Racing Game` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -16356,49 +16356,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteGamingPlatformHasVideoCollectionRel",
-        "tags": [
-          "Gaming Platforms"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Gaming Platform` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "gaming-platform-id",
-            "description": "ID of the `Gaming Platform`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Gaming Platform` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Gaming Platforms"
@@ -16440,6 +16397,49 @@
           },
           "404": {
             "description": "Request failed. `Gaming Platform` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteGamingPlatformHasVideoCollectionRel",
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Gaming Platform` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Gaming Platform` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -17383,49 +17383,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteModelCarHasVideoCollectionRel",
-        "tags": [
-          "Model Cars"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Model Car` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "model-car-id",
-            "description": "ID of the `Model Car`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Model Car` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Model Cars"
@@ -17467,6 +17424,49 @@
           },
           "404": {
             "description": "Request failed. `Model Car` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteModelCarHasVideoCollectionRel",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Model Car` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Model Car` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -18282,49 +18282,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteModelCarBrandHasVideoCollectionRel",
-        "tags": [
-          "Model Car Brands"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Model Car Brand` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "model-car-brand-id",
-            "description": "ID of the `Model Car Brand`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Model Car Brand` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Model Car Brands"
@@ -18366,6 +18323,49 @@
           },
           "404": {
             "description": "Request failed. `Model Car Brand` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteModelCarBrandHasVideoCollectionRel",
+        "tags": [
+          "Model Car Brands"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Model Car Brand` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-brand-id",
+            "description": "ID of the `Model Car Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Model Car Brand` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -19181,49 +19181,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteMagazineHasVideoCollectionRel",
-        "tags": [
-          "Magazines"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Magazine` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "magazine-id",
-            "description": "ID of the `Magazine`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Magazine` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Magazines"
@@ -19265,6 +19222,49 @@
           },
           "404": {
             "description": "Request failed. `Magazine` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteMagazineHasVideoCollectionRel",
+        "tags": [
+          "Magazines"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Magazine` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-id",
+            "description": "ID of the `Magazine`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Magazine` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -21007,49 +21007,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteMagazineIssueHasVideoCollectionRel",
-        "tags": [
-          "Magazine Issues"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Magazine Issue` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Magazine Issue` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Magazine Issues"
@@ -21091,6 +21048,49 @@
           },
           "404": {
             "description": "Request failed. `Magazine Issue` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteMagazineIssueHasVideoCollectionRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Magazine Issue` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Magazine Issue` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -21143,49 +21143,6 @@
           }
         }
       },
-      "delete": {
-        "operationId": "deleteMagazineIssueHasMainVideoRel",
-        "tags": [
-          "Magazine Issues"
-        ],
-        "summary": "Deletes the ›has-main-video‹ relationship between the `Magazine Issue` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-main-video‹ relationship between `Magazine Issue` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Magazine Issues"
@@ -21227,6 +21184,49 @@
           },
           "404": {
             "description": "Request failed. `Magazine Issue` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteMagazineIssueHasMainVideoRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Magazine Issue` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Magazine Issue` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -22677,50 +22677,6 @@
             }
           }
         }
-      }
-    },
-    "/programmes/{programme-id}/has-video/{video-id}": {
-      "delete": {
-        "tags": [
-          "Programmes"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Programme` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "programme-id",
-            "description": "ID of the `Programme`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Programme` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
       },
       "post": {
         "tags": [
@@ -22763,6 +22719,48 @@
           },
           "404": {
             "description": "Request failed. `Programme` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Programme` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Programme` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -25007,50 +25005,6 @@
             }
           }
         }
-      }
-    },
-    "/motor-shows/{motor-show-id}/has-video/{video-id}": {
-      "delete": {
-        "tags": [
-          "Motor Shows"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Motor Show` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "motor-show-id",
-            "description": "ID of the `Motor Show`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Motor Show` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
       },
       "post": {
         "tags": [
@@ -25102,6 +25056,48 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Motor Show` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Motor Show` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/motor-shows/{motor-show-id}/has-main-video": {
@@ -25135,50 +25131,6 @@
           },
           "404": {
             "description": "Request failed. The `Motor Show` could not be found in the database.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/motor-shows/{motor-show-id}/has-main-video/{video-id}": {
-      "delete": {
-        "tags": [
-          "Motor Shows"
-        ],
-        "summary": "Deletes the ›has-main-video‹ relationship between the `Motor Show` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "motor-show-id",
-            "description": "ID of the `Motor Show`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-main-video‹ relationship between `Motor Show` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -25230,6 +25182,48 @@
           },
           "404": {
             "description": "Request failed. `Motor Show` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Motor Show` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Motor Show` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -25656,50 +25650,6 @@
             }
           }
         }
-      }
-    },
-    "/books/{book-id}/has-image/{image-id}": {
-      "delete": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Deletes the ›has-image‹ relationship between the `Book` and the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "book-id",
-            "description": "ID of the `Book`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-image‹ relationship between `Book` and `Image` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
       },
       "post": {
         "tags": [
@@ -25751,6 +25701,48 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-image‹ relationship between the `Book` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-image‹ relationship between `Book` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/books/{book-id}/has-prime-image": {
@@ -25784,50 +25776,6 @@
           },
           "404": {
             "description": "Request failed. The `Book` could not be found in the database.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/books/{book-id}/has-prime-image/{image-id}": {
-      "delete": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Deletes the ›has-prime-image‹ relationship between the `Book` and the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "book-id",
-            "description": "ID of the `Book`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-prime-image‹ relationship between `Book` and `Image` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -25888,6 +25836,48 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Book` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Book` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/books/{book-id}/has-video": {
@@ -25921,50 +25911,6 @@
           },
           "404": {
             "description": "Request failed. The `Book` could not be found in the database.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/books/{book-id}/has-video/{video-id}": {
-      "delete": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Deletes the ›has-video‹ relationship between the `Book` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "book-id",
-            "description": "ID of the `Book`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-video‹ relationship between `Book` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -26025,6 +25971,48 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Book` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Book` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/books/{book-id}/has-main-video": {
@@ -26058,50 +26046,6 @@
           },
           "404": {
             "description": "Request failed. The `Book` could not be found in the database.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response404"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/books/{book-id}/has-main-video/{video-id}": {
-      "delete": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Deletes the ›has-main-video‹ relationship between the `Book` and the `Video`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "book-id",
-            "description": "ID of the `Book`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Deleting ›has-main-video‹ relationship between `Book` and `Video` was successful."
-          },
-          "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
@@ -26153,6 +26097,48 @@
           },
           "404": {
             "description": "Request failed. `Book` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Book` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyRelationshipRequestData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Book` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
             "content": {
               "application/vnd.api+json": {
                 "schema": {
