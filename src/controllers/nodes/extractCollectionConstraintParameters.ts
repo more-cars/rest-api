@@ -13,12 +13,35 @@ import {isString} from "../validators/isString"
 import {InvalidPaginationParams} from "../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../models/types/InvalidFilterParams"
+import type {PropertySpecification} from "../../specification/PropertySpecification"
 
-export function extractCollectionConstraintParameters(req: express.Request, nodeProperties: NodeSpecification): NodeCollectionConstraints {
-    const validProperties = nodeProperties
+export function extractCollectionConstraintParameters(req: express.Request, nodeSpecification: NodeSpecification): NodeCollectionConstraints {
+    const systemProperties: PropertySpecification[] = [
+        {
+            name: 'id',
+            datatype: 'number',
+            mandatory: true,
+            validation: [],
+        },
+        {
+            name: 'created_at',
+            datatype: 'string',
+            mandatory: true,
+            validation: [],
+        },
+        {
+            name: 'updated_at',
+            datatype: 'string',
+            mandatory: true,
+            validation: [],
+        }
+    ]
+
+    nodeSpecification.properties = nodeSpecification.properties.concat(systemProperties)
+
+    const validProperties = nodeSpecification
         .properties
         .map(prop => prop.name)
-        .concat(['id', 'created_at', 'updated_at'])
 
     const page = extractPaginationParameter(req)
     if (!isValidPaginationValue(page)) {
@@ -43,13 +66,13 @@ export function extractCollectionConstraintParameters(req: express.Request, node
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
 
-    const filterByPropertyDataType = nodeProperties.properties.find(prop => prop.name === filterByProperty)
+    const filterByPropertyDataType = nodeSpecification.properties.find(prop => prop.name === filterByProperty)
     const safeFilterValue = !filterByPropertyDataType ? undefined :
         filterByPropertyDataType.datatype === 'number' ? Number(filterValue) :
             filterByPropertyDataType.datatype === 'boolean' ? Boolean(filterValue) :
                 filterValue
 
-    const sortByPropertyDataType = nodeProperties.properties.find(prop => prop.name === sortByProperty)
+    const sortByPropertyDataType = nodeSpecification.properties.find(prop => prop.name === sortByProperty)
 
     return {
         page,
