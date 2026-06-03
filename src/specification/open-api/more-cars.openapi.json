@@ -204,7 +204,7 @@
         }
       },
       "patch": {
-        "operationId": "patchCompany",
+        "operationId": "updateCompany",
         "tags": [
           "Companies"
         ],
@@ -1102,7 +1102,7 @@
         }
       },
       "patch": {
-        "operationId": "patchBrand",
+        "operationId": "updateBrand",
         "tags": [
           "Brands"
         ],
@@ -2121,7 +2121,7 @@
         }
       },
       "patch": {
-        "operationId": "patchCarModel",
+        "operationId": "updateCarModel",
         "tags": [
           "Car Models"
         ],
@@ -3690,7 +3690,7 @@
         }
       },
       "patch": {
-        "operationId": "patchCarModelVariant",
+        "operationId": "updateCarModelVariant",
         "tags": [
           "Car Model Variants"
         ],
@@ -5881,7 +5881,7 @@
         }
       },
       "patch": {
-        "operationId": "patchPrice",
+        "operationId": "updatePrice",
         "tags": [
           "Prices"
         ],
@@ -6521,7 +6521,7 @@
         }
       },
       "patch": {
-        "operationId": "patchRaceTrack",
+        "operationId": "updateRaceTrack",
         "tags": [
           "Race Tracks"
         ],
@@ -7564,7 +7564,7 @@
         }
       },
       "patch": {
-        "operationId": "patchTrackLayout",
+        "operationId": "updateTrackLayout",
         "tags": [
           "Track Layouts"
         ],
@@ -8857,7 +8857,7 @@
         }
       },
       "patch": {
-        "operationId": "patchRacingSeries",
+        "operationId": "updateRacingSeries",
         "tags": [
           "Racing Series"
         ],
@@ -9755,7 +9755,7 @@
         }
       },
       "patch": {
-        "operationId": "patchRacingEvent",
+        "operationId": "updateRacingEvent",
         "tags": [
           "Racing Events"
         ],
@@ -11447,7 +11447,7 @@
         }
       },
       "patch": {
-        "operationId": "patchRacingSession",
+        "operationId": "updateRacingSession",
         "tags": [
           "Racing Sessions"
         ],
@@ -12475,7 +12475,7 @@
         }
       },
       "patch": {
-        "operationId": "patchSessionResult",
+        "operationId": "updateSessionResult",
         "tags": [
           "Session Results"
         ],
@@ -13365,7 +13365,7 @@
         }
       },
       "patch": {
-        "operationId": "patchLapTime",
+        "operationId": "updateLapTime",
         "tags": [
           "Lap Times"
         ],
@@ -14650,7 +14650,7 @@
         }
       },
       "patch": {
-        "operationId": "patchRacingGame",
+        "operationId": "updateRacingGame",
         "tags": [
           "Racing Games"
         ],
@@ -15806,7 +15806,7 @@
         }
       },
       "patch": {
-        "operationId": "patchGamingPlatform",
+        "operationId": "updateGamingPlatform",
         "tags": [
           "Gaming Platforms"
         ],
@@ -16704,7 +16704,7 @@
         }
       },
       "patch": {
-        "operationId": "patchModelCar",
+        "operationId": "updateModelCar",
         "tags": [
           "Model Cars"
         ],
@@ -17731,7 +17731,7 @@
         }
       },
       "patch": {
-        "operationId": "patchModelCarBrand",
+        "operationId": "updateModelCarBrand",
         "tags": [
           "Model Car Brands"
         ],
@@ -18629,7 +18629,7 @@
         }
       },
       "patch": {
-        "operationId": "patchMagazine",
+        "operationId": "updateMagazine",
         "tags": [
           "Magazines"
         ],
@@ -19527,7 +19527,7 @@
         }
       },
       "patch": {
-        "operationId": "patchMagazineIssue",
+        "operationId": "updateMagazineIssue",
         "tags": [
           "Magazine Issues"
         ],
@@ -21359,7 +21359,7 @@
         }
       },
       "patch": {
-        "operationId": "patchRating",
+        "operationId": "updateRating",
         "tags": [
           "Ratings"
         ],
@@ -22120,7 +22120,7 @@
         }
       },
       "patch": {
-        "operationId": "patchProgramme",
+        "operationId": "updateProgramme",
         "tags": [
           "Programmes"
         ],
@@ -23018,7 +23018,7 @@
         }
       },
       "patch": {
-        "operationId": "patchProgrammeEpisode",
+        "operationId": "updateProgrammeEpisode",
         "tags": [
           "Programme Episodes"
         ],
@@ -24444,7 +24444,7 @@
         }
       },
       "patch": {
-        "operationId": "patchMotorShow",
+        "operationId": "updateMotorShow",
         "tags": [
           "Motor Shows"
         ],
@@ -25350,7 +25350,7 @@
         }
       },
       "patch": {
-        "operationId": "patchBook",
+        "operationId": "updateBook",
         "tags": [
           "Books"
         ],
