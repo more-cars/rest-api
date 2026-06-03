@@ -4,11 +4,11 @@ import {ResponseManager} from "../../lib/ResponseManager"
 import type {RelationResponseItem} from "../../../../src/controllers/types/RelationResponseItem"
 
 Then('the id of all items in the response should be a number greater than {int}',
-    (value: string) => {
+    (value: number) => {
         const response = ResponseManager.getPreviousResponse()
         const items: RelationResponseItem[] = response.body.data
 
         items.forEach(item => {
-            assert.equal(item.id > parseInt(value), true, `"${item.id}" is not greater than "${value}"`)
+            assert.equal(item.id > value, true, `"${item.id}" is not greater than "${value}"`)
         })
     })
