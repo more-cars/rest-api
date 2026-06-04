@@ -7,9 +7,9 @@ For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kub
 
 ### Requirements
 
-* Node.js (version >= 24) & npm
+* Node.js (version >= 26) & npm
 * Docker
-* Any OS should work (but tested only on Linux)
+* Compatible OS (tested on Debian Linux, but should also work on MacOS and Windows)
 
 ### Installation
 
@@ -19,24 +19,24 @@ For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kub
     * optional: log in → no credentials needed → just click "Connect"
 * Run `npm install` to install all required dependencies and tools
 * Run `npm run local:app:start` to start the app locally
-    * it should be available now at http://localhost:3000
-    * an `.env` should have been created automatically in the project's root folder
-        * it should contain the location of the database -> default: `DB_HOST=localhost`
-        * it should contain the password for the database -> default: `DB_PASSWORD=123456789`
+    * it is now available at http://localhost:3000
+    * an `.env` is created automatically in the project's root folder
+        * it contains the location of the database → default: `DB_HOST=localhost`
+        * it contains the initial password for the database → default: `DB_PASSWORD=123456789`
         * optional: change those values when you want to use a different database (e.g. from the Minikube cluster)
-* Optional: Using "pretty" hostnames instead of `localhost`:
+* Optional: Using readable hostnames instead of `localhost`:
     * run `npm run local:hostnames:add`
     * this makes the REST API available at http://api.more-cars.internal:3000/
     * this makes the API specification available at http://swagger.more-cars.internal:3000/
     * this makes the database available at http://db.more-cars.internal:7474/
 
-## Minikube (local Kubernetes cluster)
+## Alternative: Minikube (local Kubernetes cluster)
 
-Minikube is a quick and simple option to create a local Kubernetes cluster.
-See documentation for more information: https://minikube.sigs.k8s.io/docs/.
+Minikube allows to quickly set up a local Kubernetes cluster.
+Check the documentation for information on how to install and configure: https://minikube.sigs.k8s.io/docs/.
 The Minikube cluster uses exactly the same Kubernetes configuration files as the "real" Kubernetes cluster in GKE
 (see `deployment/app` and `deployment/overlays` folder).
-This allows to test situations that might happen in the production environment,
+This allows to test situations that can happen in a production environment,
 but cannot be recreated in a local dev environment.
 
 ### Start cluster
@@ -58,27 +58,22 @@ but cannot be recreated in a local dev environment.
 
 ### Start application
 
-* Make sure the Minikube cluster is running (see [Minikube](#start-cluster) section)
-* Run `npm run app:deploy`
-    * a wizard will start
-        * select `minikube`, `dev`, `rest-api` and `latest`
+* After the Minikube cluster is started, run `npm run app:deploy`
+    * a wizard will guide through the configuration
+        * select `minikube` → `testing` → `rest-api` → `latest`
     * this will deploy the app, the API specification and the database in Minikube
     * it will start all needed services
     * it will create the necessary host entries in the local `/etc/hosts` file
         * needs to be confirmed via password
             * abort if you want to do it manually or you when you use a different hosts file
-    * the app should now be available at https://api.dev.more-cars.internal
-        * accept the browser's security risk warning (the gateways in the local cluster use dummy certificates)
-    * the API specificaiton should now be available at https://swagger.dev.more-cars.internal
-    * the database should now be available at https://db.dev.more-cars.internal
+    * the app is now available at https://api.testing.more-cars.internal
+        * accept the browser's security risk warning (the gateway in the local cluster can only use invalid dummy
+          certificates)
+    * the API specification is now available at https://swagger.testing.more-cars.internal
+    * the database is now available at https://db.testing.more-cars.internal
 * Run `npm run app:undeploy` to completely remove the app from the Minikube cluster
     * a wizard will ask for the concrete cluster and environment that should be deleted
     * run `npm run app:deploy` to create a fresh version of the app again
-
-## Docker Images
-
-All docker images are managed automatically in the pipeline (see files in folder `.github/workflows`).
-There should be no need to create, tag or push them locally.
 
 ## Databases
 
@@ -93,20 +88,14 @@ There are rarely cases were direct access to the database is needed.
 Having the database exposed to the internet in the remaining 99.99 percent of time is an unnecessary security risk.
 
 In general, a Neo4j database has two communication channels - `http` and `bolt`.
-Http is used to interact with the Neo4j admin page and the bolt protocol is used to actually communicate between app and
-database.
+Http is used to interact with the Neo4j admin page.
+The bolt protocol is used to actually communicate between app and database.
 Both channels are activated, so within the cluster the database can be accessed.
 But, there are no ports open to exposes them outside the cluster.
 
 For the few cases where direct access to the database is actually needed, the ports can be opened via `port-forwarding`.
-See the `deployment/forward-neo4j-ports.sh` script.
-It opens a port for all databases it can find in the cluster (e.g. testing, prod, dev)
-and presents the actual URLs to access the admin page resp. the bolt channel.
-
-```
-Bolt: bolt://localhost:<BOLT_PORT>
-Neo4j Browser: http://localhost:<WEB_PORT>/browser/?connectURL=bolt://localhost:<DB_PORT>
-```
+When starting Minikube this already happens automatically via the `deployment/forward-neo4j-ports.sh` script.
+It shows the resp. URLs incl. port on the console.
 
 ### Credentials
 
@@ -124,57 +113,62 @@ kubectl delete secret db-credentials \
   --ignore-not-found \
   --namespace=testing && \
 kubectl create secret generic db-credentials \
-  --from-literal=password='newpassword' \
+  --from-literal=password='<NEW_PASSWORD>' \
   --namespace=testing
 ```
 
 Then, change the password in the database.
 Connect to the respective Neo4j pod (`docker exec -it ...`).
 Run `cypher-shell -u neo4j` and enter the current password.
-Type `ALTER USER neo4j SET PASSWORD 'newpassword';` with the new password.
+Type `ALTER USER neo4j SET PASSWORD '<NEW_PASSWORD>';` with the new password.
 Enter.
 Done.
+
+## Docker Images
+
+All docker images are managed automatically in the pipeline (see folder `.github/workflows`).
+There should be no need to create, tag or push them locally.
 
 ## Tests
 
 ### API Validation
 
-All REST API endpoints are documented in an _OpenAPI_ file.
-It can be found in the folder `specification/OpenAPI` in the project's root directory.
+All REST API endpoints are documented in an _OpenAPI_ specification.
+It can be found in the folder `src/specification/open-api`.
 To verify that the specification is a valid OpenAPI document run `npm run tests:validate-api-schema`.
 
 ### Unit / Integration tests
 
 * run `npm run tests:unit` to execute all unit tests
     * test report is created in folder `test-reports/unit`
+    * the unit tests have no dependencies and can be run anytime
 * run `npm run tests:integration` to execute all integration tests
     * a wizard will ask for the required parameters
     * by default the test report is created in folder `test-reports/integration`
     * by default the code coverage report is created in folder `test-reports/integration/code-coverage` (if activated)
-* run `npm run tests:developer` to execute all unit and all integration tests
+    * the integration tests need a running database to work
+* run `npm run tests:developer` to execute all unit and all integration tests together
     * test report is created in folder `test-reports/developer`
-* run `npm run tests:developer:coverage` to run both test suites and to create a combined code coverage report
-    * test report is created in folder `test-reports/developer`
-    * coverage report is created in folder `test-reports/developer/code-coverage`
+    * code coverage report is created in folder `test-reports/developer/code-coverage`
 
 ### Behavior tests
 
 The application's expected behavior is documented via `Gherkin` scenarios.
-They can be found in the directory `specification/Behavior`.
+They can be found in the directory `rest-api-specification/spec`.
 Those scenarios are automated in form of `Cucumber` tests.
-Their implementation can be found in the directory `tests/behavior`.
+Their implementation can be found in the directory `tests/behavior/steps`.
 
 With `npm run tests:behavior` the whole suite of Cucumber tests can be executed.
 They run sequentially and produce test reports that can be found in the directory `test-reports/behavior`.
-Only tests that are marked as `implemented` and `NOT deactivated` will be run.
+Only tests that are tagged as `implemented` and not tagged as `deactivated` will be executed.
 
-The environment variable `API_URL` specifies where the tests can find the application.
+The environment variable `API_URL` specifies where the test runner can find the application.
 This needs to be a running instance of the API.
-It can be a local instance, a container in Minikube or a cloud deployment - as long as the tests have access to it.
+It can be a local instance, a container in Minikube or a cloud deployment - as long as the test runner has access to it.
 
 With `npm run tests:behavior:single` a specific test can be run.
 A wizard will ask for the ID of the respective Gherkin scenario, e.g. `MCA-3601`.
-This command will run the test no matter if it is tagged with `implemented` or `deactivated`.
+This command will run the test no matter if it is tagged with `implemented`, `deactivated` or anything else.
 
 ### Smoke Tests
 
@@ -182,14 +176,18 @@ The _Bruno_ collection is reused to serve as smoke tests.
 The collection covers every API feature and performs a handful of simple tests for each of them.
 The tests are extremely fast and can be run against every environment.
 The only issue to be aware of is that they create random data.
-So, running them against the production environment is possible, but the test data has to be deleted manually afterward.
+So, running them against the production environment is possible, but not recommended,
+because the test data has to be deleted manually afterward.
 
 Running `npm run tests:smoke:gui` will open the graphical version of Bruno.
-With `npm run tests:smoke:cli` the command line version is triggered.
-Both work on exactly the same request collection and with the same tests.
+It allows to run single tests or a collection of tests.
+It gives many options to inspect the requests and the responses.
+With `npm run tests:smoke:cli` the command line version of Bruno is triggered,
+which runs all the tests.
+A wizard will guide through the configuration process.
 
-The README file in the `bruno` folder provides more information regarding the differences and how to configure the test
-runs.
+The README file in the `bruno` folder provides more information regarding the differences
+and how to configure the test runs.
 
 ### Performance Tests
 
@@ -235,7 +233,7 @@ information.
 ## Development mode
 
 Running the app with `npm start` will start it with a production-like configuration.
-When developing and debugging the app it is recommended to use the command `npm run local:app:start` instead.
+For developing and debugging it is recommended to use the command `npm run local:app:start` instead.
 This will activate a file watcher which listens to all modules that are used by the app.
 Whenever one of them is updated the app will automatically restart to reflect those changes.
 
@@ -257,7 +255,7 @@ The wizard will then be skipped and the deployment process is automatically star
 TARGET_CLUSTER=minikube
 TARGET_ENVIRONMENT=testing
 PACKAGE_NAME=rest-api
-PACKAGE_VERSION=0.15.0
+PACKAGE_VERSION=2.0.0
 ```
 
 All deployments (apps, database, services, jobs, etc.) run in a `kubernetes` cluster.
@@ -265,12 +263,12 @@ The respective templates can be found in the folders `deployment/app` and `deplo
 By design, those kubernetes templates are completely static.
 This leads to quite some copy'n'paste, because each environment needs their own set of templates.
 To avoid this situation and to keep the templates somewhat maintainable the kubernetes plugin `kustomize` is used.
-It allows each environment to inherit from the kubernetes configs and only override those parts that are different,
-e.g. the namespace.
+It allows each environment to inherit from the kubernetes configs
+and only override those parts that are different, e.g. the namespace.
 The respective scripts can be found in the `deployment/overlay` folder.
 
-When this is the first deployment to the environment, all pods and services will be created.
-When the deployment already exists it will be updated.
+On the first deployment to an environment, all pods and services will be created.
+Each consecutive deployment will update the components.
 When there is nothing to update (because no changes) then nothing will happen to the existing deployment.
 
 The cluster itself will **not** be created on the fly.
