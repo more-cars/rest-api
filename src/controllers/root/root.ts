@@ -6,7 +6,7 @@ export async function root(req: express.Request, res: express.Response) {
     res.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300, stale-if-error=600')
     res.send({
         "name": "More Cars API",
-        "version": "0.37.0",
+        "version": "2.0.0",
         "status": "ok",
         "_links": {
             "self": {
