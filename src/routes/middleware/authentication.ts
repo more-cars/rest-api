@@ -6,7 +6,7 @@ export function authentication(req: express.Request, res: express.Response, next
         return next()
     }
 
-    if (['POST', 'DELETE'].includes(req.method)) {
+    if (['POST', 'PATCH', 'DELETE'].includes(req.method)) {
         const authHeader = req.headers.authorization
         if (!req.headers.authorization) {
             return sendResponse401(res, next)
