@@ -10,7 +10,7 @@ collectParams()
 
 async function collectParams() {
     const targetCluster = await getTargetCluster(process.env.TARGET_CLUSTER)
-    const targetEnvironment = await getTargetEnvironment(process.env.TARGET_ENVIRONMENT, targetCluster)
+    const targetEnvironment = await getTargetEnvironment(process.env.TARGET_ENVIRONMENT)
 
     return assembleEnvFileData({
         targetCluster,

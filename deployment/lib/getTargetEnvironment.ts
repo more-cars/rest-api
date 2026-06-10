@@ -1,14 +1,14 @@
 import {select} from "@inquirer/prompts"
 
-export async function getTargetEnvironment(override: string | undefined, cluster: string) {
+export async function getTargetEnvironment(override: string | undefined) {
     if (override && override !== "") {
         return override
     }
 
-    return promptUser(cluster)
+    return promptUser()
 }
 
-async function promptUser(cluster: string) {
+async function promptUser() {
     const choices = [
         {
             value: 'testing',
@@ -17,12 +17,6 @@ async function promptUser(cluster: string) {
             value: 'prod',
         },
     ]
-
-    if (cluster === 'minikube') {
-        choices.push({
-            value: 'dev',
-        })
-    }
 
     return select({
         message: 'In which environment should the app be deployed?',
