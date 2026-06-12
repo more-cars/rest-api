@@ -2,8 +2,9 @@ import {describe, expect, test} from 'vitest'
 import request from "supertest"
 import {app} from "../../../../src/app"
 import {seedBrand} from "../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {FakeBrand} from "../../../_toolbox/fixtures/nodes/FakeBrand"
 
-describe('Authentication for DELETE requests', () => {
+describe('Authentication for "PATCH node" requests', () => {
     describe('Auth is enabled', () => {
         test('User provides no credentials', async () => {
             const brand = await seedBrand()
@@ -11,7 +12,8 @@ describe('Authentication for DELETE requests', () => {
             process.env.API_ACCESS_TOKEN = 'supersecretapikey'
 
             const response = await request(app)
-                .delete('/brands/' + brand.properties.id)
+                .patch('/brands/' + brand.properties.id)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
                 .toEqual(401)
@@ -24,8 +26,9 @@ describe('Authentication for DELETE requests', () => {
             const token = 'invalidkey'
 
             const response = await request(app)
-                .delete('/brands/' + brand.properties.id)
+                .patch('/brands/' + brand.properties.id)
                 .set('Authorization', 'Bearer ' + token)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
                 .toEqual(401)
@@ -38,11 +41,12 @@ describe('Authentication for DELETE requests', () => {
             const token = 'supersecretapikey'
 
             const response = await request(app)
-                .delete('/brands/' + brand.properties.id)
+                .patch('/brands/' + brand.properties.id)
                 .set('Authorization', 'Bearer ' + token)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
-                .toEqual(204)
+                .toEqual(200)
         })
     })
 
@@ -53,10 +57,11 @@ describe('Authentication for DELETE requests', () => {
             process.env.API_ACCESS_TOKEN = ''
 
             const response = await request(app)
-                .delete('/brands/' + brand.properties.id)
+                .patch('/brands/' + brand.properties.id)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
-                .toEqual(204)
+                .toEqual(200)
         })
 
         test('User provides any credentials', async () => {
@@ -66,11 +71,12 @@ describe('Authentication for DELETE requests', () => {
             const token = 'anykey'
 
             const response = await request(app)
-                .delete('/brands/' + brand.properties.id)
+                .patch('/brands/' + brand.properties.id)
                 .set('Authorization', 'Bearer ' + token)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
-                .toEqual(204)
+                .toEqual(200)
         })
     })
 })

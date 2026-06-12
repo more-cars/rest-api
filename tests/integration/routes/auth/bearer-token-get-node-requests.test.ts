@@ -1,19 +1,17 @@
 import {describe, expect, test} from 'vitest'
 import request from "supertest"
 import {app} from "../../../../src/app"
-import {FakeBrand} from "../../../_toolbox/fixtures/nodes/FakeBrand"
 
-describe('Authentication for POST requests', () => {
+describe('Authentication for "GET node" requests', () => {
     describe('Auth is enabled', () => {
         test('User provides no credentials', async () => {
             process.env.API_ACCESS_TOKEN = 'supersecretapikey'
 
             const response = await request(app)
-                .post('/brands')
-                .send(FakeBrand.dbInput())
+                .get('/brands')
 
             expect(response.statusCode)
-                .toEqual(401)
+                .toEqual(200)
         })
 
         test('User provides invalid credentials', async () => {
@@ -21,12 +19,11 @@ describe('Authentication for POST requests', () => {
             const token = 'invalidkey'
 
             const response = await request(app)
-                .post('/brands')
-                .send(FakeBrand.dbInput())
+                .get('/brands')
                 .set('Authorization', 'Bearer ' + token)
 
             expect(response.statusCode)
-                .toEqual(401)
+                .toEqual(200)
         })
 
         test('User provides valid credentials', async () => {
@@ -34,12 +31,11 @@ describe('Authentication for POST requests', () => {
             const token = 'supersecretapikey'
 
             const response = await request(app)
-                .post('/brands')
-                .send(FakeBrand.dbInput())
+                .get('/brands')
                 .set('Authorization', 'Bearer ' + token)
 
             expect(response.statusCode)
-                .toEqual(201)
+                .toEqual(200)
         })
     })
 
@@ -48,11 +44,10 @@ describe('Authentication for POST requests', () => {
             process.env.API_ACCESS_TOKEN = ''
 
             const response = await request(app)
-                .post('/brands')
-                .send(FakeBrand.dbInput())
+                .get('/brands')
 
             expect(response.statusCode)
-                .toEqual(201)
+                .toEqual(200)
         })
 
         test('User provides any credentials', async () => {
@@ -60,12 +55,11 @@ describe('Authentication for POST requests', () => {
             const token = 'anykey'
 
             const response = await request(app)
-                .post('/brands')
-                .send(FakeBrand.dbInput())
+                .get('/brands')
                 .set('Authorization', 'Bearer ' + token)
 
             expect(response.statusCode)
-                .toEqual(201)
+                .toEqual(200)
         })
     })
 })
