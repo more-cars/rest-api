@@ -10,8 +10,8 @@ export function convertYouTubeVideoItemToVideoInput(data: YouTubeVideoItem): Vid
         tags: data.snippet.tags ? data.snippet.tags.join(',') : null,
         source: "https://www.youtube.com/watch?v=" + data.id,
         duration: data.contentDetails.duration,
-        thumbnail_url_l: data.snippet.thumbnails.standard.url,
-        thumbnail_url_m: data.snippet.thumbnails.high.url,
+        thumbnail_url_l: data.snippet.thumbnails.maxres.url,
+        thumbnail_url_m: data.snippet.thumbnails.standard.url,
         thumbnail_url_s: data.snippet.thumbnails.medium.url,
         thumbnail_url_xs: data.snippet.thumbnails.default.url,
     }
