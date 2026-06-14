@@ -10,13 +10,13 @@ export function convertFlickrImageItemToImageInput(data: FlickrImageItem, thumbn
         license: convertLicense(data.license) || 'UNKNOWN',
         tags: data.tags.tag.map(tag => tag.raw).join(','),
         source: data.urls.url[0]._content,
-        image_url_original: thumbnails.find(thumbnail => thumbnail.label === 'Original')?.url || 'UNKNOWN',
-        image_url_xxl: thumbnails.find(thumbnail => thumbnail.label === 'X-Large 4K')?.url || null,
-        image_url_xl: thumbnails.find(thumbnail => thumbnail.label === 'Large 2048')?.url || null,
-        image_url_l: thumbnails.find(thumbnail => thumbnail.label === 'Large')?.url || null,
-        image_url_m: thumbnails.find(thumbnail => thumbnail.label === 'Medium')?.url || null,
-        image_url_s: thumbnails.find(thumbnail => thumbnail.label === 'Small 320')?.url || null,
-        image_url_xs: thumbnails.find(thumbnail => thumbnail.label === 'Thumbnail')?.url || null,
+        image_url_original: thumbnails.find(thumbnail => thumbnail.label === 'Original')?.source || 'UNKNOWN',
+        image_url_xxl: thumbnails.find(thumbnail => thumbnail.label === 'X-Large 4K')?.source || null,
+        image_url_xl: thumbnails.find(thumbnail => thumbnail.label === 'Large 2048')?.source || null,
+        image_url_l: thumbnails.find(thumbnail => thumbnail.label === 'Large')?.source || null,
+        image_url_m: thumbnails.find(thumbnail => thumbnail.label === 'Medium')?.source || null,
+        image_url_s: thumbnails.find(thumbnail => thumbnail.label === 'Small 320')?.source || null,
+        image_url_xs: thumbnails.find(thumbnail => thumbnail.label === 'Thumbnail')?.source || null,
     }
 }
 
