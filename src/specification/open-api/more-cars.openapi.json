@@ -50,34 +50,6 @@
         }
       }
     },
-    "/health": {
-      "get": {
-        "operationId": "healthCheck",
-        "summary": "Health check",
-        "responses": {
-          "200": {
-            "description": "Healthy",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request.",
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Response400"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/companies": {
       "get": {
         "operationId": "getCompanies",

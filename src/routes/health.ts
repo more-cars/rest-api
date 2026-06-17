@@ -3,6 +3,7 @@ import {HealthController} from "../controllers/HealthController"
 
 const router = express.Router()
 
-router.get('/health', HealthController.health)
+router.get('/healthz', HealthController.healthz)
+router.get('/ready', HealthController.ready)
 
 export default router

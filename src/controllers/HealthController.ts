@@ -1,8 +1,13 @@
 import express from "express"
-import {health} from "./health/health"
+import {healthz} from "./health/healthz"
+import {ready} from "./health/ready"
 
 export const HealthController = {
-    async health(req: express.Request, res: express.Response) {
-        await health(req, res)
+    async healthz(req: express.Request, res: express.Response) {
+        await healthz(req, res)
+    },
+
+    async ready(req: express.Request, res: express.Response) {
+        await ready(req, res)
     },
 }
