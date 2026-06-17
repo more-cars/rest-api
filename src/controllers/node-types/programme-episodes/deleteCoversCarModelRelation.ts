@@ -20,7 +20,6 @@ export async function deleteCoversCarModelRelation(req: express.Request, res: ex
         } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

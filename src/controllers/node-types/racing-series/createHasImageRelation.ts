@@ -21,7 +21,6 @@ export async function createHasImageRelation(req: express.Request, res: express.
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

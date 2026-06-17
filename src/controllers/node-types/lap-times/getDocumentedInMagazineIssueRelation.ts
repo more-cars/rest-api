@@ -27,7 +27,6 @@ export async function getDocumentedInMagazineIssueRelation(req: express.Request,
             const marshalledData = marshalEmptyRelation(ControllerNodeType.LapTime, lapTimeId, RelationType.LapTimeDocumentedInMagazineIssue)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

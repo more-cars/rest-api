@@ -27,7 +27,6 @@ export async function getBelongsToMagazineRelation(req: express.Request, res: ex
             const marshalledData = marshalEmptyRelation(ControllerNodeType.MagazineIssue, magazineIssueId, RelationType.MagazineIssueBelongsToMagazine)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

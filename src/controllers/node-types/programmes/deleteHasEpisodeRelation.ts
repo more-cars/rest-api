@@ -20,7 +20,6 @@ export async function deleteHasEpisodeRelation(req: express.Request, res: expres
         } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

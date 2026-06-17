@@ -26,11 +26,9 @@ export async function getAll(req: express.Request, res: express.Response) {
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof InvalidPaginationParams || e instanceof InvalidSortingParams || e instanceof InvalidFilterParams) {
-            console.error(e)
             return sendResponse400(res)
         }
 
-        console.error(e)
         return sendResponse500(res)
     }
 }

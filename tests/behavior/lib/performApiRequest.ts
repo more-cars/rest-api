@@ -29,7 +29,7 @@ async function extractResponseBody(response: Response) {
     const responseBody = await response.text()
     try {
         return JSON.parse(responseBody)
-    } catch (e) {
+    } catch {
         return responseBody
     }
 }

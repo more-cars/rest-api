@@ -30,7 +30,6 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
             const marshalledData = marshalEmptyRelation(ControllerNodeType.<%= h.changeCase.pascal(startNodeType) %>, <%= h.changeCase.camel(startNodeType) %>Id, RelationType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

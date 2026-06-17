@@ -46,15 +46,13 @@ export const Image = {
             if (data.image_provider === 'flickr') {
                 try {
                     externalImageData = await FlickrFacade.getImageById(id)
-                } catch (e) {
-                    console.error(e)
+                } catch {
                     throw new FlickrImageNotFoundError(id)
                 }
             } else if (data.image_provider === 'wikimedia') {
                 try {
                     externalImageData = await WikimediaFacade.getImageById(id)
-                } catch (e) {
-                    console.error(e)
+                } catch {
                     throw new WikimediaImageNotFoundError(id)
                 }
             }

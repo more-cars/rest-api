@@ -27,7 +27,6 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
             const marshalledData = marshalEmptyRelation(ControllerNodeType.CarModel, carModelId, RelationType.CarModelBelongsToBrand)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

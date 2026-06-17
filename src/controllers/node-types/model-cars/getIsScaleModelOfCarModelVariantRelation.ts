@@ -27,7 +27,6 @@ export async function getIsScaleModelOfCarModelVariantRelation(req: express.Requ
             const marshalledData = marshalEmptyRelation(ControllerNodeType.ModelCar, modelCarId, RelationType.ModelCarIsScaleModelOfCarModelVariant)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

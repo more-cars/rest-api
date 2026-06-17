@@ -20,7 +20,6 @@ export async function deleteHasLayoutRelation(req: express.Request, res: express
         } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

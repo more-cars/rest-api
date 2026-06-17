@@ -27,7 +27,6 @@ export async function getHasPrimeImageRelation(req: express.Request, res: expres
             const marshalledData = marshalEmptyRelation(ControllerNodeType.RaceTrack, raceTrackId, RelationType.RaceTrackHasPrimeImage)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

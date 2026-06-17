@@ -27,7 +27,6 @@ export async function getHasMainVideoRelation(req: express.Request, res: express
             const marshalledData = marshalEmptyRelation(ControllerNodeType.ProgrammeEpisode, programmeEpisodeId, RelationType.ProgrammeEpisodeHasVideo)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

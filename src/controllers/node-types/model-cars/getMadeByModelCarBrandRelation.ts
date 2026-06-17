@@ -27,7 +27,6 @@ export async function getMadeByModelCarBrandRelation(req: express.Request, res: 
             const marshalledData = marshalEmptyRelation(ControllerNodeType.ModelCar, modelCarId, RelationType.ModelCarMadeByModelCarBrand)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

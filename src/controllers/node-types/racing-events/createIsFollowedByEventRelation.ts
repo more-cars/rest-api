@@ -24,7 +24,6 @@ export async function createIsFollowedByEventRelation(req: express.Request, res:
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

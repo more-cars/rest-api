@@ -20,7 +20,6 @@ export async function deleteFeaturesTrackLayoutRelation(req: express.Request, re
         } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

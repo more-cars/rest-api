@@ -24,8 +24,7 @@ export async function createNode(req: express.Request, res: express.Response) {
         const node = convertCarModelModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
         return sendResponse201(marshalledData, res)
-    } catch (e) {
-        console.error(e)
+    } catch {
         return sendResponse500(res)
     }
 }

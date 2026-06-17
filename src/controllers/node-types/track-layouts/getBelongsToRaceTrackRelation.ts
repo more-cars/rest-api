@@ -27,7 +27,6 @@ export async function getBelongsToRaceTrackRelation(req: express.Request, res: e
             const marshalledData = marshalEmptyRelation(ControllerNodeType.TrackLayout, trackLayoutId, RelationType.TrackLayoutBelongsToRaceTrack)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

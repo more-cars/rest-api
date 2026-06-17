@@ -27,7 +27,6 @@ export async function getByMagazineIssueRelation(req: express.Request, res: expr
             const marshalledData = marshalEmptyRelation(ControllerNodeType.Rating, ratingId, RelationType.RatingByMagazineIssue)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

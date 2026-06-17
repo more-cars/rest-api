@@ -27,7 +27,6 @@ export async function getTookPlaceAtRaceTrackRelation(req: express.Request, res:
             const marshalledData = marshalEmptyRelation(ControllerNodeType.RacingEvent, racingEventId, RelationType.RacingEventTookPlaceAtRaceTrack)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

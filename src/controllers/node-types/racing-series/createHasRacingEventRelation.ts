@@ -21,7 +21,6 @@ export async function createHasRacingEventRelation(req: express.Request, res: ex
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

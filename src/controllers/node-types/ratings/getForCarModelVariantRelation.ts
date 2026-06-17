@@ -27,7 +27,6 @@ export async function getForCarModelVariantRelation(req: express.Request, res: e
             const marshalledData = marshalEmptyRelation(ControllerNodeType.Rating, ratingId, RelationType.RatingForCarModelVariant)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

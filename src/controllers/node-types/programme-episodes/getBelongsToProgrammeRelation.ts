@@ -27,7 +27,6 @@ export async function getBelongsToProgrammeRelation(req: express.Request, res: e
             const marshalledData = marshalEmptyRelation(ControllerNodeType.ProgrammeEpisode, programmeEpisodeId, RelationType.ProgrammeEpisodeBelongsToProgramme)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

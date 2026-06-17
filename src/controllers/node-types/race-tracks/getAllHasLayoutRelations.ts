@@ -22,7 +22,6 @@ export async function getAllHasLayoutRelations(req: express.Request, res: expres
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

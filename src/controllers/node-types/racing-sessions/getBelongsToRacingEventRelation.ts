@@ -27,7 +27,6 @@ export async function getBelongsToRacingEventRelation(req: express.Request, res:
             const marshalledData = marshalEmptyRelation(ControllerNodeType.RacingSession, racingSessionId, RelationType.RacingSessionBelongsToRacingEvent)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

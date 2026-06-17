@@ -36,8 +36,7 @@ export const Video = {
 
             try {
                 externalVideoData = await YouTubeFacade.getVideoById(id)
-            } catch (e) {
-                console.error(e)
+            } catch {
                 throw new YouTubeVideoNotFoundError(id)
             }
         }

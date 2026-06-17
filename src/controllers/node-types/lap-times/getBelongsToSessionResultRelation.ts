@@ -27,7 +27,6 @@ export async function getBelongsToSessionResultRelation(req: express.Request, re
             const marshalledData = marshalEmptyRelation(ControllerNodeType.LapTime, lapTimeId, RelationType.LapTimeBelongsToSessionResult)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

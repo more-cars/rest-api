@@ -27,7 +27,6 @@ export async function getUsedTheTrackLayoutRelation(req: express.Request, res: e
             const marshalledData = marshalEmptyRelation(ControllerNodeType.RacingEvent, racingEventId, RelationType.RacingEventUsedTheTrackLayout)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

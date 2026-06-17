@@ -27,7 +27,6 @@ export async function getFollowsEventRelation(req: express.Request, res: express
             const marshalledData = marshalEmptyRelation(ControllerNodeType.RacingEvent, racingEventId, RelationType.RacingEventFollowsEvent)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

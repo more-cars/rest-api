@@ -27,7 +27,6 @@ export async function getIsVariantOfRelation(req: express.Request, res: express.
             const marshalledData = marshalEmptyRelation(ControllerNodeType.CarModelVariant, carModelVariantId, RelationType.CarModelVariantIsVariantOf)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

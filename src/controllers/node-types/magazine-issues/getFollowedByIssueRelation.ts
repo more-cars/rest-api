@@ -27,7 +27,6 @@ export async function getFollowedByIssueRelation(req: express.Request, res: expr
             const marshalledData = marshalEmptyRelation(ControllerNodeType.MagazineIssue, magazineIssueId, RelationType.MagazineIssueFollowedByIssue)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

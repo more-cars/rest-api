@@ -27,7 +27,6 @@ export async function getIsFollowedByEpisodeRelation(req: express.Request, res: 
             const marshalledData = marshalEmptyRelation(ControllerNodeType.ProgrammeEpisode, programmeEpisodeId, RelationType.ProgrammeEpisodeIsFollowedByEpisode)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

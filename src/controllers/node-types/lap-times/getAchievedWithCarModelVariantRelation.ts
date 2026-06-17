@@ -27,7 +27,6 @@ export async function getAchievedWithCarModelVariantRelation(req: express.Reques
             const marshalledData = marshalEmptyRelation(ControllerNodeType.LapTime, lapTimeId, RelationType.LapTimeAchievedWithCarModelVariant)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

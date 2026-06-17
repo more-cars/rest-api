@@ -27,7 +27,6 @@ export async function getHasMainVideoRelation(req: express.Request, res: express
             const marshalledData = marshalEmptyRelation(ControllerNodeType.RacingGame, racingGameId, RelationType.RacingGameHasMainVideo)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

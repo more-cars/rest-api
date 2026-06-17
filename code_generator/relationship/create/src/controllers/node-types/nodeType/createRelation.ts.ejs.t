@@ -34,7 +34,6 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

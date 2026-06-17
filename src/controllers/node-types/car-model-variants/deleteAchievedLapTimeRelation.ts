@@ -20,7 +20,6 @@ export async function deleteAchievedLapTimeRelation(req: express.Request, res: e
         } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

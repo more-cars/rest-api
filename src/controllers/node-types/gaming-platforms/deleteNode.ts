@@ -16,7 +16,6 @@ export async function deleteNode(req: express.Request, res: express.Response) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

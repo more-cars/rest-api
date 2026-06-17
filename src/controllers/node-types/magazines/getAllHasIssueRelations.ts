@@ -22,7 +22,6 @@ export async function getAllHasIssueRelations(req: express.Request, res: express
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

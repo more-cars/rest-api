@@ -24,7 +24,6 @@ export async function createIsFollowedByEpisodeRelation(req: express.Request, re
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

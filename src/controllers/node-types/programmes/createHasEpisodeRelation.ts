@@ -20,7 +20,6 @@ export async function createHasEpisodeRelation(req: express.Request, res: expres
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

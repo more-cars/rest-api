@@ -20,7 +20,6 @@ export async function createIsVariantOfRelation(req: express.Request, res: expre
         } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

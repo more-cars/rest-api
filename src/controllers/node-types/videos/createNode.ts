@@ -38,7 +38,6 @@ export async function createNode(req: express.Request, res: express.Response) {
         } else if (e instanceof YouTubeVideoAlreadyExistsError) {
             return sendResponse409(res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }

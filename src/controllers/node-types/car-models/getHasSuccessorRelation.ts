@@ -27,7 +27,6 @@ export async function getHasSuccessorRelation(req: express.Request, res: express
             const marshalledData = marshalEmptyRelation(ControllerNodeType.CarModel, carModelId, RelationType.CarModelHasSuccessor)
             return sendResponse200(marshalledData, res)
         } else {
-            console.error(e)
             return sendResponse500(res)
         }
     }
