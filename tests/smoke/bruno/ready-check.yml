@@ -1,0 +1,13 @@
+info:
+  name: ready-check
+  type: http
+
+http:
+  method: GET
+  url: "{{baseUrl}}/ready"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"

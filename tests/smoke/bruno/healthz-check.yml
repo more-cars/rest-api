@@ -1,10 +1,10 @@
 info:
-  name: health-check
+  name: healthz-check
   type: http
 
 http:
   method: GET
-  url: "{{baseUrl}}/health"
+  url: "{{baseUrl}}/healthz"
 
 runtime:
   assertions:
