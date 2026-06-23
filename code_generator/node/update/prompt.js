@@ -1,7 +1,0 @@
-module.exports = [
-    {
-        type: 'input',
-        name: 'nodeType',
-        message: "Add 'Update Node' feature for which node type? (e.g. 'Car Model')",
-    }
-]

@@ -12,12 +12,12 @@ async function generateCodeForFeature() {
     const typeOfFeature = await promptTypeOfFeature(typeOfData)
     const featureParameters = await promptFeatureParameters(typeOfData, typeOfFeature)
 
-    let properties: any = {}
+    let properties
     try {
         const nodeSpecs = getNodeTypeSpecification(featureParameters['nodeType'])
         properties = nodeSpecs.properties.map(property => property)
-    } catch (e) {
-        properties = JSON.parse(fs.readFileSync(__dirname + '/_temp/properties.json', {
+    } catch {
+        properties = JSON.parse(fs.readFileSync(`${__dirname}/_temp/properties.json`, {
             encoding: 'utf8',
             flag: 'r'
         }))
@@ -66,8 +66,10 @@ async function promptTypeOfFeature(typeOfData: 'node' | 'relationship') {
 }
 
 async function promptFeatureParameters(typeOfData: string, typeOfFeature: string) {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const questions = require(`${__dirname}/${typeOfData}/${typeOfFeature}/prompt.js`)
+    const questions = JSON.parse(fs.readFileSync(`${__dirname}/${typeOfData}/${typeOfFeature}/prompt.json`, {
+        encoding: 'utf8',
+        flag: 'r'
+    }))
 
     return inquirer.prompt(questions)
 }
