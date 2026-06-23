@@ -31,4 +31,4 @@ hostname_exists "api.more-cars.internal"
 hostname_exists "db.more-cars.internal"
 
 echo 🟢 Starting application...
-node --watch --env-file=.env -r ts-node/register src/server.ts
+TS_NODE_PROJECT=tsconfig.app.json node --watch --env-file=.env -r ts-node/register src/server.ts

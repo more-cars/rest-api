@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: api
@@ -53,7 +53,7 @@ spec:
           resources:
             requests:
               cpu: "100m"
-              memory: "700Mi"
+              memory: "150Mi"
           livenessProbe:
             httpGet:
               path: /healthz

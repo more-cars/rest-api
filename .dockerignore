@@ -2,8 +2,13 @@
 .env*
 .git*
 .idea
+.npmrc
+code_generator
 cucumber.js
-eslint.config.mjs
 deployment
+dist
+eslint.config.mjs
 node_modules
+rest-api-specification
+rest-api-ticket-generator
 test-reports
