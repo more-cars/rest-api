@@ -24,14 +24,16 @@ Given('there exists a {string} relationship {string} for {string}',
         }
 
         await performApiRequest(path, 'POST', data)
+        const {id, ...attributes} = endNode.fields
+
         RelationshipManager.cacheRelationship({
             links: {
                 self: `/${nodePathFragment}/${startNode.fields.id}/${dasherize(relationshipName)}`
             },
             data: {
                 type: endNode.node_type,
-                id: endNode.fields.id,
-                attributes: (({id, ...fields}) => fields)(endNode.fields),
+                id,
+                attributes,
             },
         }, relationshipLabel)
     })

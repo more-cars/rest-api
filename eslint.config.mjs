@@ -16,6 +16,14 @@ export default defineConfig(
         rules: {
             "@typescript-eslint/no-duplicate-enum-values": "off",
             "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    "argsIgnorePattern": "^_",
+                    "varsIgnorePattern": "^_",
+                    "caughtErrorsIgnorePattern": "^_"
+                }
+            ]
         },
     }
 )

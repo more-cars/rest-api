@@ -29,19 +29,15 @@ describe('Marshalling a relation collection', () => {
             links: {
                 self: `/${relationA.from_node.node_type}/${relationA.from_node.fields.id}/${relationA.type}`,
             },
-            data: [{
-                type: relationA.to_node.node_type,
-                id: relationA.to_node.fields.id,
-                attributes: (({id, ...fields}) => fields)(relationA.to_node.fields),
-            }, {
-                type: relationB.to_node.node_type,
-                id: relationB.to_node.fields.id,
-                attributes: (({id, ...fields}) => fields)(relationB.to_node.fields),
-            }, {
-                type: relationC.to_node.node_type,
-                id: relationC.to_node.fields.id,
-                attributes: (({id, ...fields}) => fields)(relationC.to_node.fields),
-            }],
+            data: [relationA, relationB, relationC].map(relation => {
+                const {id, ...attributes} = relation.to_node.fields
+
+                return {
+                    type: relation.to_node.node_type,
+                    id,
+                    attributes,
+                }
+            }),
         }
 
         expect(marshalledRelations)

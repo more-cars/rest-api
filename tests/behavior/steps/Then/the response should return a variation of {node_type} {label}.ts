@@ -13,11 +13,11 @@ Then('the response should return a variation of {string} {string}',
         const originalNode = NodeManager.getNodeByLabel(label)
         const response = ResponseManager.getPreviousResponse()
         const nodeVariant = response.body as NodeResponse
-        const originalData = (({id, ...fields}) => fields)(originalNode.fields)
+        const {id, ...originalData} = originalNode.fields
         const variantData = nodeVariant.attributes
 
         const schema = getResponseNodeSchema(getBasePathFragmentForNodeType(nodeType) as ControllerNodeType)
         assert.ok(validateJson(nodeVariant, schema))
-        assert.equal(originalNode.fields.id, nodeVariant.id)
+        assert.equal(id, nodeVariant.id)
         assert.notEqual(JSON.stringify(originalData), JSON.stringify(variantData))
     })

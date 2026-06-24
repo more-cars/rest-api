@@ -6,7 +6,7 @@ import {NodeManager} from "../../lib/NodeManager"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 Then('there should exist NO {string} relationship between {string} and {string}',
-    async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
+    async (relationshipName: string, startNodeLabel: string, _endNodeLabel: string) => {
         const startNode = NodeManager.getNodeByLabel(startNodeLabel)
         const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
         const path = `/${nodePath}/${startNode.fields.id}/${dasherize(relationshipName)}`
