@@ -12,4 +12,4 @@ port-forward*
 /.idea/
 
 # config files
-.env
+.env*

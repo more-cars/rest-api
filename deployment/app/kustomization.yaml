@@ -15,6 +15,26 @@ resources:
   - openapi-spec-deployment.yaml
   - backup-db-cronjob.yaml
 
+secretGenerator:
+  - name: api.db-credentials
+    envs:
+      - .env.secret.db
+  - name: api.credentials
+    envs:
+      - .env.secret.api
+  - name: api.s3-credentials
+    envs:
+      - .env.secret.s3
+  - name: api.basic-auth-credentials
+    envs:
+      - .env.secret.basic-auth
+  - name: api.flickr-credentials
+    envs:
+      - .env.secret.flickr
+  - name: api.youtube-credentials
+    envs:
+      - .env.secret.youtube
+
 patches:
   - path: api-deployment.patch.json
     target:

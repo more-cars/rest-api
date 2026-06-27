@@ -16,17 +16,17 @@ spec:
                 - name: S3_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: s3-credentials
+                      name: api.s3-credentials
                       key: key
                 - name: S3_SECRET
                   valueFrom:
                     secretKeyRef:
-                      name: s3-credentials
+                      name: api.s3-credentials
                       key: secret
                 - name: S3_BUCKET
                   valueFrom:
                     secretKeyRef:
-                      name: s3-credentials
+                      name: api.s3-credentials
                       key: bucket
               command:
                 - /bin/sh

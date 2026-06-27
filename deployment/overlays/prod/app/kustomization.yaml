@@ -23,5 +23,5 @@ patches:
           name: API_ACCESS_TOKEN
           valueFrom:
             secretKeyRef:
-              name: more-cars-credentials
+              name: api.credentials
               key: apikey

@@ -26,29 +26,29 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: api.db-credentials
                   key: password
             - name: BASIC_AUTH_USERNAME
               valueFrom:
                 secretKeyRef:
                   optional: true
-                  name: basic-auth
+                  name: api.basic-auth-credentials
                   key: username
             - name: BASIC_AUTH_PASSWORD
               valueFrom:
                 secretKeyRef:
                   optional: true
-                  name: basic-auth
+                  name: api.basic-auth-credentials
                   key: password
             - name: FLICKR_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: flickr-credentials
+                  name: api.flickr-credentials
                   key: apikey
             - name: YOUTUBE_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: youtube-credentials
+                  name: api.youtube-credentials
                   key: apikey
           resources:
             requests:
