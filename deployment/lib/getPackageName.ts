@@ -14,10 +14,10 @@ async function promptUser() {
         default: 'rest-api',
         choices: [
             {
-                value: 'rest-api',
+                value: 'rest-api-rc',
             },
             {
-                value: 'rest-api-rc',
+                value: 'rest-api',
             },
         ],
     })
