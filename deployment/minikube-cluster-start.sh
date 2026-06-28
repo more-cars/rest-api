@@ -2,7 +2,8 @@
 
 minikube start --memory 8000 --cpus 2 -p morecars
 minikube addons enable metrics-server -p morecars
-minikube dashboard -p morecars &
+minikube addons enable headlamp -p morecars
+minikube service headlamp -n headlamp -p morecars
 
 SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")
