@@ -1,5 +1,0 @@
-name: minikube-dev
-color: "#346AB2"
-variables:
-  - name: baseUrl
-    value: https://api.dev.more-cars.internal
