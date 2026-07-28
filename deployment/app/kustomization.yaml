@@ -14,6 +14,9 @@ resources:
   - openapi-spec-service.yaml
   - openapi-spec-deployment.yaml
   - backup-db-cronjob.yaml
+  - oauth2-proxy-deployment.yaml
+  - oauth2-proxy-service.yaml
+  - oauth2-proxy-health-check.yaml
 
 patches:
   - path: api-deployment.patch.json
@@ -40,3 +43,7 @@ patches:
     target:
       kind: HTTPRoute
       name: openapi-spec-https
+  - path: oauth2-proxy-deployment.patch.json
+    target:
+      kind: Deployment
+      name: oauth2-proxy-api
