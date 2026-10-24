@@ -34,8 +34,8 @@ For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kub
 
 Minikube allows to quickly set up a local Kubernetes cluster.
 Check the documentation for information on how to install and configure: https://minikube.sigs.k8s.io/docs/.
-The Minikube cluster uses exactly the same Kubernetes configuration files as the "real" Kubernetes cluster in GKE
-(see `deployment/app` and `deployment/overlays` folder).
+The Minikube cluster uses exactly the same Kubernetes configuration files as the "real" Kubernetes cluster in GKE (see
+`deployment/app` and `deployment/overlays` folder).
 This allows to test situations that can happen in a production environment,
 but cannot be recreated in a local dev environment.
 
@@ -100,7 +100,7 @@ It shows the resp. URLs incl. port on the console.
 ### Credentials
 
 All databases (except in local environment) require a password.
-The deployment scripts expect it as "Kubernetes Secret" with the name `db-credentials`,
+The deployment scripts expect it as "Kubernetes Secret" with the name `api.db-credentials`,
 containing the key-value pair `password=the_password`.
 In Minikube this secret is automatically added when deploying the app for the first time.
 For the GKE environments this needs to be done manually.
@@ -109,10 +109,10 @@ Changing the (initial) password requires two steps.
 First, override the secret in Kubernetes:
 
 ```
-kubectl delete secret db-credentials \
+kubectl delete secret api.db-credentials \
   --ignore-not-found \
   --namespace=testing && \
-kubectl create secret generic db-credentials \
+kubectl create secret generic api.db-credentials \
   --from-literal=password='<NEW_PASSWORD>' \
   --namespace=testing
 ```
