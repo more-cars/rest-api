@@ -28,18 +28,6 @@ spec:
                 secretKeyRef:
                   name: api.db-credentials
                   key: password
-            - name: BASIC_AUTH_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  optional: true
-                  name: api.basic-auth-credentials
-                  key: username
-            - name: BASIC_AUTH_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  optional: true
-                  name: api.basic-auth-credentials
-                  key: password
             - name: FLICKR_API_KEY
               valueFrom:
                 secretKeyRef:
